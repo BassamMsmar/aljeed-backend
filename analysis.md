@@ -17,15 +17,21 @@
     - id_number
     - nationality
     - truck_type
-    - shipmintes
     - rate
     
 # shipments
     - user 
     - driver
-    - company
-    - cost 
+    - customer
+    - fare 
+    - days_stayed 
+    - stay_cost
+    - deducted 
     - status
+        - قيد المعالجة
+        - قيد التحميل
+        - قيد التسليم
+        - قيد الرفع
     - source
     - destination
     - create_at
