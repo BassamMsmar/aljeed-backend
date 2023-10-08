@@ -8,9 +8,9 @@ from .models import Shipments
 
 
 class ShipmentsAdmin(admin.ModelAdmin):
-    list_display = ['user', 'driver', 'customer', 'destination']
-    list_filter = ['user', 'driver', 'customer', 'destination']
-    search_fields = ['user', 'driver', 'customer', 'destination']
+    list_display = ['user', 'driver', 'customer', 'destination', 'status']
+    list_filter = ['user', 'driver', 'customer', 'destination', 'status']
+    search_fields = ['user', 'driver', 'customer', 'destination', 'status']
     # inlines = [DriverTabular]
                
 admin.site.register(Shipments, ShipmentsAdmin)
