@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 from drivers.models import Driver
-from customers.models import Customers
+from customers.models import Customers, Branch
 # Create your models here.
 
 
@@ -27,7 +27,7 @@ STATUS = (
 class Shipments(models.Model):
     user = models.ForeignKey(User,  related_name='shipments_user', on_delete=models.SET_NULL, null=True)
     driver = models.ForeignKey(Driver,  related_name='shipments_driver', on_delete=models.SET_NULL, null=True)
-    customer = models.ForeignKey(Customers, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
+    customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
     fare = models.IntegerField()
     days_stayed = models.IntegerField(null=True, blank=True)
     stay_cost = models.IntegerField(null=True, blank=True)

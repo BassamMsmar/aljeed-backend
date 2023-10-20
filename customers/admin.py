@@ -17,3 +17,4 @@ class CustomersAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Customers, CustomersAdmin)
+admin.site.register(Branch)
