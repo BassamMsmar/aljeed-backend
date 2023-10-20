@@ -9,6 +9,7 @@
                 <th scope="col">اسم اسم العميل </th>
                 <th scope="col">  فرع العميل</th>
                 <th scope="col"> مدينة التحميل </th>
+                <th scope="col">  عدد الشحنات </th>
             
                 
             </tr>
@@ -20,6 +21,7 @@
                 <td>{{ customer.customers }}</td>
                 <td>{{ customer.name}}</td>
                 <td>{{ customer.city }}</td>
+                <td>{{ customer.shipment_count }}</td>
              
             </tr>
             {% endfor %}
