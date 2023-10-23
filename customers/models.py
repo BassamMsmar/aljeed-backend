@@ -9,7 +9,7 @@ class Customers(models.Model):
     
 
 class Branch(models.Model):
-    customers = models.ForeignKey(Customers, on_delete=models.CASCADE) 
+    customers = models.ForeignKey(Customers, related_name='branch_customers', on_delete=models.CASCADE) 
     name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
 

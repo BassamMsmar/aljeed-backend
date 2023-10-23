@@ -7,8 +7,8 @@ from .models import Customers, Branch
 
 # Create your views here.
 class CustomersList(ListView):
-    model = Branch    #context : object_list, model_list
-    queryset = Branch.objects.annotate(shipment_count=Count('shipments_company'))
+    model = Customers    #context : object_list, model_list
+    
 
 class CustomersDetail(DetailView):
     model = Customers
