@@ -9,17 +9,19 @@ from customers.models import Customers, Branch
 
 
 FLAG_TYPES = (
-    ('جدة','جدة'),
-    ('الرياض','الرياض'),
-    ('الدمام','الدمام'),
+    ('Jeddah','Jeddah'),
+    ('Riyad','Riyad'),
+    ('Dammam','Dammam'),
  )
 
 
 STATUS = (
-    ('قيد المعالجة','قيد المعالجة'),
-    ('قيد التحميل','قيد التحميل'),
-    ('قيد التسليم','قيد التسليم'),
-    ('قيد الرفع','قيد الرفع '),
+    ('Recieved','Recieved'),
+    ('Processed','Processed'),
+    ('Shipped','Shipped'),
+    ('Delivered','Delivered'),
+    ('Feedback','Feedback'),
+    ('Completed','Completed'),
  )
 
 
@@ -32,7 +34,7 @@ class Shipments(models.Model):
     days_stayed = models.IntegerField(null=True, blank=True)
     stay_cost = models.IntegerField(null=True, blank=True)
     deducted = models.IntegerField(null=True, blank=True)
-    status = models.CharField(max_length=20, choices=STATUS, default='قيد التحميل')
+    status = models.CharField(max_length=20, choices=STATUS, default='Recieved')
     destination = models.CharField(max_length=20, choices=FLAG_TYPES)
     create_at = models.DateTimeField(default=timezone.now)
     expected_arrival_date = models.DateTimeField(null=True, blank=True)
