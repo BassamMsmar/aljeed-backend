@@ -21,6 +21,7 @@ STATUS = (
     ('Shipped','Shipped'),
     ('Delivered','Delivered'),
     ('Feedback','Feedback'),
+    ('Late','Late'),
     ('Completed','Completed'),
  )
 
