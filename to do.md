@@ -30,3 +30,9 @@
 - تعديل بيانات المستخدمين
 - عرض بيانات كل مستخدم
 
+
+
+
+__________________
+- Form add to all objects
+- show the detail item 

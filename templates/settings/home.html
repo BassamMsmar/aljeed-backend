@@ -312,6 +312,7 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
+                      <th scope="col">driver</th>
                       <th scope="col">Customer</th>
                       <th scope="col">Destination</th>
                       <th scope="col">User</th>
@@ -322,7 +323,8 @@
                     {% for shipment in shipments %}
                     <tr>
                       <th scope="row"><a href="#">#{{shipment.id}}</a></th>
-                      <td>{{shipment.customer_branch}}</td>
+                      <th scope="row"><a href="#">{{shipment.driver}}</a></th>
+                      <th scope="row"><a href="#">{{shipment.customer_branch}}</a></th>
                       <td>{{shipment.customer_branch.city}} - {{shipment.destination}}</td>
                       <td>{{shipment.user}}</td>
                       <td><span class="badge 

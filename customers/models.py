@@ -8,6 +8,8 @@ class Customers(models.Model):
         return self.name
     
 
+    
+
 class Branch(models.Model):
     customers = models.ForeignKey(Customers, related_name='branch_customers', on_delete=models.CASCADE) 
     name = models.CharField(max_length=255)
@@ -15,3 +17,5 @@ class Branch(models.Model):
 
     def __str__(self):
         return f'{self.customers} - {self.name}'
+    
+    

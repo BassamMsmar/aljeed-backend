@@ -6,7 +6,7 @@ from shipments.models import Shipments
 # Create your views here.
 def home(request):
     # return render(request, 'base.html')
-    shipments = Shipments.objects.all()
+    shipments = Shipments.objects.select_related('driver', 'customer_branch', 'user').all().order_by('-create_at')
     recieved_shipment = Shipments.objects.all().filter(status='Recieved')
     processed_shipment = Shipments.objects.all().filter(status='Processed')
     shipped_shipment = Shipments.objects.all().filter(status='Shipped')
