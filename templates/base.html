@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
   <meta charset="utf-8">
@@ -23,16 +23,16 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{% static 'en/vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+  <link href="{% static 'en/vendor/bootstrap/css/bootstrap.rtl.min.css' %} " rel="stylesheet">
   <link href="{% static 'en/vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
   <link href="{% static 'en/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
   <link href="{% static 'en/vendor/quill/quill.snow.css' %} " rel="stylesheet">
   <link href="{% static 'en/vendor/quill/quill.bubble.css' %} " rel="stylesheet">
   <link href="{% static 'en/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
-  <link href="{% static 'en/vendor/simple-datatables/style.css' %} " rel="stylesheet">
+  <link href="{% static 'ar/vendor/simple-datatables/style.css' %} " rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="{% static 'en/css/style.css' %} ">
+  <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -71,6 +71,35 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
+
+        
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-translate"></i>
+          </a><!-- End translate Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            
+            
+
+          </ul><!-- End translate Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
 
         <li class="nav-item dropdown">
 
@@ -146,6 +175,7 @@
           </ul><!-- End Notification Dropdown Items -->
 
         </li><!-- End Notification Nav -->
+        
 
         <li class="nav-item dropdown">
 
