@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-14 21:44+0300\n"
+"POT-Creation-Date: 2024-01-20 17:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-#: .\project\settings.py:155
+
+#: .\project\settings.py:161
 msgid "arbic"
+msgstr " عربي"
+
+#: .\project\settings.py:162
+msgid "English"
+msgstr "انجليزي"
+
+#: .\shipments\models.py:36
+msgid "Fare"
+msgstr "الاجرة"
+
+#: .\shipments\models.py:37
+msgid "Days Stayed "
+msgstr "عدد المباتات"
+
+#: .\shipments\models.py:38
+msgid "Stay Cost"
+msgstr "اجرة المبات"
+
+#: .\shipments\models.py:39
+msgid "Deducted"
+msgstr "الخصم"
+
+#: .\shipments\models.py:40
+msgid "Status "
+msgstr "حالة الشحنة"
+
+#: .\shipments\models.py:41
+msgid "Destination"
+msgstr "الوجهة"
+
+#: .\shipments\models.py:42
+msgid "Create At"
+msgstr "تاريخ الانشاء"
+
+#: .\shipments\models.py:43
+msgid "Expected Arrival Date"
+msgstr "التاريخ المتوقع للوصول"
+
+#: .\shipments\models.py:44
+msgid "Actual Delivery Date "
+msgstr "تاريخ الوصول الفعلي"
+
+#: .\templates\base.html:321
+msgid "Dashboard "
+msgstr "لوحة المعلومات"
+
+#: .\templates\base.html:327
+msgid "Shipments "
+msgstr "الشحنات"
+
+#: .\templates\base.html:332
+msgid "All "
+msgstr "عرض الكل"
+
+#: .\templates\base.html:337
+msgid "Recieved "
+msgstr "مستلمة"
+
+#: .\templates\base.html:342
+msgid "Processed "
+msgstr "قيد المعالجة"
+
+#: .\templates\base.html:347
+msgid "Shipped "
+msgstr "قيد الشحن"
+
+#: .\templates\base.html:352
+msgid "Delivered "
+msgstr "قيد الوصول"
+
+#: .\templates\base.html:357
+msgid "Feedback "
 msgstr ""
 
-#: .\project\settings.py:156
-msgid "English"
-msgstr ""
+#: .\templates\base.html:362
+msgid "Late "
+msgstr "متأخرة"
+
+#: .\templates\base.html:367
+msgid "Completed "
+msgstr "مكتملة"
+
+#: .\templates\base.html:376
+msgid "Customer "
+msgstr "العملاء"
+
+#: .\templates\base.html:383
+msgid "Deiver "
+msgstr "السائقين"
+
+#: .\templates\base.html:390
+msgid "Admin "
+msgstr "لوحة التحكم"

@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-qp$nv^!f)w!o=sug9gcox7%!@9l(1ne3*3&0j$b4e1w8mdust2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sea-lion-app-axzwy.ondigitalocean.app']
+if DEBUG:
+    ALLOWED_HOSTS = []
+
+else : 
+    ALLOWED_HOSTS = ['sea-lion-app-axzwy.ondigitalocean.app']
 
 
 # Application definition
@@ -52,6 +56,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -151,6 +156,7 @@ INTERNAL_IPS = [
 ]
 
 LOCALE_PATHS = ['locale']
+
 LANGUAGES = (
     ('ar', _('arbic')),
     ('en', _('English')),

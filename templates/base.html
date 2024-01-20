@@ -1,4 +1,7 @@
 {% load static %}
+{% load i18n %}
+
+
 
 
 <!DOCTYPE html>
@@ -79,25 +82,28 @@
             <i class="bi bi-translate"></i>
           </a><!-- End translate Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            
-            
-
+          <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Go">
           </ul><!-- End translate Dropdown Items -->
+        </form>
+
+            
+         
+            
+            
+
 
         </li><!-- End Notification Nav -->
 
@@ -312,53 +318,53 @@
       <li class="nav-item">
         <a class="nav-link " href="/">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>{% translate "Dashboard " %}</span>
         </a>
 
       </li><!-- End Dashboard Nav -->
          <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/shipment">
-          <i class="ri-truck-line"></i><span>Shipments</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-truck-line"></i><span>{% translate "Shipments " %}</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="/shipment">
-              <i class="bi bi-circle"></i><span>All</span>
+              <i class="bi bi-circle"></i><span>{% translate "All " %}</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Recieved</span>
+              <i class="bi bi-circle"></i><span>{% translate "Recieved " %}</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Processed</span>
+              <i class="bi bi-circle"></i><span>{% translate "Processed " %}</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Shipped</span>
+              <i class="bi bi-circle"></i><span>{% translate "Shipped " %}</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span> Delivered</span>
+              <i class="bi bi-circle"></i><span>{% translate "Delivered " %} </span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Feedback</span>
+              <i class="bi bi-circle"></i><span>{% translate "Feedback " %}</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Late</span>
+              <i class="bi bi-circle"></i><span>{% translate "Late " %}</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Completed</span>
+              <i class="bi bi-circle"></i><span>{% translate "Completed " %}</span>
             </a>
           </li>
         </ul>
@@ -367,21 +373,21 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="/customer">
           <i class="ri-building-line"></i>
-          <span>Customer</span>
+          <span>{% translate "Customer " %}</span>
         </a>
       </li><!-- End Admin Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/driver">
           <i class="ri-user-3-line"></i>
-          <span>Deiver</span>
+          <span>{% translate "Deiver " %}</span>
         </a>
       </li><!-- End Admin Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin">
           <i class="ri-admin-line"></i>
-          <span>Admin</span>
+          <span>{% translate "Admin " %}</span>
         </a>
       </li><!-- End Admin Page Nav -->
 
