@@ -40,8 +40,8 @@ class Shipments(models.Model):
     status = models.CharField(_("Status "), max_length=20, choices=STATUS, default='Recieved')
     destination = models.CharField(_("Destination"), max_length=20, choices=FLAG_TYPES)
     create_at = models.DateTimeField(_("Create At"), default=timezone.now)
-    expected_arrival_date = models.DateTimeField(_("Expected Arrival Date"), null=True, blank=True)
-    actual_delivery_date = models.DateTimeField(_("Actual Delivery Date "), null=True, blank=True)
+    expected_arrival_date = models.DateTimeField(_("Expected Arrival Date"), null=True, blank=True, default=timezone.now)
+    actual_delivery_date = models.DateTimeField(_("Actual Delivery Date "), null=True, blank=True, default=timezone.now)
 
     def __str__(self) -> str:
         return f'{self.driver} - {self.destination}'

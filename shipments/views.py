@@ -24,4 +24,4 @@ class ShipmentCreateView(CreateView):
     fields = ['user', 'driver', 'customer_branch', 'fare', 'days_stayed', 'stay_cost', 'deducted', 'status', 'destination', 'expected_arrival_date', 'actual_delivery_date']
 
     def get_success_url(self):
-        return reverse_lazy('shipment_list')
+        return reverse_lazy('home')
