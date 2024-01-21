@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-qp$nv^!f)w!o=sug9gcox7%!@9l(1ne3*3&0j$b4e1w8mdust2
 DEBUG = True
 
 if DEBUG:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['sea-lion-app-axzwy.ondigitalocean.app']
 
 else : 
     ALLOWED_HOSTS = ['sea-lion-app-axzwy.ondigitalocean.app']
