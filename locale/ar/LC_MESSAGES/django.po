@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-20 17:54+0300\n"
+"POT-Creation-Date: 2024-01-21 15:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,101 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\project\settings.py:161
+#: .\customers\models.py:16
+msgid "Name"
+msgstr "أسم العميل"
+
+#: .\customers\models.py:17
+msgid "City"
+msgstr "مدينة العميل"
+
+#: .\drivers\models.py:24
+#, fuzzy
+#| msgid "Deiver "
+msgid "Driver Name"
+msgstr "السائقين"
+
+#: .\drivers\models.py:25
+#, fuzzy
+#| msgid "Deiver "
+msgid "Driver Phone"
+msgstr "السائقين"
+
+#: .\drivers\models.py:26
+msgid "Driver Id Number"
+msgstr ""
+
+#: .\drivers\models.py:27
+msgid "Driver Language"
+msgstr "لفة السائق"
+
+#: .\drivers\models.py:28
+msgid "Truck Type"
+msgstr "نوع الشاحنة"
+
+#: .\drivers\models.py:29
+msgid "Rate"
+msgstr "التقييم"
+
+#: .\project\settings.py:162
 msgid "arbic"
 msgstr " عربي"
 
-#: .\project\settings.py:162
+#: .\project\settings.py:163
 msgid "English"
 msgstr "انجليزي"
+
+#: .\settings\models.py:8
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+#: .\settings\models.py:9
+msgid "Company Logo"
+msgstr "علامة الشركة"
+
+#: .\settings\models.py:10
+msgid "Subtitle"
+msgstr "الوسف التفصيلي "
+
+#: .\settings\models.py:11
+msgid "Facebool_link"
+msgstr "فيس بوك"
+
+#: .\settings\models.py:12
+msgid "Twitter_link"
+msgstr "تويتر"
+
+#: .\settings\models.py:13
+msgid "Youtube_link"
+msgstr "يوتيوب"
+
+#: .\settings\models.py:14
+msgid "Company Phone"
+msgstr "رقم الهاتف"
+
+#: .\settings\models.py:15
+msgid "Company Email"
+msgstr " الايميل"
+
+#: .\settings\models.py:16
+msgid "Company Address"
+msgstr "عنوان الشركة"
+
+#: .\settings\models.py:17
+msgid "Android app"
+msgstr "تطبيق اندرويد"
+
+#: .\settings\models.py:18
+msgid "ios app"
+msgstr "تطبيق ايفون"
+
+#: .\settings\models.py:19
+msgid "call us"
+msgstr "تواصل معانل"
+
+#: .\settings\models.py:20
+msgid "email us"
+msgstr "راسلنا"
 
 #: .\shipments\models.py:36
 msgid "Fare"
@@ -63,54 +151,110 @@ msgstr "التاريخ المتوقع للوصول"
 msgid "Actual Delivery Date "
 msgstr "تاريخ الوصول الفعلي"
 
-#: .\templates\base.html:321
+#: .\templates\base.html:333
 msgid "Dashboard "
 msgstr "لوحة المعلومات"
 
-#: .\templates\base.html:327
-msgid "Shipments "
-msgstr "الشحنات"
+#: .\templates\base.html:341
+msgid "Shipments"
+msgstr "اخر الشحنات"
 
-#: .\templates\base.html:332
+#: .\templates\base.html:346
 msgid "All "
 msgstr "عرض الكل"
 
-#: .\templates\base.html:337
+#: .\templates\base.html:351
 msgid "Recieved "
 msgstr "مستلمة"
 
-#: .\templates\base.html:342
+#: .\templates\base.html:356
 msgid "Processed "
 msgstr "قيد المعالجة"
 
-#: .\templates\base.html:347
+#: .\templates\base.html:361
 msgid "Shipped "
 msgstr "قيد الشحن"
 
-#: .\templates\base.html:352
+#: .\templates\base.html:366
 msgid "Delivered "
 msgstr "قيد الوصول"
 
-#: .\templates\base.html:357
+#: .\templates\base.html:371
 msgid "Feedback "
 msgstr ""
 
-#: .\templates\base.html:362
+#: .\templates\base.html:376
 msgid "Late "
 msgstr "متأخرة"
 
-#: .\templates\base.html:367
+#: .\templates\base.html:381
 msgid "Completed "
 msgstr "مكتملة"
 
-#: .\templates\base.html:376
+#: .\templates\base.html:392
 msgid "Customer "
 msgstr "العملاء"
 
-#: .\templates\base.html:383
+#: .\templates\base.html:399
 msgid "Deiver "
 msgstr "السائقين"
 
-#: .\templates\base.html:390
+#: .\templates\base.html:406
 msgid "Admin "
 msgstr "لوحة التحكم"
+
+#: .\templates\settings\home.html:10
+#, fuzzy
+#| msgid "Dashboard "
+msgid "Dashboard"
+msgstr "لوحة المعلومات"
+
+#: .\templates\settings\home.html:24
+#, fuzzy
+#| msgid "All "
+msgid "All"
+msgstr "عرض الكل"
+
+#: .\templates\settings\home.html:47
+#, fuzzy
+#| msgid "Recieved "
+msgid "Recieved"
+msgstr "مستلمة"
+
+#: .\templates\settings\home.html:70
+#, fuzzy
+#| msgid "Processed "
+msgid "Processed"
+msgstr "قيد المعالجة"
+
+#: .\templates\settings\home.html:93
+#, fuzzy
+#| msgid "Shipped "
+msgid "Shipped"
+msgstr "قيد الشحن"
+
+#: .\templates\settings\home.html:116
+#, fuzzy
+#| msgid "Delivered "
+msgid "Delivered"
+msgstr "قيد الوصول"
+
+#: .\templates\settings\home.html:139
+msgid "Feedback"
+msgstr ""
+
+#: .\templates\settings\home.html:162
+#, fuzzy
+#| msgid "Late "
+msgid "Late"
+msgstr "متأخرة"
+
+#: .\templates\settings\home.html:185
+#, fuzzy
+#| msgid "Completed "
+msgid "Completed"
+msgstr "مكتملة"
+
+#: .\templates\shipments\shipments_list.html:28
+msgid "Recent shipments"
+msgstr "اخر الشحنات"

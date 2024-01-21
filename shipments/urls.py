@@ -5,5 +5,5 @@ from .views import ShipmentList
 
 
 urlpatterns = [
-    path('', ShipmentList.as_view(), name='shipment_list'),
+    path('<str:status>', ShipmentList.as_view(), name='shipment_list'),
 ]

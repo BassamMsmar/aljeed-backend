@@ -917,7 +917,7 @@ h6 {
 
 /* Recent Sales */
 .dashboard .recent-sales {
-  font-size: 14px;
+  font-size: 24px;
 }
 
 .dashboard .recent-sales .table thead {
@@ -938,7 +938,7 @@ h6 {
 
 /* Top Selling */
 .dashboard .top-selling {
-  font-size: 14px;
+  font-size: 24px;
 }
 
 .dashboard .top-selling .table thead {

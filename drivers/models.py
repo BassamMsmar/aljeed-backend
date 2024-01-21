@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 TRUCK_TYPE = (
     ('تريلة سطحة','تريلة سطحة'),
@@ -20,12 +21,12 @@ LANGUAHE = (
 
 # Create your models here.
 class Driver(models.Model):
-    name = models.CharField(max_length=120)
-    phone = models.CharField(max_length=120)
-    id_number = models.CharField(max_length=10, null=True, blank=True)
-    language = models.CharField( max_length=120, choices=LANGUAHE, null=True, blank=True)
-    truck_type =models.CharField(max_length=120, choices=TRUCK_TYPE, null=True, blank=True)
-    rate = models.IntegerField(null=True, blank=True)
+    name = models.CharField(_("Driver Name"), max_length=120)
+    phone = models.CharField(_("Driver Phone"), max_length=120)
+    id_number = models.CharField(_("Driver Id Number"), max_length=10, null=True, blank=True)
+    language = models.CharField(_("Driver Language"),  max_length=120, choices=LANGUAHE, null=True, blank=True)
+    truck_type =models.CharField(_("Truck Type"), max_length=120, choices=TRUCK_TYPE, null=True, blank=True)
+    rate = models.IntegerField(_("Rate"), null=True, blank=True)
 
 
     def __str__(self) -> str:

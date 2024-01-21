@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block body %}
 <!-- ======= main ======= -->
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Dashboard</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
-      </ol>
-    </nav>
+    <h1>{% translate "Dashboard" %}</h1>
   </div><!-- End Page Title -->
 
   <section class="section dashboard">
@@ -22,30 +17,38 @@
       <div class="col-lg-8">
         <div class="row">
 
-          <!-- Recieved Card -->
-
+          <!-- All Card -->
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card sales-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
               <div class="card-body">
-                <h5 class="card-title">Recieved <span>| Today</span></h5>
+                <h5 class="card-title">{% translate "All" %}</h5>
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-cart"></i>
+                    <i class="bi bi-card-list"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{shipments|length}}</h6>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End All Card -->
+
+
+          <!-- Recieved Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">{% translate "Recieved" %}</h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-secondary">
+                    <i class="bi bi-vinyl"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{recieved_shipment|length}}</h6>
@@ -55,236 +58,148 @@
                   </div>
                 </div>
               </div>
-
             </div>
-          </div><!-- End Recieved Card -->
+          </div>
+          <!-- End Recieved Card -->
+
 
           <!-- Processed Card -->
           <div class="col-xxl-4 col-md-6">
-            <div class="card info-card revenue-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
+            <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Processed <span>| This Month</span></h5>
+                <h5 class="card-title">{% translate "Processed" %}</h5>
 
                 <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-currency-dollar"></i>
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-info">
+                    <i class="bi bi-truck-flatbed"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{processed_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">8%</span> <span
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
                       class="text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
               </div>
-
             </div>
-          </div><!-- End Processed Card -->
+          </div>
+          <!-- End Processed Card -->
+
 
           <!-- Shipped Card -->
-          <div class="col-xxl-4 col-xl-12">
-
-            <div class="card info-card customers-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Shipped <span>| This Year</span></h5>
+                <h5 class="card-title">{% translate "Shipped" %}</h5>
 
                 <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-dark">
+                    <i class="bi bi-truck"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{shipped_shipment|length}}</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">decrease</span>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
-
               </div>
             </div>
+          </div>
+          <!-- End Shipped Card -->
 
-          </div><!-- End Shipped Card -->
 
           <!-- Delivered Card -->
-          <div class="col-xxl-4 col-xl-12">
-
-            <div class="card info-card customers-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Delivered <span>| This Year</span></h5>
+                <h5 class="card-title">{% translate "Delivered" %}</h5>
 
                 <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="bi bi-clipboard-pulse"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{delivered_shipment|length}}</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">decrease</span>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
-
               </div>
             </div>
+          </div>
+          <!-- End Delivered Card -->
 
-          </div><!-- End Delivered Card -->
 
           <!-- Feedback Card -->
-          <div class="col-xxl-4 col-xl-12">
-
-            <div class="card info-card customers-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Feedback <span>| This Year</span></h5>
+                <h5 class="card-title">{% translate "Feedback" %}</h5>
 
                 <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-muted">
+                    <i class="bi bi-clipboard-data"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{feedback_shipment|length}}</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">decrease</span>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
-
               </div>
             </div>
+          </div>
+          <!-- End Feedback Card -->
 
-          </div><!-- End Feedback Card -->
 
           <!-- Late Card -->
-          <div class="col-xxl-4 col-xl-12">
-
-            <div class="card info-card customers-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Late <span>| This Year</span></h5>
+                <h5 class="card-title">{% translate "Late" %}</h5>
 
                 <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-danger">
+                    <i class="bi bi-clipboard-x"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>{{feedback_shipment|length}}</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">decrease</span>
+                    <h6>{{late_shipment|length}}</h6>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
-
               </div>
             </div>
+          </div>
+          <!-- End Late Card -->
 
-          </div><!-- End Late Card -->
 
           <!-- Completed Card -->
-
-          <div class="col-xxl-4 col-xl-12">
-
-            <div class="card info-card customers-card">
-
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Completed <span>| This Year</span></h5>
+                <h5 class="card-title">{% translate "Completed" %}</h5>
 
                 <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success">
+                    <i class="bi bi-clipboard-check"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{completed_shipment|length}}</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">decrease</span>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
-
               </div>
             </div>
+          </div>
+          <!-- End Completed Card -->
 
-          </div><!-- End Completed Card -->
 
 
 

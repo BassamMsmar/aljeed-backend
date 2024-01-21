@@ -26,8 +26,12 @@ SECRET_KEY = 'django-insecure-qp$nv^!f)w!o=sug9gcox7%!@9l(1ne3*3&0j$b4e1w8mdust2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
- 
-ALLOWED_HOSTS = ['sea-lion-app-axzwy.ondigitalocean.app']
+
+if DEBUG:
+    ALLOWED_HOSTS = []
+
+else : 
+    ALLOWED_HOSTS = ['sea-lion-app-axzwy.ondigitalocean.app']
 
 
 # Application definition
@@ -74,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'settings.company_context_processor.get_company_data',
             ],
         },
     },

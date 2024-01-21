@@ -1,11 +1,12 @@
 {% load static %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 
 
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en"  {% if LANGUAGE_CODE == 'ar' %} dir="rtl" {% endif %} >
 
 <head>
   <meta charset="utf-8">
@@ -24,18 +25,35 @@
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
+    
 
   <!-- Vendor CSS Files -->
-  <link href="{% static 'en/vendor/bootstrap/css/bootstrap.rtl.min.css' %} " rel="stylesheet">
-  <link href="{% static 'en/vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
-  <link href="{% static 'en/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
-  <link href="{% static 'en/vendor/quill/quill.snow.css' %} " rel="stylesheet">
-  <link href="{% static 'en/vendor/quill/quill.bubble.css' %} " rel="stylesheet">
-  <link href="{% static 'en/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
-  <link href="{% static 'ar/vendor/simple-datatables/style.css' %} " rel="stylesheet">
+  {% if LANGUAGE_CODE == 'en' %}
+    <link href="{% static 'en/vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/quill/quill.snow.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/quill/quill.bubble.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/simple-datatables/style.css' %} " rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
+      {% else  %}
+    <link href="{% static 'en/vendor/bootstrap/css/bootstrap.rtl.min.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/quill/quill.snow.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/quill/quill.bubble.css' %} " rel="stylesheet">
+    <link href="{% static 'en/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
+    <link href="{% static 'ar/vendor/simple-datatables/style.css' %} " rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
+  {% endif %}
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -98,12 +116,6 @@
             <input type="submit" value="Go">
           </ul><!-- End translate Dropdown Items -->
         </form>
-
-            
-         
-            
-            
-
 
         </li><!-- End Notification Nav -->
 
@@ -321,54 +333,58 @@
           <span>{% translate "Dashboard " %}</span>
         </a>
 
-      </li><!-- End Dashboard Nav -->
+      <!-- End Dashboard Nav -->
+
+      </li>
          <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/shipment">
-          <i class="ri-truck-line"></i><span>{% translate "Shipments " %}</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-truck-line"></i><span>{% translate "Shipments" %}</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/shipment">
+            <a href="{% url 'shipment_list' status='All' %}">
               <i class="bi bi-circle"></i><span>{% translate "All " %}</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Recieved' %}">
               <i class="bi bi-circle"></i><span>{% translate "Recieved " %}</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Processed' %}">
               <i class="bi bi-circle"></i><span>{% translate "Processed " %}</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Shipped' %}">
               <i class="bi bi-circle"></i><span>{% translate "Shipped " %}</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Delivered' %}">
               <i class="bi bi-circle"></i><span>{% translate "Delivered " %} </span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Feedback' %}">
               <i class="bi bi-circle"></i><span>{% translate "Feedback " %}</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Late' %}">
               <i class="bi bi-circle"></i><span>{% translate "Late " %}</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'shipment_list' status='Completed' %}">
               <i class="bi bi-circle"></i><span>{% translate "Completed " %}</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Shipments Nav -->
+      </li>
+      
+      <!-- End Shipments Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/customer">
