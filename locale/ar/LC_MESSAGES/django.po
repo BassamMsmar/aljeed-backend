@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-21 15:02+0300\n"
+"POT-Creation-Date: 2024-01-21 15:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,7 +157,7 @@ msgstr "لوحة المعلومات"
 
 #: .\templates\base.html:341
 msgid "Shipments"
-msgstr "اخر الشحنات"
+msgstr "الشحنات"
 
 #: .\templates\base.html:346
 msgid "All "
@@ -250,11 +250,9 @@ msgid "Late"
 msgstr "متأخرة"
 
 #: .\templates\settings\home.html:185
-#, fuzzy
-#| msgid "Completed "
 msgid "Completed"
 msgstr "مكتملة"
 
 #: .\templates\shipments\shipments_list.html:28
-msgid "Recent shipments"
-msgstr "اخر الشحنات"
+msgid "Shipments"
+msgstr "الشحنات"
