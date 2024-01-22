@@ -17,6 +17,10 @@ class ShipmentList(ListView):
         else:
             # Filter shipments based on the selected status
             return Shipments.objects.filter(status=status)
+        
+
+class ShipmentsDetail(DetailView):
+    model = Shipments
     
 
 class ShipmentCreateView(CreateView):
