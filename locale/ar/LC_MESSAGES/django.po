@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-21 15:53+0300\n"
+"POT-Creation-Date: 2024-01-23 22:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
 #: .\customers\models.py:16
 msgid "Name"
-msgstr "أسم العميل"
+msgstr "اسم العميل"
 
 #: .\customers\models.py:17
 msgid "City"
-msgstr "مدينة العميل"
+msgstr "المدينة"
 
 #: .\drivers\models.py:24
-#, fuzzy
-#| msgid "Deiver "
 msgid "Driver Name"
-msgstr "السائقين"
+msgstr "اسم السائق"
 
 #: .\drivers\models.py:25
-#, fuzzy
-#| msgid "Deiver "
 msgid "Driver Phone"
-msgstr "السائقين"
+msgstr "رقم الهاتف"
 
 #: .\drivers\models.py:26
 msgid "Driver Id Number"
-msgstr ""
+msgstr "رقم الهوية"
 
 #: .\drivers\models.py:27
 msgid "Driver Language"
-msgstr "لفة السائق"
+msgstr "اللغة"
 
 #: .\drivers\models.py:28
 msgid "Truck Type"
@@ -55,11 +50,11 @@ msgstr "نوع الشاحنة"
 msgid "Rate"
 msgstr "التقييم"
 
-#: .\project\settings.py:162
+#: .\project\settings.py:161
 msgid "arbic"
-msgstr " عربي"
+msgstr "عربي"
 
-#: .\project\settings.py:163
+#: .\project\settings.py:162
 msgid "English"
 msgstr "انجليزي"
 
@@ -69,15 +64,15 @@ msgstr "اسم الشركة"
 
 #: .\settings\models.py:9
 msgid "Company Logo"
-msgstr "علامة الشركة"
+msgstr "الشعار"
 
 #: .\settings\models.py:10
 msgid "Subtitle"
-msgstr "الوسف التفصيلي "
+msgstr "الوصف"
 
 #: .\settings\models.py:11
 msgid "Facebool_link"
-msgstr "فيس بوك"
+msgstr "فيسبوك"
 
 #: .\settings\models.py:12
 msgid "Twitter_link"
@@ -93,166 +88,138 @@ msgstr "رقم الهاتف"
 
 #: .\settings\models.py:15
 msgid "Company Email"
-msgstr " الايميل"
+msgstr "الايميل"
 
 #: .\settings\models.py:16
 msgid "Company Address"
-msgstr "عنوان الشركة"
+msgstr "العنوان"
 
 #: .\settings\models.py:17
 msgid "Android app"
-msgstr "تطبيق اندرويد"
+msgstr "رابط التطبيق اندرويد"
 
 #: .\settings\models.py:18
 msgid "ios app"
-msgstr "تطبيق ايفون"
+msgstr "ايفون"
 
 #: .\settings\models.py:19
 msgid "call us"
-msgstr "تواصل معانل"
+msgstr "تواصل معنا "
 
 #: .\settings\models.py:20
 msgid "email us"
-msgstr "راسلنا"
+msgstr "الايميل"
 
-#: .\shipments\models.py:36
+#: .\shipments\models.py:43
 msgid "Fare"
 msgstr "الاجرة"
 
-#: .\shipments\models.py:37
+#: .\shipments\models.py:45
 msgid "Days Stayed "
-msgstr "عدد المباتات"
+msgstr "ايام مبات"
 
-#: .\shipments\models.py:38
+#: .\shipments\models.py:46
 msgid "Stay Cost"
 msgstr "اجرة المبات"
 
-#: .\shipments\models.py:39
+#: .\shipments\models.py:47
 msgid "Deducted"
-msgstr "الخصم"
+msgstr "خصم"
 
-#: .\shipments\models.py:40
+#: .\shipments\models.py:48
 msgid "Status "
-msgstr "حالة الشحنة"
+msgstr "الحالة"
 
-#: .\shipments\models.py:41
+#: .\shipments\models.py:49 .\templates\shipments\shipments_list.html:33
 msgid "Destination"
-msgstr "الوجهة"
+msgstr "الوجهه"
 
-#: .\shipments\models.py:42
+#: .\shipments\models.py:50
 msgid "Create At"
 msgstr "تاريخ الانشاء"
 
-#: .\shipments\models.py:43
+#: .\shipments\models.py:51
 msgid "Expected Arrival Date"
-msgstr "التاريخ المتوقع للوصول"
+msgstr "تاريخ الوضصول المتوقع"
 
-#: .\shipments\models.py:44
+#: .\shipments\models.py:52
 msgid "Actual Delivery Date "
-msgstr "تاريخ الوصول الفعلي"
+msgstr "تاريخ الوضصول الفعلي "
 
-#: .\templates\base.html:333
-msgid "Dashboard "
-msgstr "لوحة المعلومات"
-
-#: .\templates\base.html:341
-msgid "Shipments"
-msgstr "الشحنات"
-
-#: .\templates\base.html:346
-msgid "All "
-msgstr "عرض الكل"
-
-#: .\templates\base.html:351
-msgid "Recieved "
-msgstr "مستلمة"
-
-#: .\templates\base.html:356
-msgid "Processed "
-msgstr "قيد المعالجة"
-
-#: .\templates\base.html:361
-msgid "Shipped "
-msgstr "قيد الشحن"
-
-#: .\templates\base.html:366
-msgid "Delivered "
-msgstr "قيد الوصول"
-
-#: .\templates\base.html:371
-msgid "Feedback "
-msgstr ""
-
-#: .\templates\base.html:376
-msgid "Late "
-msgstr "متأخرة"
-
-#: .\templates\base.html:381
-msgid "Completed "
-msgstr "مكتملة"
-
-#: .\templates\base.html:392
-msgid "Customer "
-msgstr "العملاء"
-
-#: .\templates\base.html:399
-msgid "Deiver "
-msgstr "السائقين"
-
-#: .\templates\base.html:406
-msgid "Admin "
-msgstr "لوحة التحكم"
-
-#: .\templates\settings\home.html:10
-#, fuzzy
-#| msgid "Dashboard "
+#: .\templates\base.html:332 .\templates\settings\home.html:10
+#: .\templates\shipments\shipments_list.html:10
 msgid "Dashboard"
 msgstr "لوحة المعلومات"
 
-#: .\templates\settings\home.html:24
-#, fuzzy
-#| msgid "All "
+#: .\templates\base.html:340
+msgid "Shipments"
+msgstr "الشحنات"
+
+#: .\templates\base.html:345 .\templates\settings\home.html:24
 msgid "All"
-msgstr "عرض الكل"
+msgstr "الكل"
 
-#: .\templates\settings\home.html:47
-#, fuzzy
-#| msgid "Recieved "
+#: .\templates\base.html:350 .\templates\settings\home.html:47
 msgid "Recieved"
-msgstr "مستلمة"
+msgstr "مرسلة للشحن"
 
-#: .\templates\settings\home.html:70
-#, fuzzy
-#| msgid "Processed "
+#: .\templates\base.html:355 .\templates\settings\home.html:70
 msgid "Processed"
 msgstr "قيد المعالجة"
 
-#: .\templates\settings\home.html:93
-#, fuzzy
-#| msgid "Shipped "
+#: .\templates\base.html:360 .\templates\settings\home.html:93
 msgid "Shipped"
 msgstr "قيد الشحن"
 
-#: .\templates\settings\home.html:116
-#, fuzzy
-#| msgid "Delivered "
+#: .\templates\base.html:365 .\templates\settings\home.html:116
 msgid "Delivered"
-msgstr "قيد الوصول"
+msgstr "قيد التسليم"
 
-#: .\templates\settings\home.html:139
+#: .\templates\base.html:370 .\templates\settings\home.html:139
 msgid "Feedback"
-msgstr ""
+msgstr "قيد المراجعة"
 
-#: .\templates\settings\home.html:162
-#, fuzzy
-#| msgid "Late "
+#: .\templates\base.html:375 .\templates\settings\home.html:162
 msgid "Late"
 msgstr "متأخرة"
 
-#: .\templates\settings\home.html:185
+#: .\templates\base.html:380 .\templates\settings\home.html:185
 msgid "Completed"
 msgstr "مكتملة"
 
-#: .\templates\shipments\shipments_list.html:28
-msgid "Shipments"
-msgstr "الشحنات"
+#: .\templates\base.html:391 .\templates\shipments\shipments_list.html:31
+msgid "Customer"
+msgstr "العميل"
+
+#: .\templates\base.html:398
+msgid "Deiver"
+msgstr "السائق"
+
+#: .\templates\base.html:405
+msgid "Admin"
+msgstr "لوحة التحكم"
+
+#: .\templates\drivers\driver_list.html:10
+msgid "Recent driver"
+msgstr "إضافة سائق"
+
+#: .\templates\shipments\shipments_list.html:13
+#: .\templates\shipments\shipments_list.html:25
+msgid "Recent shipments"
+msgstr "إضافة شحنة"
+
+#: .\templates\shipments\shipments_list.html:30
+msgid "driver"
+msgstr "سائق"
+
+#: .\templates\shipments\shipments_list.html:32
+msgid "Waybill"
+msgstr "بوليصة شحن"
+
+#: .\templates\shipments\shipments_list.html:34
+msgid "User"
+msgstr "المستخدم"
+
+#: .\templates\shipments\shipments_list.html:35
+msgid "Status"
+msgstr "الحالة"
