@@ -62,7 +62,7 @@ class Shipments(models.Model):
             box_size=4,
             border=4,
         )
-        qr.add_data(f'{ALLOWED_HOSTS}/shipment/{self.id}')
+        qr.add_data(f'http://127.0.0.1:8000/shipment/{self.id}/')
         qr.make(fit=True)
 
         img = qr.make_image(fill_color="black", back_color="white")
