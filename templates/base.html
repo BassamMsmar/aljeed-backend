@@ -28,6 +28,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
     
 
   <!-- Vendor CSS Files -->
@@ -39,10 +43,8 @@
     <link href="{% static 'en/vendor/quill/quill.bubble.css' %} " rel="stylesheet">
     <link href="{% static 'en/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
     <link href="{% static 'en/vendor/simple-datatables/style.css' %} " rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
-      {% else  %}
+    
+    {% else  %}
     <link href="{% static 'en/vendor/bootstrap/css/bootstrap.rtl.min.css' %} " rel="stylesheet">
     <link href="{% static 'en/vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
     <link href="{% static 'en/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
@@ -50,9 +52,6 @@
     <link href="{% static 'en/vendor/quill/quill.bubble.css' %} " rel="stylesheet">
     <link href="{% static 'en/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
     <link href="{% static 'ar/vendor/simple-datatables/style.css' %} " rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="{% static 'ar/css/style.css' %} ">
   {% endif %}
 
   <!-- =======================================================

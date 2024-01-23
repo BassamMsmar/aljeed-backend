@@ -1284,3 +1284,39 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 27cm; 
+}
+page[size="A4"][layout="landscape"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+
+@media print {
+  body, page {
+    background: white;
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+.logo{
+  max-width: 200px;
+  margin: 20px;
+  float: left;
+  display: block;
+}
+.qr{
+  max-width: 20px;
+  float: left;
+  display: block;
+}

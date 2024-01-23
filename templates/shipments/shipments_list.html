@@ -40,10 +40,10 @@
                     <a href="{% url 'shipment_detail' shipment.id %}">
 
                       <tr>
-                        <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}">{{shipment.id}}</a></th>
+                        <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}" target="_blank">{{shipment.id}}</a></th>
                         <th scope="row"><a href="#" class="link-dark">{{shipment.driver}}</a></th>
                         <th scope="row"><a href="#" class="link-dark">{{shipment.customer_branch}}</a></th>
-                        <td> <a href="{% url 'shipment_detail' shipment.id %}"><i class="bi bi-receipt"></i></a></td>
+                        <td> <a href="{% url 'shipment_detail' shipment.id %}" target="_blank"><i class="bi bi-receipt"></i></a></td>
                         <td>{{shipment.customer_branch.city}} - {{shipment.destination}}</td>
                         <td>{{shipment.user}}</td>
                         <td><span class="badge 
