@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
-    <title>مرحبا بالعالم!</title>
+    <title>بوصيلة شحن {{object.id}}</title>
   </head>
   <body>
     <page size="A4">
@@ -166,12 +166,12 @@
             </tbody>
           </table>
           <div class="row">
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-4">
               <p>
                 أنا السائق {{ object.driver }} اتهد بأني احافظ على الوطن
               </p>
             </div>
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-4  col-sm-4">
               <img
               src="{{ object.code.url }}"
               class="rounded mx-auto d-block qr"
@@ -182,7 +182,7 @@
               "
             />
             </div>
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-4  col-sm-4">
               <p>
                 أنا السائق {{ object.driver }} اتهد بأني احافظ على الوطن
               </p>
