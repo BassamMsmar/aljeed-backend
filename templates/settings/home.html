@@ -18,185 +18,205 @@
         <div class="row">
 
           <!-- All Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "All" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='All' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "All" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-card-list"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{shipments|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-card-list"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{shipments|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
+
           <!-- End All Card -->
 
 
           <!-- Recieved Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Recieved" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Recieved' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Recieved" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-secondary">
-                    <i class="bi bi-vinyl"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{recieved_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="card-icon rounded-circle d-flex align-items-center justify-content-center text-secondary">
+                      <i class="bi bi-vinyl"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{recieved_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           <!-- End Recieved Card -->
 
 
           <!-- Processed Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Processed" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Processed' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Processed" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-info">
-                    <i class="bi bi-truck-flatbed"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{processed_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-info">
+                      <i class="bi bi-truck-flatbed"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{processed_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+
+            </a>
           </div>
           <!-- End Processed Card -->
 
 
           <!-- Shipped Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Shipped" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Shipped' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Shipped" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-dark">
-                    <i class="bi bi-truck"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{shipped_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-dark">
+                      <i class="bi bi-truck"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{shipped_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           <!-- End Shipped Card -->
 
 
           <!-- Delivered Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Delivered" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Delivered' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Delivered" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
-                    <i class="bi bi-clipboard-pulse"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{delivered_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                      <i class="bi bi-clipboard-pulse"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{delivered_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           <!-- End Delivered Card -->
 
 
           <!-- Feedback Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Feedback" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Feedback' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Feedback" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-muted">
-                    <i class="bi bi-clipboard-data"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{feedback_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-muted">
+                      <i class="bi bi-clipboard-data"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{feedback_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           <!-- End Feedback Card -->
 
 
           <!-- Late Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Late" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Late' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Late" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-danger">
-                    <i class="bi bi-clipboard-x"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{late_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-danger">
+                      <i class="bi bi-clipboard-x"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{late_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           <!-- End Late Card -->
 
 
           <!-- Completed Card -->
-          <div class="col-xxl-4 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">{% translate "Completed" %}</h5>
+          <div class="col-xxl-4 col-md-4">
+            <a href="{% url 'shipment_list' status='Completed' %}" style="text-decoration: none;">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{% translate "Completed" %}</h5>
 
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success ">
-                    <i class="bi bi-clipboard-check"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>{{completed_shipment|length}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                      class="text-muted small pt-2 ps-1">increase</span>
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success ">
+                      <i class="bi bi-clipboard-check"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{completed_shipment|length}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           <!-- End Completed Card -->
 

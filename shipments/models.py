@@ -36,7 +36,7 @@ STATUS = (
 
 
 # Create your models here.
-class Shipments(models.Model):
+class Shipment(models.Model):
     user = models.ForeignKey(User,  related_name='shipments_user', on_delete=models.SET_NULL, null=True)
     driver = models.ForeignKey(Driver,  related_name='shipments_driver', on_delete=models.SET_NULL, null=True)
     customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)

@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView
 from django.db.models.aggregates import  Count
 
 from .models import Customers, Branch
-from shipments.models import Shipments
+from shipments.models import Shipment
 
 
 # Create your views here.

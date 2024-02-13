@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
-from .models import Shipments
+from .models import Shipment
 # Create your views here.
 
 class ShipmentList(ListView):
-    model = Shipments
+    model = Shipment
 
     def get_queryset(self):
         # Get the status from the URL parameter, or default to 'All' if not provided
@@ -13,18 +13,18 @@ class ShipmentList(ListView):
         print( f'status = {status}')
         if status == 'All':
             # If 'All' is selected, return all shipments
-            return Shipments.objects.all()
+            return Shipment.objects.all()
         else:
             # Filter shipments based on the selected status
-            return Shipments.objects.filter(status=status)
+            return Shipment.objects.filter(status=status)
         
 
 class ShipmentsDetail(DetailView):
-    model = Shipments
+    model = Shipment
     
 
 class ShipmentCreateView(CreateView):
-    model = Shipments
+    model = Shipment
     fields = ['user', 'driver', 'customer_branch', 'fare', 'days_stayed', 'stay_cost', 'deducted', 'status', 'destination', 'expected_arrival_date', 'actual_delivery_date']
 
     def get_success_url(self):

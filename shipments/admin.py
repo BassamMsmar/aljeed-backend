@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shipments
+from .models import Shipment
 # from drivers.models import Driver
 
 # Register your models here.
@@ -13,4 +13,4 @@ class ShipmentsAdmin(admin.ModelAdmin):
     search_fields = ['user', 'driver', 'customer_branch', 'destination', 'status']
     # inlines = [DriverTabular]
                
-admin.site.register(Shipments, ShipmentsAdmin)
+admin.site.register(Shipment, ShipmentsAdmin)

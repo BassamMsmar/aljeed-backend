@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from shipments.models import Shipments
+from shipments.models import Shipment
 
 # Create your views here.
 def home(request):
     # return render(request, 'base.html')
-    shipments = Shipments.objects.select_related('driver', 'customer_branch', 'user').all().order_by('-create_at')
-    recieved_shipment = Shipments.objects.all().filter(status='Recieved')
-    processed_shipment = Shipments.objects.all().filter(status='Processed')
-    shipped_shipment = Shipments.objects.all().filter(status='Shipped')
-    delivered_shipment = Shipments.objects.all().filter(status='Delivered')
-    feedback_shipment = Shipments.objects.all().filter(status='Feedback')
-    late_shipment = Shipments.objects.all().filter(status='late')
-    completed_shipment = Shipments.objects.all().filter(status='Completed')
+    shipments = Shipment.objects.select_related('driver', 'customer_branch', 'user').all().order_by('-create_at')
+    recieved_shipment = Shipment.objects.all().filter(status='Recieved')
+    processed_shipment = Shipment.objects.all().filter(status='Processed')
+    shipped_shipment = Shipment.objects.all().filter(status='Shipped')
+    delivered_shipment = Shipment.objects.all().filter(status='Delivered')
+    feedback_shipment = Shipment.objects.all().filter(status='Feedback')
+    late_shipment = Shipment.objects.all().filter(status='late')
+    completed_shipment = Shipment.objects.all().filter(status='Completed')
 
     context = {
         'shipments':shipments,
