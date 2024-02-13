@@ -17,11 +17,7 @@
            
                     <h1>{{object}}</h1>
                 <div class="card recent-sales overflow-auto">
-
-
                     <div class="card-body">
-
-
                         <table class="table table-borderless datatable  table-hover">
                             <thead>
                                 <tr>
@@ -32,32 +28,27 @@
                                     <th scope="col"> شحنات قيد التسليم </th>
                                 </tr>
                             </thead>
-                            <tbody>
 
+                            <tbody>
                                 {% for customer in object.branch_customers.all %}
                                 <tr>
                                     <th scope="row">{{ forloop.counter }}</th>
                                     <td><a class="text-reset text-decoration-none" href="#">{{ customer.name }}</a></td>
-                                    <td>0</td>
+                                    <td>{{ customer.shipments_company.all.count }}</td>
                                     <td>0</td>
                                     <td>0</td>
                                 </tr>
                                 {% endfor %}
-
                             </tbody>
                         </table>
-
                     </div>
-
                 </div>
             </div>
             <!-- End Recent Sales -->
-
         </div>
     </div><!-- End Left side columns -->
     </div>
     <!-- End Recent Sales -->
-
 </main>
 
 {% endblock %}
