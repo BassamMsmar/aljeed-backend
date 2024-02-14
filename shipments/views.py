@@ -21,6 +21,11 @@ class ShipmentList(ListView):
 
 class ShipmentsDetail(DetailView):
     model = Shipment
+    template_name = 'shipments/shipment_detail.html'
+
+class Waybill(DetailView):
+    model = Shipment
+    template_name = 'shipments/waybill.html'
     
 
 class ShipmentCreateView(CreateView):
