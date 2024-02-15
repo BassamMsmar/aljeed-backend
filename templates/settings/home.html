@@ -30,8 +30,9 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{shipments|length}}</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span
-                        class="text-muted small pt-2 ps-1">increase</span>
+
+                      <span class="text-success small pt-1 fw-bold"></span> <span
+                        class="text-muted small pt-2 ps-1"></span>
 
                     </div>
                   </div>
@@ -56,11 +57,13 @@
                       <i class="bi bi-vinyl"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{recieved_shipment|length}}</h6>
+                      <h6>{{ recieved_shipment|length }}</h6>
                       <span class="text-success small pt-1 fw-bold">12%</span> <span
                         class="text-muted small pt-2 ps-1">increase</span>
+                     
+                  </div>
+                  
 
-                    </div>
                   </div>
                 </div>
               </div>
@@ -209,8 +212,12 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{completed_shipment|length}}</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      {% with completed_shipment|length as total %}
+                      {% with percentage as total %}
+                      <span class="text-success small pt-1 fw-bold">{{total}}</span> <span
                         class="text-muted small pt-2 ps-1">increase</span>
+                      {% endwith %}
+                      {% endwith %}
 
                     </div>
                   </div>

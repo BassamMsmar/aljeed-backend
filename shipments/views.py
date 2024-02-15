@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
-from django.urls import reverse_lazy
+
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.urls import reverse_lazy, reverse
 from .models import Shipment
 # Create your views here.
 
@@ -19,13 +20,20 @@ class ShipmentList(ListView):
             return Shipment.objects.filter(status=status)
         
 
-class ShipmentsDetail(DetailView):
+class ShipmentsDetail(UpdateView):
     model = Shipment
     template_name = 'shipments/shipment_detail.html'
+    fields = ['driver', 'customer_branch', 'fare', 'days_stayed', 'stay_cost', 'deducted', 'status', 'destination', 'expected_arrival_date', 'actual_delivery_date']
 
-class Waybill(DetailView):
+    def get_success_url(self):
+        return reverse('shipment_detail', kwargs={'pk': self.object.pk})
+
+class waybill(DetailView):
     model = Shipment
     template_name = 'shipments/waybill.html'
+class catch_receipt(DetailView):
+    model = Shipment
+    template_name = 'shipments/catch_receipt.html'
     
 
 class ShipmentCreateView(CreateView):
