@@ -40,8 +40,7 @@
                     {% for shipment in object_list %}
                     <tr>
 
-                      <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}" style="text-decoration: none;"
-                          target="_blank">{{shipment.id}}</a></th>
+                      <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}" style="text-decoration: none;">{{shipment.id}}</a></th>
 
                       <th scope="row"><a href="#" class="link-dark" style="text-decoration: none;">{{shipment.driver}}</a></th>
 

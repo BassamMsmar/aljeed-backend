@@ -78,12 +78,14 @@
                         <div class="col-lg-3 col-md-4 label">ملاحضات</div>
                         <div class="col-lg-9 col-md-8">{{object.note}}</div>
                       </div>
-                      {% endif}
+                      {% endif %}
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">حالة الشحنة</div>
                         <div class="col-lg-9 col-md-8">{{object.status}}</div>
                       </div>
+
+
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label"> بوليصة الشحنه</div>
                         <div class="col-lg-9 col-md-8"><a href="{% url 'waybill_detail' object.id %}"
@@ -92,6 +94,9 @@
 
 
                     </div>  
+
+
+
                     <div class="col-6">
                       <h5 class="card-title">بياتنات الاجرة </h5>
 
@@ -99,10 +104,10 @@
                         <div class="col-lg-3 col-md-4 label ">الأجرة </div>
                         <div class="col-lg-9 col-md-8">{{object.fare}}</div>
                       </div>
-                      {% if object.days_stayed %}
+                      {% if object.premium %}
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">زيادة</div>
-                        <div class="col-lg-9 col-md-8">----</div>
+                        <div class="col-lg-9 col-md-8">{{object.premium}}</div>
                       </div>
                       {% endif %}
 
@@ -133,7 +138,7 @@
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">الأجمالي</div>
-                        <div class="col-lg-9 col-md-8">{{object.stay_cost + object.deducted}}</div>
+                        <div class="col-lg-9 col-md-8">{{ object.fare|default:0|add:object.premium|default:0 }}</div>
                       </div>
 
                       <div class="row">
@@ -147,10 +152,8 @@
                       </div>
                     </div>
 
+                    </div>
                   </div>
-
-
-
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
