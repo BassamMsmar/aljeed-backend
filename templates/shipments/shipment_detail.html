@@ -72,11 +72,14 @@
                         <div class="col-lg-3 col-md-4 label">المندوب المسئول</div>
                         <div class="col-lg-9 col-md-8">{{object.user}}</div>
                       </div>
-
+                      
+                      {% if object.note %}
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">ملاحضات</div>
-                        <div class="col-lg-9 col-md-8">------</div>
+                        <div class="col-lg-9 col-md-8">{{object.note}}</div>
                       </div>
+                      {% endif}
+
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">حالة الشحنة</div>
                         <div class="col-lg-9 col-md-8">{{object.status}}</div>
@@ -96,30 +99,41 @@
                         <div class="col-lg-3 col-md-4 label ">الأجرة </div>
                         <div class="col-lg-9 col-md-8">{{object.fare}}</div>
                       </div>
-
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">الميبات</div>
-                        <div class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
-                        <div class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
-                      </div>
-
+                      {% if object.days_stayed %}
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">زيادة</div>
                         <div class="col-lg-9 col-md-8">----</div>
                       </div>
+                      {% endif %}
 
+                      {% if object.days_stayed %}
+                      <div class="row">
+                        <div class="row">
+                        <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
+                        <div class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
+                      </div>
+                      {% endif %}
+
+                      {% if object.stay_cost %}
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">الميبات</div>
+                        <div class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
+                      </div>
+                      {% endif %}
+
+                      
+
+                    
+                      {% if object.deducted != 0 %}   
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">الخصم</div>
                         <div class="col-lg-9 col-md-8">{{object.deducted}}</div>
                       </div>
+                      {% endif %}
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">الأجمالي</div>
-                        <div class="col-lg-9 col-md-8">---</div>
+                        <div class="col-lg-9 col-md-8">{{object.stay_cost + object.deducted}}</div>
                       </div>
 
                       <div class="row">

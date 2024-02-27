@@ -40,16 +40,19 @@ class Shipment(models.Model):
     user = models.ForeignKey(User,  related_name='shipments_user', on_delete=models.SET_NULL, null=True)
     driver = models.ForeignKey(Driver,  related_name='shipments_driver', on_delete=models.SET_NULL, null=True)
     customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
-    fare = models.IntegerField(_("Fare"),)
+    fare = models.IntegerField(_("Fare"))
+    premium = models.IntegerField(_("Premium"), null=True, blank=True ,default=0)
     code = models.ImageField(blank=True, null=True, upload_to='code')
-    days_stayed = models.IntegerField(_("Days Stayed "), null=True, blank=True)
-    stay_cost = models.IntegerField(_("Stay Cost"), null=True, blank=True)
-    deducted = models.IntegerField(_("Deducted"), null=True, blank=True)
+    days_stayed = models.IntegerField(_("Days Stayed "),default=0 , null=True, blank=True)
+    stay_cost = models.IntegerField(_("Stay Cost"),default=0 , null=True, blank=True)
+    deducted = models.IntegerField(_("Deducted"),default=0 , null=True, blank=True)
     status = models.CharField(_("Status "), max_length=20, choices=STATUS, default='Recieved')
     destination = models.CharField(_("Destination"), max_length=20, choices=FLAG_TYPES)
     create_at = models.DateTimeField(_("Create At"), default=timezone.now)
     expected_arrival_date = models.DateTimeField(_("Expected Arrival Date"), null=True, blank=True, default=timezone.now)
     actual_delivery_date = models.DateTimeField(_("Actual Delivery Date "), null=True, blank=True, default=timezone.now)
+    notes = models.TextField(_("Notes"), null=True, blank=True)
+
 
     def __str__(self) -> str:
         return f'{self.driver} - {self.destination}'
