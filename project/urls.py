@@ -25,6 +25,7 @@ urlpatterns = [
     path('shipment/', include('shipments.urls')),
     path('customer/', include('customers.urls')),
     path('driver/', include('drivers.urls')),
+    path('user/', include('accounts.urls')),
 
     path("__debug__/", include("debug_toolbar.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
