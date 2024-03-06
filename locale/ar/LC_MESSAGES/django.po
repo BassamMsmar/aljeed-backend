@@ -204,6 +204,9 @@ msgid "Recent driver"
 msgstr "إضافة سائق"
 
 #: .\templates\shipments\shipments_list.html:13
+msgid "Recent shipments"
+msgstr "إضافة شحنة"
+
 #: .\templates\shipments\shipments_list.html:25
 msgid "Recent shipments"
 msgstr "إضافة شحنة"
