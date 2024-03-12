@@ -140,13 +140,14 @@
                         <div class="col-lg-3 col-md-4 label">الأجمالي</div>
                         <div class="col-lg-9 col-md-8">{{ object.fare|default:0|add:object.premium|default:0 }}</div>
                       </div>
-
+                      {% if object.notes %}  
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">ملاحضات</div>
-                        <div class="col-lg-9 col-md-8">-----</div>
+                        <div class="col-lg-9 col-md-8">{{ object.notes }}</div>
                       </div>
+                      {% endif %}
                       <div class="row">
-                        <div class="col-lg-3 col-md-4 label">علاض وتحميل سند الصرف</div>
+                        <div class="col-lg-3 col-md-4 label">عرض وتحميل سند الصرف</div>
                         <div class="col-lg-9 col-md-8"><div class="col-lg-9 col-md-8"><a href="{% url 'catch_receipt' object.id %}"
                           target="_blank"><i class="bi bi-download"></i></a></div></div>
                       </div>
