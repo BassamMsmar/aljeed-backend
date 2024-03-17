@@ -63,7 +63,11 @@
   ======================================================== -->
 </head>
 
+
+
 <body>
+
+
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -274,10 +278,12 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger mx-3">Logout</button>
+                
+              </form>
+
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -291,6 +297,8 @@
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
+
+
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
@@ -402,6 +410,9 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
+
+
+
   <!-- Vendor JS Files -->
   <script src="{% static 'en/vendor/apexcharts/apexcharts.min.js' %} "></script>
   <script src="{% static 'en/vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
@@ -416,5 +427,7 @@
   <script src="{% static 'en/js/main.js' %} "></script>
 
 </body>
+
+
 
 </html>

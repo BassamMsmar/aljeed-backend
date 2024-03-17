@@ -72,13 +72,8 @@
                         <div class="col-lg-3 col-md-4 label">المندوب المسئول</div>
                         <div class="col-lg-9 col-md-8">{{object.user}}</div>
                       </div>
-                      
-                      {% if object.note %}
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">ملاحضات</div>
-                        <div class="col-lg-9 col-md-8">{{object.note}}</div>
-                      </div>
-                      {% endif %}
+
+
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">حالة الشحنة</div>
@@ -88,12 +83,12 @@
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label"> بوليصة الشحنه</div>
-                        <div class="col-lg-9 col-md-8"><a href="{% url 'waybill_detail' object.id %}"
-                            target="_blank"><i class="bi bi-download"></i></a></div>
+                        <div class="col-lg-9 col-md-8"><a href="{% url 'waybill_detail' object.id %}" target="_blank"><i
+                              class="bi bi-download"></i></a></div>
                       </div>
 
 
-                    </div>  
+                    </div>
 
 
 
@@ -114,32 +109,46 @@
                       {% if object.days_stayed %}
                       <div class="row">
                         <div class="row">
-                        <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
-                        <div class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
-                      </div>
-                      {% endif %}
+                          <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
+                          <div class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
+                        </div>
+                        {% endif %}
 
-                      {% if object.stay_cost %}
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">الميبات</div>
-                        <div class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
-                      </div>
-                      {% endif %}
+                        {% if object.stay_cost %}
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">الميبات</div>
+                          <div class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
+                        </div>
+                        {% endif %}
 
-                      
+                        {% if object.deducted != 0 %}
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">الخصم</div>
+                          <div class="col-lg-9 col-md-8">{{object.deducted}}</div>
+                        </div>
+                        {% endif %}
+                        <!-- تعمل لاحقاً بجافا سكربت -->
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">الأجمالي</div>
+                          <div class="col-lg-9 col-md-8">{{ object.fare|default:0|add:object.premium|default:0 }}</div>
+                        </div>
 
-                    
-                      {% if object.deducted != 0 %}   
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">الخصم</div>
-                        <div class="col-lg-9 col-md-8">{{object.deducted}}</div>
-                      </div>
-                      {% endif %}
+                        {% if object.note %}
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">ملاحضات</div>
+                          <div class="col-lg-9 col-md-8">{{object.note}}</div>
+                        </div>
+                        {% endif %}
 
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">الأجمالي</div>
-                        <div class="col-lg-9 col-md-8">{{ object.fare|default:0|add:object.premium|default:0 }}</div>
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">عرض وتحميل سند الصرف</div>
+                          <div class="col-lg-9 col-md-8">
+                            <div class="col-lg-9 col-md-8"><a href="{% url 'catch_receipt' object.id %}"
+                                target="_blank"><i class="bi bi-download"></i></a></div>
+                          </div>
+                        </div>
                       </div>
+<<<<<<< HEAD
                       {% if object.notes %}  
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">ملاحضات</div>
@@ -152,6 +161,8 @@
                           target="_blank"><i class="bi bi-download"></i></a></div></div>
                       </div>
                     </div>
+=======
+>>>>>>> c2f1d41d358380b4b164bc044e862dc57afdbf09
 
                     </div>
                   </div>
@@ -164,9 +175,9 @@
                   <form method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
-                    {% bootstrap_button button_type="submit" content="Create Shipment" %}
+                    {% bootstrap_button button_type="submit" content="حفظ التعديل" %}
                   </form>
-                  
+
                   <!-- End Shipment Edit Form -->
 
                 </div>
@@ -229,7 +240,7 @@
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- shipmnt History -->
 
-                 
+
 
                   <!-- shipmnt History-->
 
