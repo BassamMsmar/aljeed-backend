@@ -7,13 +7,10 @@
 
 <body>
 
-
-
   <main id="main" class="main">
 
     <section class="section profile">
       <div class="row">
-
 
         <div class="col-xl-12">
 
@@ -23,27 +20,32 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">بياتنات
+                  <button class="nav-link active" data-bs-toggle="tab"
+                    data-bs-target="#profile-overview">بياتنات
                     الشحنة</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">تعديل الشحنة </button>
+                  <button class="nav-link" data-bs-toggle="tab"
+                    data-bs-target="#shipment-edit">تعديل الشحنة </button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">مرفقات</button>
+                  <button class="nav-link" data-bs-toggle="tab"
+                    data-bs-target="#shipment-settings">مرفقات</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">مسار
+                  <button class="nav-link" data-bs-toggle="tab"
+                    data-bs-target="#shipment-change-status">مسار
                     الشحنة</button>
                 </li>
 
               </ul>
               <div class="tab-content pt-2">
 
-                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                <div class="tab-pane fade show active profile-overview"
+                  id="profile-overview">
                   <div class="row">
                     <div class="col-6">
                       <h5 class="card-title">بيانات الشحنة </h5>
@@ -55,42 +57,43 @@
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">نوع السيارة</div>
-                        <div class="col-lg-9 col-md-8">{{ object.driver.truck_type }}</div>
+                        <div class="col-lg-9 col-md-8">{{
+                          object.driver.truck_type }}</div>
                       </div>
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">مصدر التحميل</div>
-                        <div class="col-lg-9 col-md-8">{{object.customer_branch.city}}</div>
+                        <div
+                          class="col-lg-9 col-md-8">{{object.customer_branch.city}}</div>
                       </div>
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">مكان التنزيل</div>
-                        <div class="col-lg-9 col-md-8">{{ object.destination }}</div>
+                        <div class="col-lg-9 col-md-8">{{ object.destination
+                          }}</div>
                       </div>
 
                       <div class="row">
-                        <div class="col-lg-3 col-md-4 label">المندوب المسئول</div>
+                        <div class="col-lg-3 col-md-4 label">المندوب
+                          المسئول</div>
                         <div class="col-lg-9 col-md-8">{{object.user}}</div>
                       </div>
-
-
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">حالة الشحنة</div>
                         <div class="col-lg-9 col-md-8">{{object.status}}</div>
                       </div>
 
-
                       <div class="row">
-                        <div class="col-lg-3 col-md-4 label"> بوليصة الشحنه</div>
-                        <div class="col-lg-9 col-md-8"><a href="{% url 'waybill_detail' object.id %}" target="_blank"><i
+                        <div class="col-lg-3 col-md-4 label"> بوليصة
+                          الشحنه</div>
+                        <div class="col-lg-9 col-md-8"><a
+                            href="{% url 'waybill_detail' object.id %}"
+                            target="_blank"><i
                               class="bi bi-download"></i></a></div>
                       </div>
 
-
                     </div>
-
-
 
                     <div class="col-6">
                       <h5 class="card-title">بياتنات الاجرة </h5>
@@ -109,28 +112,34 @@
                       {% if object.days_stayed %}
                       <div class="row">
                         <div class="row">
-                          <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
-                          <div class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
+                          <div class="col-lg-3 col-md-4 label">عدد ايام
+                            المبات</div>
+                          <div
+                            class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
                         </div>
                         {% endif %}
 
                         {% if object.stay_cost %}
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الميبات</div>
-                          <div class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
+                          <div
+                            class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
                         </div>
                         {% endif %}
 
                         {% if object.deducted != 0 %}
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الخصم</div>
-                          <div class="col-lg-9 col-md-8">{{object.deducted}}</div>
+                          <div
+                            class="col-lg-9 col-md-8">{{object.deducted}}</div>
                         </div>
                         {% endif %}
                         <!-- تعمل لاحقاً بجافا سكربت -->
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الأجمالي</div>
-                          <div class="col-lg-9 col-md-8">{{ object.fare|default:0|add:object.premium|default:0 }}</div>
+                          <div class="col-lg-9 col-md-8">{{
+                            object.fare|default:0|add:object.premium|default:0
+                            }}</div>
                         </div>
 
                         {% if object.note %}
@@ -141,106 +150,239 @@
                         {% endif %}
 
                         <div class="row">
-                          <div class="col-lg-3 col-md-4 label">عرض وتحميل سند الصرف</div>
+                          <div class="col-lg-3 col-md-4 label">عرض وتحميل سند
+                            الصرف</div>
                           <div class="col-lg-9 col-md-8">
-                            <div class="col-lg-9 col-md-8"><a href="{% url 'catch_receipt' object.id %}"
-                                target="_blank"><i class="bi bi-download"></i></a></div>
+                            <div class="col-lg-9 col-md-8"><a
+                                href="{% url 'catch_receipt' object.id %}"
+                                target="_blank"><i
+                                  class="bi bi-download"></i></a></div>
                           </div>
                         </div>
                       </div>
-<<<<<<< HEAD
-                      {% if object.notes %}  
+                      {% if object.notes %}
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">ملاحضات</div>
                         <div class="col-lg-9 col-md-8">{{ object.notes }}</div>
                       </div>
                       {% endif %}
                       <div class="row">
-                        <div class="col-lg-3 col-md-4 label">عرض وتحميل سند الصرف</div>
-                        <div class="col-lg-9 col-md-8"><div class="col-lg-9 col-md-8"><a href="{% url 'catch_receipt' object.id %}"
-                          target="_blank"><i class="bi bi-download"></i></a></div></div>
+                        <div class="col-lg-3 col-md-4 label">عرض وتحميل سند
+                          الصرف</div>
+                        <div class="col-lg-9 col-md-8"><div
+                            class="col-lg-9 col-md-8"><a
+                              href="{% url 'catch_receipt' object.id %}"
+                              target="_blank"><i
+                                class="bi bi-download"></i></a></div></div>
                       </div>
                     </div>
-=======
->>>>>>> c2f1d41d358380b4b164bc044e862dc57afdbf09
 
-                    </div>
                   </div>
                 </div>
 
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                <div class="tab-pane fade profile-edit pt-3" id="shipment-edit">
 
                   <!--Shipment Edit Form -->
 
                   <form method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
-                    {% bootstrap_button button_type="submit" content="حفظ التعديل" %}
+                    {% bootstrap_button button_type="submit"
+                    content="حفظ التعديل" %}
                   </form>
 
                   <!-- End Shipment Edit Form -->
 
                 </div>
 
-                <div class="tab-pane fade pt-3" id="profile-settings">
+                <div class="tab-pane fade pt-3" id="shipment-settings">
 
                   <!-- Settings Form -->
                   <form>
 
                     <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">صورة الفاتورة</label>
+                      <label for="profileImage"
+                        class="col-md-4 col-lg-3 col-form-label">صورة
+                        الفاتورة</label>
                       <div class="col-md-8 col-lg-9">
-                        <a href=""><samp>6241452147</samp></a>
+                        <a href><samp>6241452147</samp></a>
                         <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
+                          <a href="#" class="btn btn-primary btn-sm"
+                            title="Upload new profile image"><i
                               class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-success btn-sm" title="Remove my profile image"><i
+                          <a href="#" class="btn btn-success btn-sm"
+                            title="Remove my profile image"><i
                               class="bi bi-eye"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
+                          <a href="#" class="btn btn-danger btn-sm"
+                            title="Remove my profile image"><i
                               class="bi bi-trash"></i></a>
                         </div>
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">تعميد اليومية</label>
+                      <label for="profileImage"
+                        class="col-md-4 col-lg-3 col-form-label">تعميد
+                        اليومية</label>
                       <div class="col-md-8 col-lg-9">
-                        <a href=""><samp>6241452147</samp></a>
+                        <a href><samp>6241452147</samp></a>
                         <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
+                          <a href="#" class="btn btn-primary btn-sm"
+                            title="Upload new profile image"><i
                               class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-success btn-sm" title="Remove my profile image"><i
+                          <a href="#" class="btn btn-success btn-sm"
+                            title="Remove my profile image"><i
                               class="bi bi-eye"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
+                          <a href="#" class="btn btn-danger btn-sm"
+                            title="Remove my profile image"><i
                               class="bi bi-trash"></i></a>
                         </div>
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">تعميد الزيادة</label>
+                      <label for="profileImage"
+                        class="col-md-4 col-lg-3 col-form-label">تعميد
+                        الزيادة</label>
                       <div class="col-md-8 col-lg-9">
-                        <a href=""><samp>6241452147</samp></a>
+                        <a href><samp>6241452147</samp></a>
                         <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
+                          <a href="#" class="btn btn-primary btn-sm"
+                            title="Upload new profile image"><i
                               class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-success btn-sm" title="Remove my profile image"><i
+                          <a href="#" class="btn btn-success btn-sm"
+                            title="Remove my profile image"><i
                               class="bi bi-eye"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
+                          <a href="#" class="btn btn-danger btn-sm"
+                            title="Remove my profile image"><i
                               class="bi bi-trash"></i></a>
                         </div>
                       </div>
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-primary">Save
+                        Changes</button>
                     </div>
                   </form><!-- End settings Form -->
 
                 </div>
 
-                <div class="tab-pane fade pt-3" id="profile-change-password">
+                <div class="tab-pane fade pt-3" id="shipment-change-status">
                   <!-- shipmnt History -->
+                  <div class="row  ">
+                    <div class="btn-toolbar align-center m-auto" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2" role="group"
+                        aria-label="First group">
+                        <button type="button"
+                          class="btn {% if object.status  == 'Recieved' or object.status  == 'Processed' or object.status  == 'Shipped' or object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Recieved</button>
+                        <button type="button"
+                          class="btn {% if object.status  == 'Processed' or object.status  == 'Shipped' or object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Processed</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Shipped' or object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Shipped</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Delivered</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Feedback</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Late</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Completed</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
 
+                    <h4 class="card-title text-center "> Shipment History</h4>
 
+                    <!-- Recent Activity -->
+                    <div class="card">
+                      <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                            class="bi bi-three-dots"></i></a>
+                        <ul
+                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li class="dropdown-header text-start">
+                            <h6>Filter</h6>
+                          </li>
+
+                          <li><a class="dropdown-item" href="#">Today</a></li>
+                          <li><a class="dropdown-item" href="#">This
+                              Month</a></li>
+                          <li><a class="dropdown-item" href="#">This
+                              Year</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="card-body">
+                        <h5 class="card-title">Recent Activity <span>|
+                            Today</span></h5>
+
+                        <div class="activity">
+
+                          <div class="activity-item d-flex">
+                            <div class="activite-label">32 min</div>
+                            <i
+                              class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                            <div class="activity-content">
+                              Quia quae rerum <a href="#"
+                                class="fw-bold text-dark">explicabo officiis</a>
+                              beatae
+                            </div>
+                          </div><!-- End activity item-->
+
+                          <div class="activity-item d-flex">
+                            <div class="activite-label">56 min</div>
+                            <i
+                              class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                            <div class="activity-content">
+                              Voluptatem blanditiis blanditiis eveniet
+                            </div>
+                          </div><!-- End activity item-->
+
+                          <div class="activity-item d-flex">
+                            <div class="activite-label">2 hrs</div>
+                            <i
+                              class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                            <div class="activity-content">
+                              Voluptates corrupti molestias voluptatem
+                            </div>
+                          </div><!-- End activity item-->
+
+                          <div class="activity-item d-flex">
+                            <div class="activite-label">1 day</div>
+                            <i
+                              class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                            <div class="activity-content">
+                              Tempore autem saepe <a href="#"
+                                class="fw-bold text-dark">occaecati
+                                voluptatem</a> tempore
+                            </div>
+                          </div><!-- End activity item-->
+
+                          <div class="activity-item d-flex">
+                            <div class="activite-label">2 days</div>
+                            <i
+                              class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                            <div class="activity-content">
+                              Est sit eum reiciendis exercitationem
+                            </div>
+                          </div><!-- End activity item-->
+
+                          <div class="activity-item d-flex">
+                            <div class="activite-label">4 weeks</div>
+                            <i
+                              class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                            <div class="activity-content">
+                              Dicta dolorem harum nulla eius. Ut quidem quidem
+                              sit quas
+                            </div>
+                          </div><!-- End activity item-->
+
+                        </div>
+
+                      </div>
+                    </div><!-- End Recent Activity -->
+                  </div>
 
                   <!-- shipmnt History-->
 
@@ -256,9 +398,5 @@
     </section>
 
   </main><!-- End #main -->
-
-
-
-
 
   {% endblock %}
