@@ -17,12 +17,17 @@ from customers.models import Customers, Branch
 
 
 
-FLAG_TYPES = (
-    ('Jeddah','Jeddah'),
-    ('Riyad','Riyad'),
-    ('Dammam','Dammam'),
- )
+class City(models.Model):
+    name_ar = models.CharField(_("City Arabic"), max_length=50)
+    name_en = models.CharField(_("City English"), max_length=50)
 
+    def __str__(self):
+        return self.name_ar
+class Stages(models.Model):
+    status = models.CharField(_("Status Stages"), max_length=50)
+
+    def __str__(self):
+        return self.status
 
 STATUS = (
     ('Recieved','Recieved'),
@@ -41,13 +46,13 @@ class Shipment(models.Model):
     driver = models.ForeignKey(Driver,  related_name='shipments_driver', on_delete=models.SET_NULL, null=True)
     customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
     fare = models.IntegerField(_("Fare"))
-    premium = models.IntegerField(_("Premium"), null=True, blank=True ,default=0)
+    premium = models.IntegerField(_("Premium"), null=True, blank=True)
     code = models.ImageField(blank=True, null=True, upload_to='code')
-    days_stayed = models.IntegerField(_("Days Stayed "),default=0 , null=True, blank=True)
-    stay_cost = models.IntegerField(_("Stay Cost"),default=0 , null=True, blank=True)
-    deducted = models.IntegerField(_("Deducted"),default=0 , null=True, blank=True)
-    status = models.CharField(_("Status "), max_length=20, choices=STATUS, default='Recieved')
-    destination = models.CharField(_("Destination"), max_length=20, choices=FLAG_TYPES)
+    days_stayed = models.IntegerField(_("Days Stayed "), null=True, blank=True)
+    stay_cost = models.IntegerField(_("Stay Cost") , null=True, blank=True)
+    deducted = models.IntegerField(_("Deducted") , null=True, blank=True)
+    status = models.ForeignKey(Stages, verbose_name=_("Status"), related_name='shipments_status', on_delete=models.CASCADE, null=True, blank=True)
+    destination = models.ForeignKey(City, verbose_name=_("Destination"), on_delete=models.CASCADE, null=True, blank=True)
     create_at = models.DateTimeField(_("Create At"), default=timezone.now)
     expected_arrival_date = models.DateTimeField(_("Expected Arrival Date"), null=True, blank=True, default=timezone.now)
     actual_delivery_date = models.DateTimeField(_("Actual Delivery Date "), null=True, blank=True, default=timezone.now)
