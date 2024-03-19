@@ -10,7 +10,8 @@
     <h1>{% translate "Dashboard" %}</h1>
   </div><!-- End Page Title -->
   <div class="pagetitle">
-    <a href="{% url 'shipment_create' %}"><button type="button" class="btn btn-primary">{% translate "Recent shipments" %}</button></a>
+    <a href="{% url 'shipment_create' %}"><button type="button" class="btn btn-primary">{% translate "Recent shipments"
+        %}</button></a>
   </div><!-- End Page Title -->
 
   <section class="section dashboard">
@@ -23,30 +24,40 @@
             <div class="card recent-sales overflow-auto">
               <div class="card-body">
                 <h5 class="card-title">{% translate "Recent shipments" %}<span>| Today</span></h5>
-                <table class="table table-borderless datatable table-striped table-hover">
+
+                <table class="table table-borderless table-bordered datatable table-striped table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">{% translate "driver" %}</th>
                       <th scope="col">{% translate "Customer" %} </th>
+                      <th scope="col">{% translate "Bransh" %} </th>
                       <th scope="col">{% translate "Waybill" %} </th>
+                      <th scope="col">{% translate "Source" %} </th>
                       <th scope="col">{% translate "Destination" %} </th>
                       <th scope="col">{% translate "User" %} </th>
                       <th scope="col">{% translate "Status" %} </th>
+                      <th scope="col">{% translate "completion" %} </th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for shipment in object_list %}
                     <tr>
 
-                      <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}" style="text-decoration: none;">{{shipment.id}}</a></th>
+                      <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}"
+                          style="text-decoration: none;">{{shipment.id}}</a></th>
 
-                      <th scope="row"><a href="#" class="link-dark" style="text-decoration: none;">{{shipment.driver}}</a></th>
+                      <th scope="row"><a href="#" class="link-dark"
+                          style="text-decoration: none;">{{shipment.driver}}</a></th>
 
-                      <th scope="row"><a href="#" class="link-dark" style="text-decoration: none;">{{shipment.customer_branch}}</a></th>
+                      <th scope="row"><a href="#" class="link-dark"
+                          style="text-decoration: none;">{{shipment.customer_branch.customers}}</a></th>
+                      <th scope="row"><a href="#" class="link-dark"
+                          style="text-decoration: none;">{{shipment.customer_branch.name}}</a></th>
                       <td> <a href="{% url 'shipment_detail' shipment.id %}" target="_blank"><i
                             class="bi bi-receipt"></i></a></td>
-                      <td>{{shipment.customer_branch.city}} - {{shipment.destination}}</td>
+                      <td>{{shipment.customer_branch.city}} </td>
+                      <td> {{shipment.destination}}</td>
                       <td>{{shipment.user}}</td>
                       <td><span class="badge 
                           {% if shipment.status == 'Recieved' %} bg-primary 
@@ -57,6 +68,8 @@
                           {% elif shipment.status == 'Completed' %} bg-success  
                           {% elif shipment.status == 'Late' %} bg-danger  
                           {% endif %}">{{shipment.status}}</span></td>
+                      </td>
+                      <td>{{shipment.user}}</td>
                     </tr>
                     {% endfor %}
                   </tbody>
