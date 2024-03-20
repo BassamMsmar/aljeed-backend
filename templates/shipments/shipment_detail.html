@@ -8,11 +8,28 @@
 <body>
 
   <main id="main" class="main">
-
     <section class="section profile">
       <div class="row">
+        <div class="col-xl-3">
 
-        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <h2>Kevin Anderson</h2>
+              <h3>Web Designer</h3>
+              <div class="social-links mt-2">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-9">
 
           <div class="card">
             <div class="card-body pt-3">
@@ -20,32 +37,26 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab"
-                    data-bs-target="#profile-overview">بياتنات
-                    الشحنة</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab"
-                    data-bs-target="#shipment-edit">تعديل الشحنة </button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab"
-                    data-bs-target="#shipment-settings">مرفقات</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab"
-                    data-bs-target="#shipment-change-status">مسار
-                    الشحنة</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
                 </li>
 
               </ul>
+              
               <div class="tab-content pt-2">
 
-                <div class="tab-pane fade show active profile-overview"
-                  id="profile-overview">
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <div class="row">
                     <div class="col-6">
                       <h5 class="card-title">بيانات الشحنة </h5>
@@ -57,8 +68,8 @@
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">نوع السيارة</div>
-                        <div class="col-lg-9 col-md-8">{{
-                          object.driver.truck_type }}</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ object.driver.truck_type }}</div>
                       </div>
 
                       <div class="row">
@@ -69,8 +80,8 @@
 
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">مكان التنزيل</div>
-                        <div class="col-lg-9 col-md-8">{{ object.destination
-                          }}</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ object.destination }}</div>
                       </div>
 
                       <div class="row">
@@ -94,7 +105,6 @@
                       </div>
 
                     </div>
-
                     <div class="col-6">
                       <h5 class="card-title">بياتنات الاجرة </h5>
 
@@ -137,9 +147,8 @@
                         <!-- تعمل لاحقاً بجافا سكربت -->
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الأجمالي</div>
-                          <div class="col-lg-9 col-md-8">{{
-                            object.fare|default:0|add:object.premium|default:0
-                            }}</div>
+                          <div class="col-lg-9 col-md-8">
+                            {{ object.fare|default:0|add:object.premium|default:0 }}</div>
                         </div>
 
                         {% if object.note %}
@@ -169,37 +178,32 @@
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">عرض وتحميل سند
                           الصرف</div>
-                        <div class="col-lg-9 col-md-8"><div
-                            class="col-lg-9 col-md-8"><a
-                              href="{% url 'catch_receipt' object.id %}"
-                              target="_blank"><i
-                                class="bi bi-download"></i></a></div></div>
-                      </div>
+                        <div class="col-lg-9 col-md-8">
+                          <div class="col-lg-9 col-md-8">
+                            <a href="{% url 'catch_receipt' object.id %}" target="_blank">
+                              <i class="bi bi-download"></i>
+                            </a>
+                          </div>
+                        </div>
                     </div>
-
                   </div>
                 </div>
 
-                <div class="tab-pane fade profile-edit pt-3" id="shipment-edit">
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
-                  <!--Shipment Edit Form -->
-
+                  <!-- Profile Edit Form -->
                   <form method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
-                    {% bootstrap_button button_type="submit"
-                    content="حفظ التعديل" %}
-                  </form>
-
-                  <!-- End Shipment Edit Form -->
+                    {% bootstrap_button button_type="submit" content="حفظ التعديل" %}
+                  </form><!-- End Profile Edit Form -->
 
                 </div>
 
-                <div class="tab-pane fade pt-3" id="shipment-settings">
+                <div class="tab-pane fade pt-3" id="profile-settings">
 
-                  <!-- Settings Form -->
-                  <form>
-
+                   <!-- Settings Form -->
+                   <form>
                     <div class="row mb-3">
                       <label for="profileImage"
                         class="col-md-4 col-lg-3 col-form-label">صورة
@@ -219,6 +223,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="row mb-3">
                       <label for="profileImage"
                         class="col-md-4 col-lg-3 col-form-label">تعميد
@@ -266,8 +271,7 @@
 
                 </div>
 
-                <div class="tab-pane fade pt-3" id="shipment-change-status">
-                  <!-- shipmnt History -->
+                <div class="tab-pane fade pt-3" id="profile-change-password">
                   <div class="row  ">
                     <div class="btn-toolbar align-center m-auto" role="toolbar"
                       aria-label="Toolbar with button groups">
@@ -290,101 +294,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-
-                    <h4 class="card-title text-center "> Shipment History</h4>
-
-                    <!-- Recent Activity -->
-                    <div class="card">
-                      <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                            class="bi bi-three-dots"></i></a>
-                        <ul
-                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                          <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
-                          </li>
-
-                          <li><a class="dropdown-item" href="#">Today</a></li>
-                          <li><a class="dropdown-item" href="#">This
-                              Month</a></li>
-                          <li><a class="dropdown-item" href="#">This
-                              Year</a></li>
-                        </ul>
-                      </div>
-
-                      <div class="card-body">
-                        <h5 class="card-title">Recent Activity <span>|
-                            Today</span></h5>
-
-                        <div class="activity">
-
-                          <div class="activity-item d-flex">
-                            <div class="activite-label">32 min</div>
-                            <i
-                              class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                            <div class="activity-content">
-                              Quia quae rerum <a href="#"
-                                class="fw-bold text-dark">explicabo officiis</a>
-                              beatae
-                            </div>
-                          </div><!-- End activity item-->
-
-                          <div class="activity-item d-flex">
-                            <div class="activite-label">56 min</div>
-                            <i
-                              class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                            <div class="activity-content">
-                              Voluptatem blanditiis blanditiis eveniet
-                            </div>
-                          </div><!-- End activity item-->
-
-                          <div class="activity-item d-flex">
-                            <div class="activite-label">2 hrs</div>
-                            <i
-                              class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                            <div class="activity-content">
-                              Voluptates corrupti molestias voluptatem
-                            </div>
-                          </div><!-- End activity item-->
-
-                          <div class="activity-item d-flex">
-                            <div class="activite-label">1 day</div>
-                            <i
-                              class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                            <div class="activity-content">
-                              Tempore autem saepe <a href="#"
-                                class="fw-bold text-dark">occaecati
-                                voluptatem</a> tempore
-                            </div>
-                          </div><!-- End activity item-->
-
-                          <div class="activity-item d-flex">
-                            <div class="activite-label">2 days</div>
-                            <i
-                              class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                            <div class="activity-content">
-                              Est sit eum reiciendis exercitationem
-                            </div>
-                          </div><!-- End activity item-->
-
-                          <div class="activity-item d-flex">
-                            <div class="activite-label">4 weeks</div>
-                            <i
-                              class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                            <div class="activity-content">
-                              Dicta dolorem harum nulla eius. Ut quidem quidem
-                              sit quas
-                            </div>
-                          </div><!-- End activity item-->
-
-                        </div>
-
-                      </div>
-                    </div><!-- End Recent Activity -->
-                  </div>
-
-                  <!-- shipmnt History-->
 
                 </div>
 
@@ -396,6 +305,7 @@
         </div>
       </div>
     </section>
+
 
   </main><!-- End #main -->
 

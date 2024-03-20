@@ -8,13 +8,13 @@ def home(request):
     if request.user.is_authenticated and request.user.is_superuser:
     # return render(request, 'base.html')
         shipments = Shipment.objects.select_related('driver', 'customer_branch', 'user').all().order_by('-create_at')
-        recieved_shipment = Shipment.objects.get(status__status='Recieved')
-        processed_shipment = Shipment.objects.all().filter(status__status='Processed')
-        shipped_shipment = Shipment.objects.all().filter(status__status='Shipped')
-        delivered_shipment = Shipment.objects.all().filter(status__status='Delivered')
-        feedback_shipment = Shipment.objects.all().filter(status__status='Feedback')
-        late_shipment = Shipment.objects.all().filter(status__status='late')
-        completed_shipment = Shipment.objects.all().filter(status__status='Completed')
+        recieved_shipment = Shipment.objects.all().filter(status='Recieved')
+        processed_shipment = Shipment.objects.all().filter(status='Processed')
+        shipped_shipment = Shipment.objects.all().filter(status='Shipped')
+        delivered_shipment = Shipment.objects.all().filter(status='Delivered')
+        feedback_shipment = Shipment.objects.all().filter(status='Feedback')
+        late_shipment = Shipment.objects.all().filter(status='late')
+        completed_shipment = Shipment.objects.all().filter(status='Completed')
 
         context = {
             'shipments':shipments,
