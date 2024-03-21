@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy, reverse
-from .models import Shipment
+from .models import Shipment, Receipt
 # Create your views here.
 
 
@@ -36,9 +36,7 @@ class waybill(DetailView):
     template_name = 'shipments/waybill.html'
 
 
-class catch_receipt(DetailView):
-    model = Shipment
-    template_name = 'shipments/catch_receipt.html'
+
 
 
 class ShipmentCreateView(CreateView):
@@ -52,3 +50,7 @@ class ShipmentCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('shipment_list', kwargs={'status': 'All'})
+    
+
+
+

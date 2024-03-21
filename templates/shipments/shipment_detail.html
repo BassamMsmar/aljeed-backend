@@ -94,9 +94,7 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">{% translate "Edit Shipment" %}</button>
                 </li>
 
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">{% translate "Attached files" %}</button>
-                </li>
+               
 
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">{% translate "Recent Activity" %} </button>
@@ -145,13 +143,7 @@
                         <div class="col-lg-9 col-md-8">{{object.status}}</div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label"> بوليصة
-                          الشحنه</div>
-                        <div class="col-lg-9 col-md-8">
-                          <a href="{% url 'waybill_detail' object.id %}" target="_blank"></a>
-                        </div>
-                      </div>
+                      
 
                     </div>
                     <div class="col-6">
@@ -161,14 +153,14 @@
                         <div class="col-lg-3 col-md-4 label ">الأجرة </div>
                         <div class="col-lg-9 col-md-8">{{object.fare}}</div>
                       </div>
-                      {% if object.premium %}
+                      
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">زيادة</div>
                         <div class="col-lg-9 col-md-8">{{object.premium}}</div>
                       </div>
-                      {% endif %}
+                     
 
-                      {% if object.days_stayed %}
+                     
                       <div class="row">
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">عدد ايام
@@ -176,23 +168,23 @@
                           <div
                             class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
                         </div>
-                        {% endif %}
+                        
 
-                        {% if object.stay_cost %}
+                       
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الميبات</div>
                           <div
                             class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
                         </div>
-                        {% endif %}
+                       
 
-                        {% if object.deducted != 0 %}
+                        
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الخصم</div>
                           <div
                             class="col-lg-9 col-md-8">{{object.deducted}}</div>
                         </div>
-                        {% endif %}
+                        
                         <!-- تعمل لاحقاً بجافا سكربت -->
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الأجمالي</div>
@@ -200,40 +192,6 @@
                             {{ object.fare|default:0|add:object.premium|default:0 }}</div>
                         </div>
 
-                        {% if object.note %}
-                        <div class="row">
-                          <div class="col-lg-3 col-md-4 label">ملاحضات</div>
-                          <div class="col-lg-9 col-md-8">{{object.note}}</div>
-                        </div>
-                        {% endif %}
-
-                        <div class="row">
-                          <div class="col-lg-3 col-md-4 label">عرض وتحميل سند
-                            الصرف</div>
-                          <div class="col-lg-9 col-md-8">
-                            <div class="col-lg-9 col-md-8"><a
-                                href="{% url 'catch_receipt' object.id %}"
-                                target="_blank"><i
-                                  class="bi bi-download"></i></a></div>
-                          </div>
-                        </div>
-                      </div>
-                      {% if object.notes %}
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">ملاحضات</div>
-                        <div class="col-lg-9 col-md-8">{{ object.notes }}</div>
-                      </div>
-                      {% endif %}
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">عرض وتحميل سند
-                          الصرف</div>
-                        <div class="col-lg-9 col-md-8">
-                          <div class="col-lg-9 col-md-8">
-                            <a href="{% url 'catch_receipt' object.id %}" target="_blank">
-                              <i class="bi bi-download"></i>
-                            </a>
-                          </div>
-                        </div>
                     </div>
                   </div>
                 </div>
@@ -249,76 +207,7 @@
 
                 </div>
 
-                <div class="tab-pane fade pt-3" id="profile-settings">
-
-                   <!-- Settings Form -->
-                   <form>
-                    <div class="row mb-3">
-                      <label for="profileImage"
-                        class="col-md-4 col-lg-3 col-form-label">صورة
-                        الفاتورة</label>
-                      <div class="col-md-8 col-lg-9">
-                        <a href><samp>6241452147</samp></a>
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm"
-                            title="Upload new profile image"><i
-                              class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-success btn-sm"
-                            title="Remove my profile image"><i
-                              class="bi bi-eye"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm"
-                            title="Remove my profile image"><i
-                              class="bi bi-trash"></i></a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="profileImage"
-                        class="col-md-4 col-lg-3 col-form-label">تعميد
-                        اليومية</label>
-                      <div class="col-md-8 col-lg-9">
-                        <a href><samp>6241452147</samp></a>
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm"
-                            title="Upload new profile image"><i
-                              class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-success btn-sm"
-                            title="Remove my profile image"><i
-                              class="bi bi-eye"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm"
-                            title="Remove my profile image"><i
-                              class="bi bi-trash"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="profileImage"
-                        class="col-md-4 col-lg-3 col-form-label">تعميد
-                        الزيادة</label>
-                      <div class="col-md-8 col-lg-9">
-                        <a href><samp>6241452147</samp></a>
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm"
-                            title="Upload new profile image"><i
-                              class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-success btn-sm"
-                            title="Remove my profile image"><i
-                              class="bi bi-eye"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm"
-                            title="Remove my profile image"><i
-                              class="bi bi-trash"></i></a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save
-                        Changes</button>
-                    </div>
-                  </form><!-- End settings Form -->
-
-                </div>
+           
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <div class="row  ">
