@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shipment, City, Stages, Receipt
+from .models import Shipment, City, Stages
 # from drivers.models import Driver
 
 # Register your models here.
@@ -16,4 +16,3 @@ class ShipmentsAdmin(admin.ModelAdmin):
 admin.site.register(Shipment, ShipmentsAdmin)
 admin.site.register(City)
 admin.site.register(Stages)
-admin.site.register(Receipt)

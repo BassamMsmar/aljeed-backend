@@ -20,12 +20,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('settings.urls')),
+    path('admin/', admin.site.urls),
+    path('user/', include('accounts.urls')),
     path('shipment/', include('shipments.urls')),
     path('customer/', include('customers.urls')),
     path('driver/', include('drivers.urls')),
-    path('user/', include('accounts.urls')),
+    path('receipt/', include('receipt.urls')),
 
     path("__debug__/", include("debug_toolbar.urls")),
     path("i18n/", include("django.conf.urls.i18n")),

@@ -65,7 +65,7 @@
                 <a href="#" class="btn btn-primary btn-sm"
                   title="Upload new profile image"><i
                     class="bi bi-upload"></i></a>
-                <a href="{% url 'catch_receipt' object.id %}"
+                <a href="{% url 'receipt_detail' object.id %}"
                 target="_blank" class="btn btn-success btn-sm"
                   title="Remove my profile image"><i
                     class="bi bi-eye"></i></a>
@@ -138,14 +138,9 @@
                         <div class="col-lg-9 col-md-8">{{object.user}}</div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">حالة الشحنة</div>
-                        <div class="col-lg-9 col-md-8">{{object.status}}</div>
-                      </div>
-
                       
-
                     </div>
+
                     <div class="col-6">
                       <h5 class="card-title">بياتنات الاجرة </h5>
 
@@ -158,15 +153,16 @@
                         <div class="col-lg-3 col-md-4 label">زيادة</div>
                         <div class="col-lg-9 col-md-8">{{object.premium}}</div>
                       </div>
+                    
                      
 
                      
                       <div class="row">
                         <div class="row">
-                          <div class="col-lg-3 col-md-4 label">عدد ايام
-                            المبات</div>
-                          <div
-                            class="col-lg-9 col-md-8">{{object.days_stayed}}</div>
+                          <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
+                          <div class="col-lg-9 col-md-8">
+                            {{object.days_stayed}}
+                          </div>
                         </div>
                         
 
@@ -182,17 +178,45 @@
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الخصم</div>
                           <div
-                            class="col-lg-9 col-md-8">{{object.deducted}}</div>
+                            class="col-lg-9 col-md-8">{{object.deducted}}
+                          </div>
                         </div>
                         
                         <!-- تعمل لاحقاً بجافا سكربت -->
                         <div class="row">
                           <div class="col-lg-3 col-md-4 label">الأجمالي</div>
                           <div class="col-lg-9 col-md-8">
-                            {{ object.fare|default:0|add:object.premium|default:0 }}</div>
+                            {{ object.fare|default:0|add:object.premium|default:0 }}
+                          </div>
                         </div>
 
+                      </div>
                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                      <div class="row">
+                        <div class="label">{% translate 'Shipment Status'%}</div>
+                        <a href="{% url 'change_stutus_detail' shipment.id  %}" class="btn 
+                        {% if shipment.status == 'Recieved' %} btn-primary 
+                        {% elif shipment.status == 'Processed' %} btn-secondary 
+                        {% elif shipment.status == 'Shipped' %} btn-info 
+                        {% elif shipment.status == 'Delivered' %} btn-primary 
+                        {% elif shipment.status == 'Feedback' %} btn-warning  
+                        {% elif shipment.status == 'Completed' %} btn-success  
+                        {% elif shipment.status == 'Late' %} btn-danger  
+                        {% endif %}
+                        ">{{shipment.status}}</a>
+                      </div>
+                        
+                    </div>
+                    <div class="col-4">
+                      
+                    </div>
+                    
+                    
+
                   </div>
                 </div>
 
@@ -206,8 +230,6 @@
                   </form><!-- End Profile Edit Form -->
 
                 </div>
-
-           
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <div class="row  ">
@@ -232,7 +254,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
 
               </div><!-- End Bordered Tabs -->

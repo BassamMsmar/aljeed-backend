@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy, reverse
-from .models import Shipment, Receipt
+from .models import Shipment
 # Create your views here.
 
 
@@ -51,6 +51,58 @@ class ShipmentCreateView(CreateView):
     def get_success_url(self):
         return reverse_lazy('shipment_list', kwargs={'status': 'All'})
     
+
+def change_stutus(request, pk):
+    shipment = get_object_or_404(Shipment, pk=pk)
+    if shipment.status == 'Recieved':
+        shipment.status = 'Processed'
+
+    elif shipment.status == 'Processed':
+        shipment.status = 'Shipped'
+
+    elif shipment.status == 'Processed':
+        shipment.status = 'Shipped'
+
+    elif shipment.status == 'Shipped':
+        shipment.status = 'Delivered'
+
+    elif shipment.status == 'Delivered':
+        shipment.status = 'Feedback'
+
+    elif shipment.status == 'Feedback':
+        shipment.status = 'Completed'
+
+
+    shipment.save()
+    return redirect('shipment_list', status='All')
+
+
+def change_stutus_detail(request, pk):
+    shipment = get_object_or_404(Shipment, pk=pk)
+    if shipment.status == 'Recieved':
+        shipment.status = 'Processed'
+
+    elif shipment.status == 'Processed':
+        shipment.status = 'Shipped'
+
+    elif shipment.status == 'Processed':
+        shipment.status = 'Shipped'
+
+    elif shipment.status == 'Shipped':
+        shipment.status = 'Delivered'
+
+    elif shipment.status == 'Delivered':
+        shipment.status = 'Feedback'
+
+    elif shipment.status == 'Feedback':
+        shipment.status = 'Completed'
+
+
+    shipment.save()
+    return redirect(f'shipment_detail/{{self.pk}}')
+
+  
+  
 
 
 

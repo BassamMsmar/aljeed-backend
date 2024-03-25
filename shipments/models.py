@@ -47,6 +47,7 @@ class Shipment(models.Model):
     customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
     fare = models.IntegerField(_("Fare"))
     premium = models.IntegerField(_("Premium"), null=True, blank=True)
+    fare_return = models.IntegerField(_("Return"), null=True, blank=True)
     code = models.ImageField(blank=True, null=True, upload_to='code')
     days_stayed = models.IntegerField(_("Days Stayed "), null=True, blank=True)
     stay_cost = models.IntegerField(_("Stay Cost") , null=True, blank=True)

@@ -39,7 +39,7 @@
             <div class="col-sm-5">
                 <div class="box-2" style="margin-top:20px; background-color: #fff;">
                     <h5 style=" text-align:center;">
-                        <p><span id="dotted">{{1725}}</span></p>
+                        <p><span id="dotted">{{object.total}}</span></p>
                     </h5>
                 </div>
             </div>
@@ -57,7 +57,7 @@
         <div class="row row-3">
             <div class="col-sm-8">
                 <h5>
-                    <p>أدفعوا الأمر : <span id="dotted">{{ object.driver }}</span></p>
+                    <p>أدفعوا الأمر : <span id="dotted">{{ object.shipment.driver }}</span></p>
                 </h5>
             </div>
             <div class="col-sm-4">
@@ -74,9 +74,9 @@
             <div class="col-sm-8">
                 <h5>
                     <p> وذلك عن : اجرة تحميل من 
-                        <span id="dotted">(  {{object.customer_branch.city}}  )</span> الى  
-                        <span id="dotted">(   {{ object.destination }}  ) </span>المصدر 
-                        <span id="dotted">( {{shipment.customer_branch.name}} )</span><p>
+                        <span id="dotted">(  {{object.shipment.customer_branch.city}}  )</span> الى  
+                        <span id="dotted">(   {{ object.shipment.destination }}  ) </span>المصدر 
+                        <span id="dotted">( {{object.shipment.customer_branch.name}} )</span><p>
                 </h5>
             </div>
            
@@ -84,37 +84,40 @@
         </div>
         <div class="row row-4">
             <div class="col-sm-3">
-                {% if object.fare %}
+                {% if object.shipment.fare %}
                 <h5 > 
-                    <p> أجرة تحميل : <span id="dotted">{{object.fare}}</span></p>
+                    <p> أجرة تحميل : <span id="dotted">{{object.shipment.fare}}</span></p>
                 </h5>
-                {% elif object.premium %}
+                {% endif %}
+                {% if object.shipment.fare_return %}
                 <h5 > 
-                    <p> أجرة رجعة :   <span id="dotted">200,00</span></p>
+                    <p> أجرة رجعة :   <span id="dotted">{{object.shipment.fare_return}}</span></p>
                 </h5>
                 {% endif %}
            
             </div>
             <div class="col-sm-3">
-                {% if object.stay_cost %}
+                {% if object.shipment.stay_cost %}
                 <h5 >
-                    <p> مـــباتــــات : <span id="dotted">{{object.stay_cost}}</span></p>
-                </h5>
-                {% elif object.deducted %}
-                <h5 >
-                    <p> خصومات : <span id="dotted">{{object.deducted}}</span></p>
+                    <p> مـــباتــــات : <span id="dotted">{{object.shipment.stay_cost}}</span></p>
                 </h5>
                 {% endif %}
-                {% if object.premium %}
+                {% if object.shipment.deducted %}
                 <h5 >
-                    <p> زيادة : <span id="dotted">{{object.premium}}</span></p>
+                    <p> خصومات : <span id="dotted">{{object.shipment.deducted}}</span></p>
                 </h5>
                 {% endif %}
+               
             </div> 
             <div class="col-sm-2">
+                {% if object.shipment.premium %}
+                <h5 >
+                    <p> زيادة : <span id="dotted">{{object.shipment.premium}}</span></p>
+                </h5>
+                {% endif %}
             </div>
             <div class="col-sm-4">
-                <h5>رقم كشف التحميل <span id="dotted">{{object.id}}</span> </h5>
+                <h5>رقم كشف التحميل <span id="dotted">{{object.shipment.id}}</span> </h5>
                 <h5>رقم الفـــاتورة .............................</h5>
                 <h5>رقم الشحــــن ..............................</h5>
             </div>
@@ -123,15 +126,15 @@
         <div  class="row row-4">
             <div class="col-sm-4">
                 <h5  style="text-align:center">المستلم</h5>
-                <h5 style="text-align:center" id="dotted">{{ object.driver }}</h5>
+                <h5 style="text-align:center" id="dotted">{{ object.shipment.driver }}</h5>
             </div>
             <div class="col-sm-4">
                 <h5 style="text-align:center">المندوب</h5>
-                <h5 style="text-align:center" id="dotted">{{ object.user }}</h5>
+                <h5 style="text-align:center" id="dotted">{{ object.shipment.user }}</h5>
             </div>
             <div class="col-sm-4">
                 <h5 style="text-align:center">الصندوق</h5>
-                <h5 style="text-align:center" id="dotted">{{ object.user }}</h5>
+                <h5 style="text-align:center" id="dotted">{{ object.shipment.user }}</h5>
             </div>
         </div>
         <hr class="m-3" style="border-top: 1px dotted red;">
@@ -139,8 +142,8 @@
             <div class="col-sm-8">
                 <div class="mx-5 my-2">
                     <h5  style="margin-right: 80px;"> - ملاحضات  : </h5>
-                    {% if object.notes %}
-                        <h5 style="margin-right: 80px;" >{{object.notes}}</h5>
+                    {% if object.shipment.notes %}
+                        <h5 style="margin-right: 80px;" >{{object.shipment.notes}}</h5>
                     {% else %}
                     <h5 style="margin-right: 80px;" id="dotted">لا يوجد ملاحضات</h5>
                     {% endif %}

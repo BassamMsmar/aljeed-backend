@@ -7,9 +7,9 @@
   </div>
   <!-- End Page Title -->
   <div class="pagetitle">
-    <a href="{% url 'shipment_create' %}">
+    <a href="{% url 'receipt_create' %}">
       <button type="button" class="btn btn-primary">
-        {% translate "Recent shipments"%}
+        {% translate "Recent Receipt"%}
       </button>
     </a>
   </div>
@@ -24,55 +24,44 @@
           <div class="col-12">
             <div class="card recent-sales overflow-auto">
               <div class="card-body">
-                <h5 class="card-title">{% translate "Shipments list" %}<span>| Today</span></h5>
+                <h5 class="card-title">{% translate "Receipt list" %}<span>| Today</span></h5>
 
                 <table class="table table-borderless table-bordered datatable table-striped table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      <th scope="col">{% translate "Bond No" %}</th>
                       <th scope="col">{% translate "driver" %}</th>
                       <th scope="col">{% translate "Customer" %} </th>
                       <th scope="col">{% translate "Bransh" %} </th>
-                      <th scope="col">{% translate "Waybill" %} </th>
+                      <th scope="col">{% translate "Catch Receipt" %} </th>
                       <th scope="col">{% translate "Source" %} </th>
                       <th scope="col">{% translate "Destination" %} </th>
                       <th scope="col">{% translate "User" %} </th>
-                      <th scope="col">{% translate "Status" %} </th>
-                      
                     </tr>
                   </thead>
                   <tbody>
-                    {% for shipment in object_list %}
+                    {% for object in object_list %}
                     <tr>
 
-                      <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}"
-                          style="text-decoration: none;">{{shipment.id}}</a></th>
+                      <th scope="row"><a href="{% url 'receipt_detail' object.id %}"
+                          style="text-decoration: none;">{{object.id}}</a></th>
 
                       <th scope="row"><a href="#" class="link-dark"
-                          style="text-decoration: none;">{{shipment.driver}}</a></th>
+                          style="text-decoration: none;">{{object.shipment.driver}}</a></th>
 
                       <th scope="row"><a href="#" class="link-dark"
-                          style="text-decoration: none;">{{shipment.customer_branch.customers}}</a></th>
+                          style="text-decoration: none;">{{object.shipment.customer_branch.customers}}</a></th>
                       <th scope="row"><a href="#" class="link-dark"
-                          style="text-decoration: none;">{{shipment.customer_branch.name}}</a></th>
+                          style="text-decoration: none;">{{object.shipment.customer_branch.name}}</a></th>
                       <td>
-                        <a href="{% url 'shipment_detail' shipment.id %}" target="_blank">
+                        <a href="{% url 'receipt_detail' object.id %}" target="_blank">
                           <i class="bi bi-receipt"></i>
                         </a>
                       </td>
-                      <td>{{shipment.customer_branch.city}} </td>
-                      <td> {{shipment.destination}}</td>
-                      <td>{{shipment.user}}</td>
-                      <td><span class="badge 
-                        {% if shipment.status == 'Recieved' %} bg-primary 
-                        {% elif shipment.status == 'Processed' %} bg-secondary 
-                        {% elif shipment.status == 'Shipped' %} bg-info 
-                        {% elif shipment.status == 'Delivered' %} bg-primary 
-                        {% elif shipment.status == 'Feedback' %} bg-warning  
-                        {% elif shipment.status == 'Completed' %} bg-success  
-                        {% elif shipment.status == 'Late' %} bg-danger  
-                        {% endif %}">{{shipment.status}}</span></td>
-                      </td>
+                      <td>{{object.shipment.customer_branch.city}} </td>
+                      <td> {{object.shipment.destination}}</td>
+                      <td>{{object.user}}</td>
+                     
                       </td>
                       
                     </tr>

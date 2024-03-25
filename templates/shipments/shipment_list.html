@@ -63,15 +63,19 @@
                       <td>{{shipment.customer_branch.city}} </td>
                       <td> {{shipment.destination}}</td>
                       <td>{{shipment.user}}</td>
-                      <td><span class="badge 
-                        {% if shipment.status == 'Recieved' %} bg-primary 
-                        {% elif shipment.status == 'Processed' %} bg-secondary 
-                        {% elif shipment.status == 'Shipped' %} bg-info 
-                        {% elif shipment.status == 'Delivered' %} bg-primary 
-                        {% elif shipment.status == 'Feedback' %} bg-warning  
-                        {% elif shipment.status == 'Completed' %} bg-success  
-                        {% elif shipment.status == 'Late' %} bg-danger  
-                        {% endif %}">{{shipment.status}}</span></td>
+
+                      <td>
+                        <a href="{% url 'change_stutus_detail' shipment.id  %}" class="btn 
+                        {% if shipment.status == 'Recieved' %} btn-primary 
+                        {% elif shipment.status == 'Processed' %} btn-secondary 
+                        {% elif shipment.status == 'Shipped' %} btn-info 
+                        {% elif shipment.status == 'Delivered' %} btn-primary 
+                        {% elif shipment.status == 'Feedback' %} btn-warning  
+                        {% elif shipment.status == 'Completed' %} btn-success  
+                        {% elif shipment.status == 'Late' %} btn-danger  
+                        {% endif %}
+                        ">{{shipment.status}}</a>
+                        </td>
                       </td>
                       </td>
                       

@@ -18,6 +18,7 @@ class Receipt(models.Model):
     shipment = models.ForeignKey(Shipment,  related_name='receipts_shipment', on_delete=models.SET_NULL, null=True)
     create_at = models.DateTimeField(_("Create At"), default=timezone.now)
     code = models.ImageField(_("Receipt code"), blank=True, null=True, upload_to='receipt_code')
+    total = models.IntegerField(_("Total"), default=0)
 
     def save(self, *args, **kwargs):
         # Generate QR code
@@ -38,4 +39,19 @@ class Receipt(models.Model):
         img.save(buffer, format='PNG')
         self.code.save(f'{self.id}_qrcode.png', File(buffer), save=False)
 
+        
+        if self.shipment:
+            fare = self.shipment.fare or 0
+            premium = self.shipment.premium or 0
+            fare_return = self.shipment.fare_return or 0
+            stay_cost = self.shipment.stay_cost or 0
+            deducted = self.shipment.deducted or 0
+
+            self.total = fare + premium + fare_return + stay_cost - deducted
+                
+
         super().save(*args, **kwargs)
+
+
+    def __str__(self):
+            return str(self.id)

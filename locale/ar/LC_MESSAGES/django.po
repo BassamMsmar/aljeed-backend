@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 00:41+0300\n"
+"POT-Creation-Date: 2024-03-23 16:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,13 +51,23 @@ msgstr "نوع الشاحنة"
 msgid "Rate"
 msgstr "التقييم"
 
-#: .\project\settings.py:164
+#: .\project\settings.py:166
 msgid "arbic"
 msgstr "عربي"
 
-#: .\project\settings.py:165
+#: .\project\settings.py:167
 msgid "English"
 msgstr "انجليزي"
+
+#: .\receipt\models.py:19 .\shipments\models.py:56
+msgid "Create At"
+msgstr "تاريخ الانشاء"
+
+#: .\receipt\models.py:20
+#, fuzzy
+#| msgid "Recent driver"
+msgid "Receipt code"
+msgstr "إضافة سائق"
 
 #: .\settings\models.py:8
 msgid "Company Name"
@@ -127,47 +137,51 @@ msgstr ""
 msgid "City English"
 msgstr "انجليزي"
 
-#: .\shipments\models.py:44
+#: .\shipments\models.py:27
+#, fuzzy
+#| msgid "Status "
+msgid "Status Stages"
+msgstr "الحالة"
+
+#: .\shipments\models.py:48
 msgid "Fare"
 msgstr "الاجرة"
 
-#: .\shipments\models.py:45
+#: .\shipments\models.py:49
 msgid "Premium"
 msgstr "زيادة"
 
-#: .\shipments\models.py:47
+#: .\shipments\models.py:51
 msgid "Days Stayed "
 msgstr "ايام مبات"
 
-#: .\shipments\models.py:48
+#: .\shipments\models.py:52
 msgid "Stay Cost"
 msgstr "اجرة المبات"
 
-#: .\shipments\models.py:49
+#: .\shipments\models.py:53
 msgid "Deducted"
 msgstr "خصم"
 
-#: .\shipments\models.py:50
-msgid "Status "
+#: .\shipments\models.py:54 .\templates\receipt\receipt_list.html:40
+#: .\templates\shipments\shipment_list.html:40
+msgid "Status"
 msgstr "الحالة"
 
-#: .\shipments\models.py:51 .\templates\shipments\shipment_list.html:36
+#: .\shipments\models.py:55 .\templates\receipt\receipt_list.html:38
+#: .\templates\shipments\shipment_list.html:38
 msgid "Destination"
 msgstr "الوجهه"
 
-#: .\shipments\models.py:52
-msgid "Create At"
-msgstr "تاريخ الانشاء"
-
-#: .\shipments\models.py:53
+#: .\shipments\models.py:57
 msgid "Expected Arrival Date"
 msgstr "تاريخ الوضصول المتوقع"
 
-#: .\shipments\models.py:54
+#: .\shipments\models.py:58
 msgid "Actual Delivery Date "
 msgstr "تاريخ الوضصول الفعلي "
 
-#: .\shipments\models.py:55
+#: .\shipments\models.py:59
 msgid "Notes"
 msgstr "ملاحظة"
 
@@ -175,56 +189,63 @@ msgstr "ملاحظة"
 msgid "Welcome"
 msgstr "مرحباً"
 
-#: .\templates\base.html:311 .\templates\settings\home.html:10
-#: .\templates\shipments\shipment_list.html:10
+#: .\templates\base.html:312 .\templates\receipt\receipt_list.html:6
+#: .\templates\settings\home.html:10 .\templates\shipments\shipment_list.html:6
 msgid "Dashboard"
 msgstr "لوحة المعلومات"
 
-#: .\templates\base.html:319
+#: .\templates\base.html:320
 msgid "Shipments"
 msgstr "الشحنات"
 
-#: .\templates\base.html:324 .\templates\settings\home.html:25
+#: .\templates\base.html:325 .\templates\settings\home.html:25
 msgid "All"
 msgstr "الكل"
 
-#: .\templates\base.html:329 .\templates\settings\home.html:52
+#: .\templates\base.html:330 .\templates\settings\home.html:52
 msgid "Recieved"
 msgstr "مرسلة للشحن"
 
-#: .\templates\base.html:334 .\templates\settings\home.html:80
+#: .\templates\base.html:335 .\templates\settings\home.html:80
 msgid "Processed"
 msgstr "قيد المعالجة"
 
-#: .\templates\base.html:339 .\templates\settings\home.html:106
+#: .\templates\base.html:340 .\templates\settings\home.html:106
 msgid "Shipped"
 msgstr "قيد الشحن"
 
-#: .\templates\base.html:344 .\templates\settings\home.html:131
+#: .\templates\base.html:345 .\templates\settings\home.html:131
 msgid "Delivered"
 msgstr "قيد التسليم"
 
-#: .\templates\base.html:349 .\templates\settings\home.html:156
+#: .\templates\base.html:350 .\templates\settings\home.html:156
 msgid "Feedback"
 msgstr "قيد المراجعة"
 
-#: .\templates\base.html:354 .\templates\settings\home.html:181
+#: .\templates\base.html:355 .\templates\settings\home.html:181
 msgid "Late"
 msgstr "متأخرة"
 
-#: .\templates\base.html:359 .\templates\settings\home.html:206
+#: .\templates\base.html:360 .\templates\settings\home.html:206
 msgid "Completed"
 msgstr "مكتملة"
 
-#: .\templates\base.html:370
+#: .\templates\base.html:371
+#, fuzzy
+#| msgid "Recent shipments"
+msgid "Receipts"
+msgstr "إضافة شحنة"
+
+#: .\templates\base.html:377
 msgid "Deiver"
 msgstr "السائق"
 
-#: .\templates\base.html:378 .\templates\shipments\shipment_list.html:32
+#: .\templates\base.html:385 .\templates\receipt\receipt_list.html:34
+#: .\templates\shipments\shipment_list.html:34
 msgid "Customer"
 msgstr "العميل"
 
-#: .\templates\base.html:386
+#: .\templates\base.html:393
 msgid "Admin"
 msgstr "لوحة التحكم"
 
@@ -232,38 +253,69 @@ msgstr "لوحة التحكم"
 msgid "Recent driver"
 msgstr "إضافة سائق"
 
-#: .\templates\shipments\shipment_list.html:13
+#: .\templates\receipt\receipt_list.html:12
+#: .\templates\shipments\shipment_list.html:12
 msgid "Recent shipments"
 msgstr "إضافة شحنة"
 
-#: .\templates\shipments\shipment_list.html:25
+#: .\templates\receipt\receipt_list.html:27
+#: .\templates\shipments\shipment_list.html:27
 msgid "Shipments list"
 msgstr "قائمة الشحنات"
 
-#: .\templates\shipments\shipment_list.html:31
+#: .\templates\receipt\receipt_list.html:33
+#: .\templates\shipments\shipment_list.html:33
 msgid "driver"
 msgstr "سائق"
 
-#: .\templates\shipments\shipment_list.html:33
+#: .\templates\receipt\receipt_list.html:35
+#: .\templates\shipments\shipment_list.html:35
 msgid "Bransh"
 msgstr "الفرع"
 
-#: .\templates\shipments\shipment_list.html:34
+#: .\templates\receipt\receipt_list.html:36
+#: .\templates\shipments\shipment_detail.html:29
+#: .\templates\shipments\shipment_list.html:36
 msgid "Waybill"
 msgstr "بوليصة شحن"
 
-#: .\templates\shipments\shipment_list.html:35
+#: .\templates\receipt\receipt_list.html:37
+#: .\templates\shipments\shipment_list.html:37
 msgid "Source"
 msgstr "المصدر"
 
-#: .\templates\shipments\shipment_list.html:37
+#: .\templates\receipt\receipt_list.html:39
+#: .\templates\shipments\shipment_list.html:39
 msgid "User"
 msgstr "المستخدم"
 
-#: .\templates\shipments\shipment_list.html:38
-msgid "Status"
-msgstr "الحالة"
+#: .\templates\shipments\shipment_detail.html:47
+msgid "Invoice"
+msgstr ""
 
-#: .\templates\shipments\shipment_list.html:39
-msgid "completion"
-msgstr "مكتملة"
+#: .\templates\shipments\shipment_detail.html:63
+#, fuzzy
+#| msgid "Recent shipments"
+msgid "Receipt"
+msgstr "إضافة شحنة"
+
+#: .\templates\shipments\shipment_detail.html:90
+#, fuzzy
+#| msgid "Shipments list"
+msgid "Shipment Details"
+msgstr "قائمة الشحنات"
+
+#: .\templates\shipments\shipment_detail.html:94
+#, fuzzy
+#| msgid "Shipments"
+msgid "Edit Shipment"
+msgstr "الشحنات"
+
+#: .\templates\shipments\shipment_detail.html:100
+#, fuzzy
+#| msgid "Recent driver"
+msgid "Recent Activity"
+msgstr "إضافة سائق"
+
+#~ msgid "completion"
+#~ msgstr "مكتملة"
