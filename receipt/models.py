@@ -20,6 +20,8 @@ class Receipt(models.Model):
     code = models.ImageField(_("Receipt code"), blank=True, null=True, upload_to='receipt_code')
     total = models.IntegerField(_("Total"), default=0)
 
+
+
     def save(self, *args, **kwargs):
         # Generate QR code
         super().save(*args, **kwargs)

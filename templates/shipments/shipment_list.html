@@ -7,7 +7,7 @@
   </div>
   <!-- End Page Title -->
   <div class="pagetitle">
-    <a href="{% url 'shipment_create' %}">
+    <a href="{% url 'shipment_create'  %}">
       <button type="button" class="btn btn-primary">
         {% translate "Recent shipments"%}
       </button>
@@ -33,10 +33,11 @@
                       <th scope="col">{% translate "driver" %}</th>
                       <th scope="col">{% translate "Customer" %} </th>
                       <th scope="col">{% translate "Bransh" %} </th>
-                      <th scope="col">{% translate "Waybill" %} </th>
                       <th scope="col">{% translate "Source" %} </th>
                       <th scope="col">{% translate "Destination" %} </th>
                       <th scope="col">{% translate "User" %} </th>
+                      <th scope="col">{% translate "Waybill" %} </th>
+                      <th scope="col">{% translate "Receipt" %} </th>
                       <th scope="col">{% translate "Status" %} </th>
                       
                     </tr>
@@ -55,14 +56,28 @@
                           style="text-decoration: none;">{{shipment.customer_branch.customers}}</a></th>
                       <th scope="row"><a href="#" class="link-dark"
                           style="text-decoration: none;">{{shipment.customer_branch.name}}</a></th>
+                     
+                      <td>{{shipment.customer_branch.city}} </td>
+                      <td> {{shipment.destination}}</td>
+                      <td>{{shipment.user}}</td>
+                      
                       <td>
                         <a href="{% url 'shipment_detail' shipment.id %}" target="_blank">
                           <i class="bi bi-receipt"></i>
                         </a>
                       </td>
-                      <td>{{shipment.customer_branch.city}} </td>
-                      <td> {{shipment.destination}}</td>
-                      <td>{{shipment.user}}</td>
+                      <td>
+                        {% if shipment.receipts_shipment.exists  %}
+                        <a href="{% url 'receipt_detail' shipment.receipts_shipment.last %}">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'receipt_create_from_list' shipment.id %}">
+                          <i class="bi bi-plus-square"></i>
+                        </a>
+                           
+                        {% endif %}
+                      </td>
 
                       <td>
                         <a href="{% url 'change_stutus_detail' shipment.id  %}" class="btn 
