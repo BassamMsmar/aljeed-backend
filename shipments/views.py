@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy, reverse
 from .models import Shipment
+from receipt.models import Receipt
 # Create your views here.
 
 
@@ -43,10 +44,6 @@ class ShipmentCreateView(CreateView):
     model = Shipment
     fields = ['driver', 'customer_branch', 'fare', 'premium', 'status', 'destination', 'expected_arrival_date']
 
-    def form_valid(self, form):
-        # Set the user field of the form with the current user
-        form.instance.user = self.request.user
-        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('shipment_list', kwargs={'status': 'All'})

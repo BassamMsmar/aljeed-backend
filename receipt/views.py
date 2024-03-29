@@ -25,26 +25,6 @@ class ReceiptCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('receipt_detail', kwargs={'pk': self.object.pk})
     
-from django.shortcuts import render, get_object_or_404
-from .forms import ReceiptForm
-from .models import Shipment
-
-def receipt_create_from_list(request, pk):
-    shipment = get_object_or_404(Shipment, pk=pk)
-    
-    if request.method == 'POST':
-        form = ReceiptForm(request.POST, request.FILES)
-        if form.is_valid():
-            receipt = form.save(commit=False)
-            receipt.shipment = shipment
-            receipt.save()
-            return redirect('receipt_list')
-    else:
-        # form = ReceiptForm()
-        form = ReceiptForm(initial={'shipment': shipment})
-    
-    
-    return render(request, 'receipt/receipt_form.html', {'form': form})
 
 class ReceiptUpdate(UpdateView):
     model = Receipt
