@@ -45,6 +45,11 @@ class ShipmentCreateView(CreateView):
     fields = ['driver', 'customer_branch', 'fare', 'premium', 'status', 'destination', 'expected_arrival_date']
 
 
+    def form_valid(self, form):
+        # تعيين المستخدم الحالي إلى حقل "user" في الشحنة
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse_lazy('shipment_list', kwargs={'status': 'All'})
     

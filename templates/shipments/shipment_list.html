@@ -72,10 +72,9 @@
                           <i class="bi bi-eye"></i>
                         </a>
                         {% else %}
-                        <a href="{% url 'receipt_update' shipment.id %}">
+                        <a href="{% url 'receipt_create_from_list' shipment.id %}">
                           <i class="bi bi-plus-square"></i>
                         </a>
-                           
                         {% endif %}
                       </td>
 

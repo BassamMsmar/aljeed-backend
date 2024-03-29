@@ -46,7 +46,6 @@ class Shipment(models.Model):
     driver = models.ForeignKey(Driver,  related_name='shipments_driver', on_delete=models.SET_NULL, null=True)
     customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
     fare = models.IntegerField(_("Fare"))
-    return_fare = models.IntegerField(_("Return Fare"), null=True, blank=True)
     premium = models.IntegerField(_("Premium"), null=True, blank=True)
     fare_return = models.IntegerField(_("Return"), null=True, blank=True)
     code = models.ImageField(blank=True, null=True, upload_to='code')

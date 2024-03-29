@@ -50,6 +50,8 @@ class Receipt(models.Model):
         buffer = BytesIO()
         img.save(buffer, format='PNG')
         self.code.save(f'{self.id}_qrcode.png', File(buffer), save=False)
+
+        self.total = (self.fare or 0) + (self.premium or 0) + (self.fare_return or 0) + (self.stay_cost or 0) - (self.deducted or 0)
         super().save(*args, **kwargs)
 
         
