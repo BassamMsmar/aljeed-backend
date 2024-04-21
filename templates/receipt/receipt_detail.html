@@ -26,7 +26,7 @@
             <div class="col-sm-5">
                 <h3>مؤسسة الجيد للنقليات</h3>
                 <h5>فرع جدة</h5>
-                <h5>التاريخ :  &nbsp; / &nbsp; / &nbsp; 20م</h5>
+                <h5>التاريخ :  {{ receipt.create_at|date:"Y/m/d" }}
             </div>
             <div class="col-sm-2"><img class="imgo" src="{% static 'img/logo.png'%}"></div>
             <div class="col-sm-5">
@@ -66,7 +66,7 @@
         <div  class="row row-4">
             <div class="col-sm-6 colored mr-1">
                 <h5 class="m-2" >
-                    <p>مبلغ وقدرة :  <span id="dotted">الف و سبعمائة وخمسة وعشرون ريال فقط</span></p>
+                    <p>مبلغ وقدرة :  <span id="dotted">{{total_text}} ريال فقط لا غير </span></p>
                 </h5>
             </div>  
         </div>
@@ -104,7 +104,7 @@
                 {% endif %}
                 {% if object.shipment.deducted %}
                 <h5 >
-                    <p> خصومات : <span id="dotted">{{object.shipment.deducted}}</span></p>
+                    <p class="text-danger"> خصومات : <span id="dotted">{{object.shipment.deducted}}</span></p>
                 </h5>
                 {% endif %}
                
@@ -130,7 +130,7 @@
             </div>
             <div class="col-sm-4">
                 <h5 style="text-align:center">المندوب</h5>
-                <h5 style="text-align:center" id="dotted">{{ object.shipment.user }}</h5>
+                <h5 style="text-align:center" id="dotted">{{ request.user.first_name }} {{ request.user.last_name }}</h5>
             </div>
             <div class="col-sm-4">
                 <h5 style="text-align:center">الصندوق</h5>
@@ -195,7 +195,7 @@
                 src="img/phone.png"><img class="img-size" src="img/whats.png"></p>
     </div> {% endcomment %}
 </body>
-<script src="js/main.js"></script>
+{% comment %} <script src="js/main.js"></script> {% endcomment %}
 </html>
 
 

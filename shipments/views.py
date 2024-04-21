@@ -3,12 +3,19 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy, reverse
 from .models import Shipment
+from django.db.models import Value
+
+from datetime import datetime
+from django.utils import timezone
+
+
 from receipt.models import Receipt
 # Create your views here.
 
 
 class ShipmentList(ListView):
     model = Shipment
+
 
     def get_queryset(self):
         # Get the status from the URL parameter, or default to 'All' if not provided
@@ -27,7 +34,33 @@ class ShipmentsDetail(UpdateView):
     template_name = 'shipments/shipment_detail.html'
     fields = ['driver', 'customer_branch', 'fare', 'days_stayed', 'stay_cost', 'deducted',
               'status', 'destination', 'expected_arrival_date', 'actual_delivery_date']
+    
 
+    def get_queryset(self):
+        # Get the queryset of shipments
+        queryset = super().get_queryset()
+
+        for shipment in queryset:
+            
+            date_1 = timezone.now()
+            date_2 = shipment.created_at
+
+# حساب الفرق بين التواريخ بالأيام
+            difference = date_1 - date_2
+          
+
+        queryset = queryset.annotate(days_since_creation=Value(difference.days))
+
+        
+        return queryset
+        
+          # Calculate days since creation for each shipment
+        today = datetime.today() 
+        queryset = queryset.annotate(days_since_creation=Value(today))
+   
+    
+        
+        return queryset
     def get_success_url(self):
         return reverse('shipment_detail', kwargs={'pk': self.object.pk})
 

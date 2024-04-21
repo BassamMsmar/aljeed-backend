@@ -54,7 +54,7 @@ class Shipment(models.Model):
     deducted = models.IntegerField(_("Deducted") , null=True, blank=True)
     status = models.TextField(_("Status"), choices=STATUS, null=True, blank=True, default=STATUS[0][0])
     destination = models.ForeignKey(City, verbose_name=_("Destination"), on_delete=models.CASCADE, null=True, blank=True)
-    create_at = models.DateTimeField(_("Create At"), default=timezone.now)
+    created_at = models.DateTimeField(_("Create At"), default=timezone.now)
     expected_arrival_date = models.DateTimeField(_("Expected Arrival Date"), null=True, blank=True, default=timezone.now)
     actual_delivery_date = models.DateTimeField(_("Actual Delivery Date "), null=True, blank=True, default=timezone.now)
     notes = models.TextField(_("Notes"), null=True, blank=True)

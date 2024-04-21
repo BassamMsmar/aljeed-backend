@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy, reverse
 from django.forms.models import model_to_dict
+from num2words import num2words
 
 from shipments.models import Shipment
 from shipments.forms import ShipmentForm
@@ -59,7 +60,7 @@ def create_receipt_from_list(request, pk):
             shipment.days_stayed = receipt.days_stayed
             shipment.stay_cost = receipt.stay_cost
             shipment.deducted = receipt.deducted
-            shipment.status = 'completed'
+            shipment.status = 'Completed'
             shipment.save()
             
             return redirect('receipt_detail', pk=form_receipt.instance.pk)
@@ -79,3 +80,9 @@ class ReceiptUpdate(UpdateView):
 class ReceiptDetail(DetailView):
     model = Receipt
     template_name = 'receipt/receipt_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        total_text = num2words(int(self.object.total ) , lang='ar')
+        context['total_text'] = total_text
+        return context

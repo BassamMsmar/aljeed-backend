@@ -7,7 +7,7 @@ from shipments.models import Shipment
 def home(request):
     if request.user.is_authenticated and request.user.is_superuser:
     # return render(request, 'base.html')
-        shipments = Shipment.objects.select_related('driver', 'customer_branch', 'user').all().order_by('-create_at')
+        shipments = Shipment.objects.select_related('driver', 'customer_branch', 'user').all().order_by('-created_at')
         recieved_shipment = Shipment.objects.all().filter(status='Recieved')
         processed_shipment = Shipment.objects.all().filter(status='Processed')
         shipped_shipment = Shipment.objects.all().filter(status='Shipped')
