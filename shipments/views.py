@@ -41,26 +41,14 @@ class ShipmentsDetail(UpdateView):
         queryset = super().get_queryset()
 
         for shipment in queryset:
-            
             date_1 = timezone.now()
             date_2 = shipment.created_at
-
-# حساب الفرق بين التواريخ بالأيام
             difference = date_1 - date_2
-          
 
         queryset = queryset.annotate(days_since_creation=Value(difference.days))
 
-        
         return queryset
         
-          # Calculate days since creation for each shipment
-        today = datetime.today() 
-        queryset = queryset.annotate(days_since_creation=Value(today))
-   
-    
-        
-        return queryset
     def get_success_url(self):
         return reverse('shipment_detail', kwargs={'pk': self.object.pk})
 
