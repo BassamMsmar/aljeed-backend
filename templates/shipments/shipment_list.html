@@ -49,8 +49,17 @@
                       <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}"
                           style="text-decoration: none;">{{shipment.id}}</a></th>
 
-                      <th scope="row"><a href="#" class="link-dark"
-                          style="text-decoration: none;">{{shipment.driver}} <br><span>(today)</span></a></th>
+                      <th scope="row">
+                        <a href="#" class="link-dark"
+                          style="text-decoration: none;">{{shipment.driver}} <br>
+                          {% if shipment.days_since_creation == 0 %}
+                          <span> اليوم</span>
+                          {% elif shipment.days_since_creation == 1 %}
+                          <span> اليوم</span>
+                          {% else %}
+                          <span> منذ : {{shipment.days_since_creation}} يوم</span>
+                          {% endif %}
+                        </a></th>
 
                       <th scope="row"><a href="#" class="link-dark"
                           style="text-decoration: none;">{{shipment.customer_branch.customers}}</a></th>

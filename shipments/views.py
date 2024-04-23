@@ -16,11 +16,33 @@ from receipt.models import Receipt
 class ShipmentList(ListView):
     model = Shipment
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_date = timezone.now()
+
+        # date_1 = timezone.now()
+        for shipment in context['object_list']:
+            date_created = shipment.created_at
+            days_since_creation = (current_date - date_created).days
+
+            shipment.days_since_creation = days_since_creation
+
+            
+            # Add 'days_since_creation' to each shipment in the context
+            
+            print(days_since_creation)
+            print('bassam')
+
+
+        
+        
+
+
+        return context
 
     def get_queryset(self):
         # Get the status from the URL parameter, or default to 'All' if not provided
         status = self.kwargs.get('status', 'All')
-        print(f'status = {status}')
         if status == 'All':
             # If 'All' is selected, return all shipments
             return Shipment.objects.all()
