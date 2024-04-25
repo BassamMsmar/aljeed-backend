@@ -393,6 +393,12 @@
           <span>{% translate "Admin" %}</span>
         </a>
       </li><!-- End Admin Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'send_sms' status='All' %}">
+          <i class="ri-admin-line"></i>
+          <span>{% translate "SMS System" %}</span>
+        </a>
+      </li><!-- End Admin Page Nav -->
     
 
       {% endif %}

@@ -27,16 +27,6 @@ class ShipmentList(ListView):
 
             shipment.days_since_creation = days_since_creation
 
-            
-            # Add 'days_since_creation' to each shipment in the context
-            
-            print(days_since_creation)
-            print('bassam')
-
-
-        
-        
-
 
         return context
 
@@ -145,9 +135,4 @@ def change_stutus_detail(request, pk):
 
     shipment.save()
     return redirect(f'shipment_detail/{{self.pk}}')
-
-  
-  
-
-
 

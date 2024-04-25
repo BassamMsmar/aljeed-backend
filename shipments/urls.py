@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import ShipmentList, ShipmentsDetail,  ShipmentCreateView, waybill, change_stutus
 
+from .send_sms import send_sms
+
 
 
 
@@ -10,7 +12,8 @@ urlpatterns = [
     path('change_stutus/<int:pk>/', change_stutus, name='change_stutus'),
     path('change_stutus_detail/<int:pk>/', change_stutus, name='change_stutus_detail'),
     path('waybill/<int:pk>/', waybill.as_view(), name='waybill_detail'),
-    
     path('create/', ShipmentCreateView.as_view(), name='shipment_create'),
+
+    path("send_sms/<str:status>", send_sms, name="send_sms"),
 
 ] 

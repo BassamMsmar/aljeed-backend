@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 urlpatterns = [
     path('', include('settings.urls')),
     path('admin/', admin.site.urls),
@@ -28,6 +29,8 @@ urlpatterns = [
     path('driver/', include('drivers.urls')),
     path('receipt/', include('receipt.urls')),
 
+
+    
     path("__debug__/", include("debug_toolbar.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
 
