@@ -7,7 +7,7 @@
   </div>
   <!-- End Page Title -->
   <div class="pagetitle">
-    <a href="{% url 'shipment_create' %}">
+    <a href="{% url 'shipment_create'  %}">
       <button type="button" class="btn btn-primary">
         {% translate "Recent shipments"%}
       </button>
@@ -33,11 +33,12 @@
                       <th scope="col">{% translate "driver" %}</th>
                       <th scope="col">{% translate "Customer" %} </th>
                       <th scope="col">{% translate "Bransh" %} </th>
-                      <th scope="col">{% translate "Waybill" %} </th>
                       <th scope="col">{% translate "Source" %} </th>
                       <th scope="col">{% translate "Destination" %} </th>
+                      <th scope="col">{% translate "Created At" %} </th>
                       <th scope="col">{% translate "User" %} </th>
-                      <th scope="col">{% translate "Status" %} </th>
+                      <th scope="col">{% translate "Waybill" %} </th>
+                      <th scope="col">{% translate "Receipt" %} </th>
                       <th scope="col">{% translate "Status" %} </th>
                       
                     </tr>
@@ -49,30 +50,57 @@
                       <th scope="row"><a href="{% url 'shipment_detail' shipment.id %}"
                           style="text-decoration: none;">{{shipment.id}}</a></th>
 
-                      <th scope="row"><a href="#" class="link-dark"
-                          style="text-decoration: none;">{{shipment.driver}}</a></th>
+                      <th scope="row">
+                        <a href="#" class="link-dark"
+                          style="text-decoration: none;">{{shipment.driver}} <br>
+                          {% if shipment.days_since_creation == 0 %}
+                          <span> اليوم</span>
+                          {% elif shipment.days_since_creation == 1 %}
+                          <span> اليوم</span>
+                          {% else %}
+                          <span> منذ : {{shipment.days_since_creation}} يوم</span>
+                          {% endif %}
+                        </a></th>
 
                       <th scope="row"><a href="#" class="link-dark"
                           style="text-decoration: none;">{{shipment.customer_branch.customers}}</a></th>
                       <th scope="row"><a href="#" class="link-dark"
                           style="text-decoration: none;">{{shipment.customer_branch.name}}</a></th>
+                     
+                      <td>{{shipment.customer_branch.city}} </td>
+                      <td> {{shipment.destination}}</td>
+                      <td>{{shipment.created_at|date:"d/m/Y"}}</td>
+                      <td>{{shipment.user}}</td>
+                      
                       <td>
                         <a href="{% url 'shipment_detail' shipment.id %}" target="_blank">
                           <i class="bi bi-receipt"></i>
                         </a>
                       </td>
-                      <td>{{shipment.customer_branch.city}} </td>
-                      <td> {{shipment.destination}}</td>
-                      <td>{{shipment.user}}</td>
-                      <td><span class="badge 
-                        {% if shipment.status == 'Recieved' %} bg-primary 
-                        {% elif shipment.status == 'Processed' %} bg-secondary 
-                        {% elif shipment.status == 'Shipped' %} bg-info 
-                        {% elif shipment.status == 'Delivered' %} bg-primary 
-                        {% elif shipment.status == 'Feedback' %} bg-warning  
-                        {% elif shipment.status == 'Completed' %} bg-success  
-                        {% elif shipment.status == 'Late' %} bg-danger  
-                        {% endif %}">{{shipment.status}}</span></td>
+                      <td>
+                        {% if shipment.receipts_shipment.exists  %}
+                        <a href="{% url 'receipt_detail' shipment.receipts_shipment.last %}">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'receipt_create_from_list' shipment.id %}">
+                          <i class="bi bi-plus-square"></i>
+                        </a>
+                        {% endif %}
+                      </td>
+
+                      <td>
+                        <a href="{% url 'change_stutus_detail' shipment.id  %}" class="btn 
+                        {% if shipment.status == 'Recieved' %} btn-primary 
+                        {% elif shipment.status == 'Processed' %} btn-secondary 
+                        {% elif shipment.status == 'Shipped' %} btn-info 
+                        {% elif shipment.status == 'Delivered' %} btn-primary 
+                        {% elif shipment.status == 'Feedback' %} btn-warning  
+                        {% elif shipment.status == 'Completed' %} btn-success  
+                        {% elif shipment.status == 'Late' %} btn-danger  
+                        {% endif %}
+                        ">{{shipment.status}}</a>
+                        </td>
                       </td>
                       </td>
                       

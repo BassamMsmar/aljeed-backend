@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     "debug_toolbar",
     'django_bootstrap5',
+   
     
     
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'drivers',
     'shipments',
     'settings',
+    'receipt',
 ]
 
 MIDDLEWARE = [

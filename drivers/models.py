@@ -27,6 +27,7 @@ class Driver(models.Model):
     language = models.CharField(_("Driver Language"),  max_length=120, choices=LANGUAHE, null=True, blank=True)
     truck_type =models.CharField(_("Truck Type"), max_length=120, choices=TRUCK_TYPE, null=True, blank=True)
     rate = models.IntegerField(_("Rate"), null=True, blank=True)
+    image_id = models.ImageField(_("Driver Image"), null=True, blank=True, upload_to='driver_image', default='driver_image/id_defult.png')
 
 
     def __str__(self) -> str:

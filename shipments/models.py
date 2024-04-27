@@ -47,13 +47,14 @@ class Shipment(models.Model):
     customer_branch = models.ForeignKey(Branch, related_name='shipments_company', on_delete=models.SET_NULL, null=True)
     fare = models.IntegerField(_("Fare"))
     premium = models.IntegerField(_("Premium"), null=True, blank=True)
+    fare_return = models.IntegerField(_("Return"), null=True, blank=True)
     code = models.ImageField(blank=True, null=True, upload_to='code')
     days_stayed = models.IntegerField(_("Days Stayed "), null=True, blank=True)
     stay_cost = models.IntegerField(_("Stay Cost") , null=True, blank=True)
     deducted = models.IntegerField(_("Deducted") , null=True, blank=True)
     status = models.TextField(_("Status"), choices=STATUS, null=True, blank=True, default=STATUS[0][0])
     destination = models.ForeignKey(City, verbose_name=_("Destination"), on_delete=models.CASCADE, null=True, blank=True)
-    create_at = models.DateTimeField(_("Create At"), default=timezone.now)
+    created_at = models.DateTimeField(_("Create At"), default=timezone.now)
     expected_arrival_date = models.DateTimeField(_("Expected Arrival Date"), null=True, blank=True, default=timezone.now)
     actual_delivery_date = models.DateTimeField(_("Actual Delivery Date "), null=True, blank=True, default=timezone.now)
     notes = models.TextField(_("Notes"), null=True, blank=True)
@@ -81,5 +82,6 @@ class Shipment(models.Model):
         self.code.save(f'{self.id}_qrcode.png', File(buffer), save=False)
 
         super().save(*args, **kwargs)
+
 
 
