@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     "debug_toolbar",
     'django_bootstrap5',
+     'rest_framework',
    
     
     
@@ -168,5 +169,10 @@ LANGUAGES = (
 )
 
 LOGIN_REDIRECT_URL = 'home'
-
 LOGOUT_REDIRECT_URL = 'login'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
