@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ShipmentList, ShipmentsDetail,  ShipmentCreateView, waybill, change_stutus
-
+from .api import ShipmentListApi
 from .send_sms import send_sms
 
 
@@ -15,5 +15,8 @@ urlpatterns = [
     path('create/', ShipmentCreateView.as_view(), name='shipment_create'),
 
     path("send_sms/<str:status>", send_sms, name="send_sms"),
+
+    #api
+    path('api/list', ShipmentListApi.as_view(), name='shipment_list_api')
 
 ] 
