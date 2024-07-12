@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     "debug_toolbar",
     'django_bootstrap5',
-     'rest_framework',
+    'rest_framework',
+    'easyaudit',
    
     
     
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'easyaudit.middleware.easyaudit.EasyAuditMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
