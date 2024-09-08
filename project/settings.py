@@ -33,28 +33,31 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # Default Django applications
+    'django.contrib.admin',        # Admin interface
+    'django.contrib.auth',         # Authentication system
+    'django.contrib.contenttypes', # Content types framework
+    'django.contrib.sessions',     # Session management
+    'django.contrib.messages',     # Messaging framework
+    'django.contrib.staticfiles',  # Static files management
 
-    "debug_toolbar",
-    'django_bootstrap5',
-    'rest_framework',
-    'easyaudit',
-   
+    # Third-party packages
+    'rest_framework',              # Django REST framework for building APIs
+    'django_filters',              # Django filters for filtering querysets
     
+    'debug_toolbar',               # Django Debug Toolbar for debugging
+    'django_bootstrap5',           # Bootstrap 5 integration for Django
     
-
-
-    'customers',
-    'drivers',
-    'shipments',
-    'settings',
-    'receipt',
+    'easyaudit',                   # Application for auditing and tracking changes
+    
+    # Custom applications
+    'customers',                   # Custom app for managing customers
+    'drivers',                     # Custom app for managing drivers
+    'shipments',                   # Custom app for managing shipments
+    'settings',                    # Custom app for settings and configurations
+    'receipt',                     # Custom app for handling receipts
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +78,9 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],     
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
 }
 
 ROOT_URLCONF = 'project.urls'
