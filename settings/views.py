@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 
 from shipments.models import Shipment
+import easyaudit
 
 # Create your views here.
 def home(request):
