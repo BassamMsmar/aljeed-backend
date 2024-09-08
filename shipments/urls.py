@@ -1,7 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 from .views import ShipmentList, ShipmentsDetail,  ShipmentCreateView, waybill, change_stutus
 from .api import ShipmentListApi
 from .send_sms import send_sms
+
+from rest_framework import routers
+
+from shipments import api
+router = routers.DefaultRouter()
+router.register('', api.ShipmentListApi)
 
 
 
@@ -17,6 +23,6 @@ urlpatterns = [
     path("send_sms/<str:status>", send_sms, name="send_sms"),
 
     #api
-    path('api/list', ShipmentListApi.as_view(), name='shipment_list_api')
+    path('api/list', include(router.urls), name='shipment_list_api')
 
 ] 

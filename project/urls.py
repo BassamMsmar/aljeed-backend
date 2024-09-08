@@ -34,6 +34,9 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
 
+
+    path('api-auth/', include('rest_framework.urls'))
+
 ]
 
 
