@@ -30,14 +30,11 @@ class Stages(models.Model):
         return self.status
 
 STATUS = (
-    ('Recieved','Recieved'),
-    ('Processed','Processed'),
-    ('Shipped','Shipped'),
-    ('Delivered','Delivered'),
-    ('Feedback','Feedback'),
-    ('Late','Late'),
-    ('Completed','Completed'),
- )
+    ('Shipped', _('Shipped')),
+    ('Delivered', _('Delivered')),
+    ('Late', _('Late')),
+    ('Feedback', _('Feedback')),
+)
 
 
 # Create your models here.

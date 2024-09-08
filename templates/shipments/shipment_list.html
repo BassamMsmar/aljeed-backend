@@ -56,7 +56,7 @@
                           {% if shipment.days_since_creation == 0 %}
                           <span> اليوم</span>
                           {% elif shipment.days_since_creation == 1 %}
-                          <span> اليوم</span>
+                          <span> منذ : {{shipment.days_since_creation|add:1}} يوم</span>
                           {% else %}
                           <span> منذ : {{shipment.days_since_creation}} يوم</span>
                           {% endif %}
@@ -69,7 +69,11 @@
                      
                       <td>{{shipment.customer_branch.city}} </td>
                       <td> {{shipment.destination}}</td>
+<<<<<<< HEAD
                       <td>{{shipment.created_at|date:"d/m/Y"}}</td>
+=======
+                      <td>{{shipment.created_at|date:"d/m/Y" }}</td>
+>>>>>>> 3af1f3fd22a049c80bf85ff0b9183839a0b3402b
                       <td>{{shipment.user}}</td>
                       
                       <td>
