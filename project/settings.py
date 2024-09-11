@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     # Default Django applications
     'django.contrib.admin',        # Admin interface
     'django.contrib.auth',         # Authentication system
-    'django.contrib.contenttypes', # Content types framework
+    'django.contrib.contenttypes',  # Content types framework
     'django.contrib.sessions',     # Session management
     'django.contrib.messages',     # Messaging framework
     'django.contrib.staticfiles',  # Static files management
@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     # Third-party packages
     'rest_framework',              # Django REST framework for building APIs
     'django_filters',              # Django filters for filtering querysets
-    
+
     'debug_toolbar',               # Django Debug Toolbar for debugging
     'django_bootstrap5',           # Bootstrap 5 integration for Django
-    
-    'easyaudit',                   # Application for auditing and tracking changes
-    
+
+    'easyaudit',
+    'corsheaders',                  # Application for auditing and tracking changes
+
     # Custom applications
     'customers',                   # Custom app for managing customers
     'drivers',                     # Custom app for managing drivers
@@ -59,10 +60,29 @@ INSTALLED_APPS = [
 ]
 
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
+}
+
+CORS_ALLOW_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+]
+ 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "django.middleware.locale.LocaleMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -73,15 +93,6 @@ MIDDLEWARE = [
     'easyaudit.middleware.easyaudit.EasyAuditMiddleware',
 ]
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],     
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-
-}
 
 ROOT_URLCONF = 'project.urls'
 
@@ -185,9 +196,3 @@ LANGUAGES = (
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
