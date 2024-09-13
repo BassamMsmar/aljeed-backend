@@ -1,3 +1,0 @@
-django-admin makemessages -l ar
-
-django-admin compilemessages

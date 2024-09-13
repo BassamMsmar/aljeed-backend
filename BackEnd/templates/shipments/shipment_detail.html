@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+
+<body>
+
+  <main id="main" class="main">
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-3">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="{{ object.driver.image_id.url }}" alt="Profile" class="">
+              <h2>{{ object.driver }}</h2>
+              <h3>{{ object.driver.truck_type }}</h3>
+              
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body profile-card pt-2 d-flex flex-column align-items-center">
+
+              <h3>{% translate "Waybill" %}</h3>
+              <div class="pt-2">
+                <a href="#" class="btn btn-primary btn-sm"
+                  title="Upload new profile image"><i
+                    class="bi bi-upload"></i></a>
+                <a href="{% url 'waybill_detail' object.id %}" target="_blank" class="btn btn-success btn-sm"
+                  title="Remove my profile image"><i
+                    class="bi bi-eye"></i></a>
+                 
+                <a href="#" class="btn btn-danger btn-sm"
+                  title="Remove my profile image"><i
+                    class="bi bi-trash"></i></a>
+              </div>
+           
+              
+            </div>
+            <div class="card-body profile-card pt-2 d-flex flex-column align-items-center">
+
+              <h3>{% translate "Invoice" %}</h3>
+              <div class="pt-2">
+                <a href="#" class="btn btn-primary btn-sm"
+                  title="Upload new profile image"><i
+                    class="bi bi-upload"></i></a>
+                <a href="#" class="btn btn-success btn-sm"
+                  title="Remove my profile image"><i
+                    class="bi bi-eye"></i></a>
+                <a href="#" class="btn btn-danger btn-sm"
+                  title="Remove my profile image"><i
+                    class="bi bi-trash"></i></a>
+              </div>
+           
+              
+            </div>
+            <div class="card-body profile-card pt-2 d-flex flex-column align-items-center">
+              <h3>{% translate "Receipt" %}</h3>
+              <div class="pt-2">
+                <a href="#" class="btn btn-primary btn-sm"
+                  title="Upload new profile image"><i
+                    class="bi bi-upload"></i></a>
+                <a href="{% url 'receipt_detail' object.id %}"
+                target="_blank" class="btn btn-success btn-sm"
+                  title="Remove my profile image"><i
+                    class="bi bi-eye"></i></a>
+                <a href="#" class="btn btn-danger btn-sm"
+                  title="Remove my profile image"><i
+                    class="bi bi-trash"></i></a>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+
+        <div class="col-xl-9">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">{% translate "Shipment Details" %}</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">{% translate "Edit Shipment" %}</button>
+                </li>
+
+               
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">{% translate "Recent Activity" %} </button>
+                </li>
+
+              </ul>
+              
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="card-title">بيانات الشحنة </h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">اسم السائق</div>
+                        <div class="col-lg-9 col-md-8">{{ object.driver }}</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">نوع السيارة</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ object.driver.truck_type }}</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">مصدر التحميل</div>
+                        <div
+                          class="col-lg-9 col-md-8">{{object.customer_branch.city}}</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">تاريخ التحميل</div>
+                        <div
+                          class="col-lg-9 col-md-8">{{shipment.created_at|date:"d/m/Y"}}</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">مكان التنزيل</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ object.destination }}</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">المندوب
+                          المسئول</div>
+                        <div class="col-lg-9 col-md-8">{{object.user}}</div>
+                      </div>
+
+                      
+                    </div>
+
+                    <div class="col-6">
+                      <h5 class="card-title">بياتنات الاجرة </h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">الأجرة </div>
+                        <div class="col-lg-9 col-md-8">{{object.fare}}</div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">زيادة</div>
+                        <div class="col-lg-9 col-md-8">{{object.premium}}</div>
+                      </div>
+                    
+                     
+
+                     
+                      <div class="row">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">عدد ايام المبات</div>
+                          <div class="col-lg-9 col-md-8">
+                            {{object.days_stayed}}
+                          </div>
+                        </div>
+                        
+
+                       
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">الميبات</div>
+                          <div
+                            class="col-lg-9 col-md-8">{{object.stay_cost}}</div>
+                        </div>
+                       
+
+                        
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">الخصم</div>
+                          <div
+                            class="col-lg-9 col-md-8">{{object.deducted}}
+                          </div>
+                        </div>
+                        
+                        <!-- تعمل لاحقاً بجافا سكربت -->
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 label">الأجمالي</div>
+                          <div class="col-lg-9 col-md-8">
+                            {{ object.fare|default:0|add:object.premium|default:0 }}
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                      <div class="row">
+                        <div class="label">{% translate 'Shipment Status'%}</div>
+                        <a href="{% url 'change_stutus_detail' shipment.id  %}" class="btn 
+                        {% if shipment.status == 'Recieved' %} btn-primary 
+                        {% elif shipment.status == 'Processed' %} btn-secondary 
+                        {% elif shipment.status == 'Shipped' %} btn-info 
+                        {% elif shipment.status == 'Delivered' %} btn-primary 
+                        {% elif shipment.status == 'Feedback' %} btn-warning  
+                        {% elif shipment.status == 'Completed' %} btn-success  
+                        {% elif shipment.status == 'Late' %} btn-danger  
+                        {% endif %}
+                        ">{{shipment.status}}</a>
+                      </div>
+                        
+                    </div>
+                    <div class="col-4">
+                      
+                    </div>
+                    
+                    
+
+                  </div>
+                </div>
+
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                  <!-- Profile Edit Form -->
+                  <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button button_type="submit" content="حفظ التعديل" %}
+                  </form><!-- End Profile Edit Form -->
+
+                </div>
+
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <div class="row  ">
+                    <div class="btn-toolbar align-center m-auto" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2" role="group"
+                        aria-label="First group">
+                        <button type="button"
+                          class="btn {% if object.status  == 'Recieved' or object.status  == 'Processed' or object.status  == 'Shipped' or object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Recieved</button>
+                        <button type="button"
+                          class="btn {% if object.status  == 'Processed' or object.status  == 'Shipped' or object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Processed</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Shipped' or object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Shipped</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Delivered' or object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Delivered</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Feedback' or object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Feedback</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Late'  or object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Late</button>
+                        <button type="button"
+                          class="btn {% if  object.status  == 'Completed' %}btn-primary{% else %}btn-outline-primary{% endif %}">Completed</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main><!-- End #main -->
+
+  {% endblock %}

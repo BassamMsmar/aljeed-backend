@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  
+
+    <!-- Recent Sales -->
+    <div class="col-lg-12">
+        <div class="row">
+
+            <!-- Recieved Card -->
+
+
+            <!-- Recent Sales -->
+           
+                    <h1>{{object}}</h1>
+                <div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <table class="table table-borderless datatable  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">اسم العميل </th>
+                                    <th scope="col"> شحنات قيد المعالجة</th>
+                                    <th scope="col"> شحنات قديد التحميل </th>
+                                    <th scope="col"> شحنات قيد التسليم </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for customer in object.branch_customers.all %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td><a class="text-reset text-decoration-none" href="#">{{ customer.name }}</a></td>
+                                    <td>{{ customer.shipments_company.all.count }}</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End Recent Sales -->
+        </div>
+    </div><!-- End Left side columns -->
+    </div>
+    <!-- End Recent Sales -->
+</main>
+
+{% endblock %}

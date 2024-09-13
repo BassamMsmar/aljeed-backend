@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+<main id="main" class="main">
+  <div class="row">
+    <div class="col-md-12 col-lg-5">
+      <h2>Create a New Shipment</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="Create Shipment" %}
+      </form>
+    </div>
+  </div>
+
+</main>
+{% endblock %}
