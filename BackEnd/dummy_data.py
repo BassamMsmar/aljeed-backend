@@ -90,8 +90,8 @@ if __name__ == "__main__":
     number_of_drivers = 100
     number_of_shipments = 100
 
-    # print(f"Creating {number_of_drivers} fake drivers...")
-    # create_multiple_drivers(number_of_drivers)
+    print(f"Creating {number_of_drivers} fake drivers...")
+    create_multiple_drivers(number_of_drivers)
 
     print(f"Creating {number_of_shipments} fake shipments...")
     create_multiple_shipments(number_of_shipments)
