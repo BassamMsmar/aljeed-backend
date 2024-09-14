@@ -1,27 +1,20 @@
-import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// src/components/App.jsx
+import React from 'react';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Main from './components/Main';
+import './styles/App.css'; // استيراد ملف CSS الرئيسي
 
-import ShipmentList from "./component/ShipmentList.jsx";
-import Header from "./component/Header.jsx";
-import Sidebar from "./component/Sidebar.jsx";
-import MainContent from "./component/MainContent.jsx";
-
-import "./App.css";
-
-function App() {
+const App = () => {
   return (
-    <>
-      {/* 
-      
-      
-      <Footer />
-      <BackToTop /> */}
-      <MainContent />
+    <div className="app">
       <Header />
-      <Sidebar />
-      <ShipmentList />
-    </>
+      <div className="container">
+        <Sidebar />
+        <Main />
+      </div>
+    </div>
   );
-}
+};
 
 export default App;
