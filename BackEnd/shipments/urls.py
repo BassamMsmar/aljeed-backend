@@ -23,6 +23,6 @@ urlpatterns = [
     path("send_sms/<str:status>", send_sms, name="send_sms"),
 
     #api
-    path('api/list', include(router.urls), name='shipment_list_api')
+    path('api/list/', include(router.urls), name='shipment_list_api')
 
 ] 
