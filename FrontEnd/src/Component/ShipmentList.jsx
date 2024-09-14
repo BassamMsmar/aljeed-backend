@@ -1,7 +1,4 @@
-import React from "react";
-import "./TableStyles.css"; // Import your custom styles
-import { useEffect } from "react";
-
+import React, { useEffect } from "react";
 import { fetchShipments } from "../stores/api";
 import shipmentsStore from "../stores/useStore";
 
@@ -10,33 +7,19 @@ const ShipmentsList = () => {
 
   useEffect(() => {
     fetchShipments().then(setShipments);
-  });
-
-  const getStatusClass = (status) => {
-    switch (status) {
-      case "In Transit":
-        return "status-in-transit";
-      case "Completed":
-        return "status-completed";
-      case "Delayed":
-        return "status-delayed";
-      default:
-        return "";
-    }
-  };
+  }, [setShipments]); // Added dependency array to avoid infinite loop
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Shipment Information</h2>
-      <table className="table table-responsive-md table-bordered table-striped table-hover">
-        <thead className="thead-dark">
+    <div>
+      <table>
+        <thead>
           <tr>
             <th>Driver Name</th>
-            <th>Branch Name</th>
+            <th>Customer Branch</th>
             <th>Destination</th>
-            <th>Shipment Number</th>
+            <th>ID</th>
             <th>Status</th>
-            <th>Delivery Date</th>
+            <th>Actual Delivery Date</th>
             <th>Fare</th>
             <th>Premium</th>
           </tr>
@@ -54,9 +37,7 @@ const ShipmentsList = () => {
               </td>
               <td>{shipment.id}</td>
               <td>
-                <button
-                  className="btn btn-success"
-                >
+                <button className="btn btn-success">
                   {shipment.status}
                 </button>
               </td>
