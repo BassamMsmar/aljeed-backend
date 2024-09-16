@@ -11,7 +11,14 @@ class CitySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CustomersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customers
+        fields = ['name']
+
+
 class BranchSerializer(serializers.ModelSerializer):
+    customers = CustomersSerializer(read_only=True)
     class Meta:
         model = Branch
         fields = '__all__'
