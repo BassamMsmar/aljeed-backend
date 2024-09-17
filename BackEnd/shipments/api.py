@@ -1,8 +1,12 @@
 from rest_framework import viewsets
 from rest_framework import filters
+from rest_framework.response import Response
 
 from .serializers import ShipmentSerializer
-from .models import Shipment
+from .models import Shipment, STATUS
+
+
+
 
 
 class ShipmentListApi(viewsets.ModelViewSet):
