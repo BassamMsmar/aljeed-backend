@@ -8,7 +8,6 @@ class CoustomresSerializer(serializers.ModelSerializer):
 
 
 class BranchSerializer(serializers.ModelSerializer):
-    # customers = CoustomresSerializer(many=True)
     class Meta:
         model = Branch
         fields = '__all__'

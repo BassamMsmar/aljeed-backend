@@ -6,7 +6,8 @@ from rest_framework import routers
 
 from customers import api
 router = routers.DefaultRouter()
-router.register('', api.BranchViewSetApi)
+router.register('customers', api.CustomersViewSetApi)
+router.register('branch', api.BranchViewSetApi)
 
 
 urlpatterns = [
@@ -14,6 +15,10 @@ urlpatterns = [
     path('<int:pk>/', CustomersDetail.as_view(), name='customer_detail'),
 
     #api 
-    path('api/list', include(router.urls)),
+    path('api/', include(router.urls)),
+    path('api/', include(router.urls)),
+
+
+
 
 ]
