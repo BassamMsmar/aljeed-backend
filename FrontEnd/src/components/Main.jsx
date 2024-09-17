@@ -1,15 +1,17 @@
-// src/components/Main.jsx
-import React from "react";
 import ShipmentsTable from "./shipments/ShipmentsTable";
-import  Filter from "./shipments/Filter";
-import "../styles/Main.css"; // استيراد ملف CSS الخاص بـ Main
+import Filter from "./shipments/Filter";
 
 const Main = () => {
   return (
     <main className="main">
-      
-      <Filter />
-      <ShipmentsTable />
+      <div className="row">
+        <div className="col-2 ">
+          <Filter />
+        </div>
+        <div className="col-10">
+          <ShipmentsTable />
+        </div>
+      </div>
     </main>
   );
 };

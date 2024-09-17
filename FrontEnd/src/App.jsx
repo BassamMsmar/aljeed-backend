@@ -9,8 +9,8 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <div className="container">
-        <Sidebar />
+      <div className="">
+        {/* <Sidebar /> */}
         <Main />
       </div>
     </div>
@@ -18,3 +18,4 @@ const App = () => {
 };
 
 export default App;
+
