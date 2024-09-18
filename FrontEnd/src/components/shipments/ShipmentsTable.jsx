@@ -1,16 +1,29 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchShipments } from "../../stores/api"; // Adjust the correct path
 import shipmentsStore from "../../stores/useStore"; // Adjust the correct path
 
 const ShipmentsList = () => {
   const { shipments, setShipments } = shipmentsStore();
+  const [loading, setLoading] = useState(true); // حالة تحميل البيانات
 
   useEffect(() => {
-    fetchShipments().then(setShipments);
+    const fetchData = async () => {
+      try {
+        setLoading(true); // تعيين حالة الجلب إلى true
+        const data = await fetchShipments();
+        setShipments(data); // تعيين البيانات في الـ store
+      } catch (error) {
+        console.error("Error fetching shipments:", error);
+      } finally {
+        setLoading(false); // بعد انتهاء الجلب بنجاح أو حدوث خطأ
+      }
+    };
+
+    fetchData();
   }, [setShipments]);
 
   const ShipmentsTable = ({ shipments }) => (
-    <div className="container mt-4">
+    <div className="container user-id-status-container mt-2">
       <table className="table table-striped table-bordered table-hover">
         <thead className="thead-dark">
           <tr>
@@ -30,7 +43,7 @@ const ShipmentsList = () => {
             <tr key={shipment.id}>
               <td>{shipment.id}</td>
               <td>{shipment.driver.name}</td>
-              <td>{shipment.customer_branch.customers.name}</td>{" "}
+              <td>{shipment.customer_branch.customers.name}</td>
               {/* Accessing customer name */}
               <td>{shipment.customer_branch.city}</td>
               <td>{shipment.destination.name_ar}</td>
@@ -75,7 +88,15 @@ const ShipmentsList = () => {
     </div>
   );
 
-  return <ShipmentsTable shipments={shipments} />;
+  return (
+    <div>
+      {loading ? (
+        <p>يتم جلب البيانات، يرجى الانتظار...</p> // عرض رسالة انتظار أثناء الجلب
+      ) : (
+        <ShipmentsTable shipments={shipments} /> // عرض الجدول بعد جلب البيانات
+      )}
+    </div>
+  );
 };
 
 export default ShipmentsList;

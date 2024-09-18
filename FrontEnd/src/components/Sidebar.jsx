@@ -1,3 +1,5 @@
+// import { useEffect } from "react";
+
 const Sidebar = () => {
   return (
     <aside className="sidebar">

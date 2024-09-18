@@ -1,14 +1,14 @@
 import ShipmentsTable from "./shipments/ShipmentsTable";
-import Filter from "./shipments/Filter";
+import ShipmentsFilter from "./shipments/ShipmentsFilter";
 
 const Main = () => {
   return (
     <main className="main">
       <div className="row">
-        <div className="col-2 ">
-          <Filter />
+        <div className="col-4 ">
+          <ShipmentsFilter />
         </div>
-        <div className="col-10">
+        <div className="col-8">
           <ShipmentsTable />
         </div>
       </div>
