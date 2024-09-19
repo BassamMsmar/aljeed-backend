@@ -35,16 +35,15 @@ const ShipmentsFilter = () => {
     }));
   };
 
-  const [selectedUsers, setSelectedUsers] = useState([]);
-  const handleSelectedUsers = (e) => {
-    const user = e.target.value;
+  // const [selectedUsers, setSelectedUsers] = useState([]);
+  // const handleSelectedUsers = (e) => {
+  //   const user = e.target.value;
 
-
-    setSelectedUsers((prevStatuses) => ({
-      ...prevStatuses,
-      user, // تغيير حالة العنصر الذي تم تغييره فقط
-    }));
-  };
+  //   setSelectedUsers((prevStatuses) => ({
+  //     ...prevStatuses,
+  //     user, // تغيير حالة العنصر الذي تم تغييره فقط
+  //   }));
+  // };
 
   useEffect(() => {
     fetchUsers().then(setUsers); // Fetch users and update the store
@@ -57,63 +56,82 @@ const ShipmentsFilter = () => {
   return (
     <div className="user-id-status-container">
       <h3>المستخدمين</h3>
+
+      {/* {users.map((user) => (
+        <div
+          key={user.id}
+          className="btn-group mb-2 mx-1"
+          role="group"
+          aria-label="Basic checkbox toggle button group"
+          style={{ width: "100px" }}
+        >
+          <input
+            type="checkbox"
+            className="btn-check"
+            value={user.value}
+            id={`btncheck${user.id}`}
+            autoComplete="off"
+          />
+          <label
+            className="btn btn-outline-primary btn-sm"
+            htmlFor={`status${user.id}`}
+            style={{ width: "100px", textAlign: "center" }}
+          >
+            {user.first_name}
+          </label>
+        </div>
+      ))} */}
+
       <div>
         {users.map((user) => (
-          <div
-            key={user.id}
-            className="btn-group mb-2 mx-1"
-            role="group"
-            aria-label="Basic checkbox toggle button group"
-            style={{ width: "100px" }}
-          >
-            <input
-              type="checkbox"
-              className="btn-check"
-              value={user.value}
-              id={`status${user.id}`}
-              autoComplete="off"
-            />
-            <label
-              className="btn btn-outline-primary btn-sm"
-              htmlFor={`status${user.id}`}
-              style={{ width: "100px", textAlign: "center" }}
+          <div key={user.id}>
+            <div
+              className="btn-group mb-2 mx-1"
+              role="group"
+              aria-label="Basic checkbox toggle button group"
+              style={{ width: "100px" }}
             >
-              {user.first_name}
-            </label>
+              <input
+                className="form-check-input"
+                type="checkbox"
+                value=""
+                id={`flexCheckDefault${user.id}`}
+              />
+              <label className="form-check-label" htmlFor="flexCheckDefault">
+                {user.first_name}
+              </label>
+            </div>
           </div>
         ))}
       </div>
 
       <h3>العملاء</h3>
-      {customers && customers.length > 0 ? (
-        <div>
-          {customers.map((customer) => (
-            <div
-              key={customer.id}
-              className="btn-group mb-2 mx-1"
-              role="group"
-              aria-label="Basic checkbox toggle button group"
-              style={{ width: "100px" }} // Set a fixed width for equal size
+
+      <div>
+        {customers.map((customer) => (
+          <div
+            key={customer.id}
+            className="btn-group mb-2 mx-1"
+            role="group"
+            aria-label="Basic checkbox toggle button group"
+            style={{ width: "100px" }} // Set a fixed width for equal size
+          >
+            <input
+              type="checkbox"
+              className="btn-check"
+              id={`btncheck${customer.id}`}
+              autoComplete="off"
+            />
+            <label
+              className="btn btn-outline-primary btn-sm"
+              htmlFor={`btncheck${customer.id}`}
+              style={{ width: "100px", textAlign: "center" }}
             >
-              <input
-                type="checkbox"
-                className="btn-check"
-                id={`btncheck${customer.id}`}
-                autoComplete="off"
-              />
-              <label
-                className="btn btn-outline-primary btn-sm"
-                htmlFor={`btncheck${customer.id}`}
-                style={{ width: "100px", textAlign: "center" }}
-              >
-                {customer.customers.name} {" - "} {customer.name}
-              </label>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>جاري التحميل...</p>
-      )}
+              {customer.customers.name} {" - "} {customer.name}
+            </label>
+          </div>
+        ))}
+      </div>
 
       <h3>حالة الشحنة</h3>
       <div>

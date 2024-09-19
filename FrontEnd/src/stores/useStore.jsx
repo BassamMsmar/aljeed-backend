@@ -5,20 +5,22 @@ import { create } from "zustand";
 const shipmentsStore = create((set) => ({
   shipments: [],
   users: [],
-  drivers: [],
   customers: [],
-  status: [
-    { value: "Shipped", label: "شُحنت" },
-    { value: "Delivered", label: "تم التسليم" },
-    { value: "Late", label: "متأخرة" },
-    { value: "Feedback", label: "تحتاج إلى مراجعة" },
-  ],
+  filters:{
+    selectedStatuses: {
+      Shipped: true,
+      Delivered: true,
+      Late: true,
+      Feedback: true
+    },
+    selectedUsers: [],
+    selectedCustomers: [],
+  },
 
   setShipments: (shipments) => set({ shipments }),
   setUsers: (users) => set({ users }),
-  setDrivers: (drivers) => set({ drivers }),
   setCustomers: (customers) => set({ customers }),
-  setShipmentStatuses: (shipmentStatuses) => set({ shipmentStatuses }),
+  setFilters: (filters) => set({ filters }),
 }));
 
 export default shipmentsStore;
