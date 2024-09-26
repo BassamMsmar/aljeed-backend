@@ -36,12 +36,7 @@ def create_multiple_drivers(n):
         print(f'Driver created: {driver}')
 
 
-STATUS = (
-    ('Shipped', _('Shipped')),
-    ('Delivered', _('Delivered')),
-    ('Late', _('Late')),
-    ('Feedback', _('Feedback')),
-)
+
 # توليد شحنة وهمية
 def create_fake_shipment():
     city = City.objects.order_by('?').first()
@@ -55,7 +50,7 @@ def create_fake_shipment():
     stay_cost = random.randint(100, 1000)
     deducted = random.randint(10, 100)
     
-    status = random.choice([status[0] for status in STATUS])
+    status = ShipmentStatus.objects.order_by('?').first()
     created_at = faker.date_time_this_year(before_now=True, after_now=False, tzinfo=timezone.get_current_timezone())
     expected_arrival_date = created_at + timedelta(days=random.randint(1, 10))
     actual_delivery_date = expected_arrival_date + timedelta(days=random.randint(0, 5))
@@ -94,13 +89,8 @@ if __name__ == "__main__":
     # create_multiple_drivers(number_of_drivers)
 
     print(f"Creating {number_of_shipments} fake shipments...")
-    create_multiple_shipments(number_of_shipments)
+    create_multiple_drivers(number_of_drivers)
+    # create_multiple_shipments(number_of_shipments)
 
     print(f"{number_of_drivers} drivers and {number_of_shipments} shipments created successfully.")
 
-
-# في ملف initial_data.json أو في management command
-ShipmentStatus.objects.create(name_en="Shipped", name_ar="تم الشحن")
-ShipmentStatus.objects.create(name_en="Delivered", name_ar="تم التوصيل")
-ShipmentStatus.objects.create(name_en="Late", name_ar="متأخر")
-ShipmentStatus.objects.create(name_en="Feedback", name_ar="تم التقييم")
