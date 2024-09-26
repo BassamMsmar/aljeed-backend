@@ -7,7 +7,7 @@ django.setup()
 
 from faker import Faker
 import random
-from shipments.models import Shipment, City, Driver, Branch
+from shipments.models import Shipment, City, Driver, Branch, ShipmentStatus
 from django.contrib.auth.models import User
 from datetime import timedelta
 from django.utils import timezone
@@ -87,7 +87,7 @@ def create_multiple_shipments(n):
         print(f'Shipment created: {shipment}')
 
 if __name__ == "__main__":
-    number_of_drivers = 100
+    number_of_drivers = 30
     number_of_shipments = 100
 
     # print(f"Creating {number_of_drivers} fake drivers...")
@@ -97,3 +97,10 @@ if __name__ == "__main__":
     create_multiple_shipments(number_of_shipments)
 
     print(f"{number_of_drivers} drivers and {number_of_shipments} shipments created successfully.")
+
+
+# في ملف initial_data.json أو في management command
+ShipmentStatus.objects.create(name_en="Shipped", name_ar="تم الشحن")
+ShipmentStatus.objects.create(name_en="Delivered", name_ar="تم التوصيل")
+ShipmentStatus.objects.create(name_en="Late", name_ar="متأخر")
+ShipmentStatus.objects.create(name_en="Feedback", name_ar="تم التقييم")

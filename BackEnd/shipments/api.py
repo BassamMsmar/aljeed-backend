@@ -3,7 +3,7 @@ from rest_framework import filters
 from rest_framework.response import Response
 
 from .serializers import ShipmentSerializer
-from .models import Shipment, STATUS
+from .models import Shipment
 
 
 
