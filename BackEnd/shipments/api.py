@@ -1,9 +1,14 @@
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+
+
+
 
 from .serializers import ShipmentSerializer
 from .models import Shipment
+from .filter import ShipmentFilter
 
 
 
@@ -12,10 +17,5 @@ from .models import Shipment
 class ShipmentListApi(viewsets.ModelViewSet):
     queryset = Shipment.objects.all()
     serializer_class = ShipmentSerializer
-
-    filter_backends = [filters.SearchFilter]
-    search_fields = [
-        'driver__name',           # افترض أن نموذج Driver يحتوي على حقل 'name'
-        'customer_branch__name',  # افترض أن نموذج Branch يحتوي على حقل 'name'
-        'destination__name_ar',   # افترض أن نموذج City يحتوي على حقل 'name_ar'
-    ]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ShipmentFilter
