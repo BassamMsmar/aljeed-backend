@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Shipment, City
+from .models import Shipment, City, ShipmentStatus
 from customers.models import Customers, Branch
 from drivers.models import Driver
 
@@ -8,6 +8,11 @@ from drivers.models import Driver
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
+        fields = '__all__'
+
+class ShipmentStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShipmentStatus
         fields = '__all__'
 
 
@@ -34,6 +39,8 @@ class ShipmentSerializer(serializers.ModelSerializer):
     destination = CitySerializer(read_only=True)
     customer_branch = BranchSerializer(read_only=True)
     driver = DriverSerializer(read_only=True)
+    status = ShipmentStatusSerializer(read_only=True)
+
 
     class Meta:
         model = Shipment

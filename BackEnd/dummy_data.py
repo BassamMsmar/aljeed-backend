@@ -89,8 +89,8 @@ if __name__ == "__main__":
     # create_multiple_drivers(number_of_drivers)
 
     print(f"Creating {number_of_shipments} fake shipments...")
-    create_multiple_drivers(number_of_drivers)
-    # create_multiple_shipments(number_of_shipments)
+    # create_multiple_drivers(number_of_drivers)
+    create_multiple_shipments(number_of_shipments)
 
     print(f"{number_of_drivers} drivers and {number_of_shipments} shipments created successfully.")
 
