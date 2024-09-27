@@ -6,8 +6,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 
-from .serializers import ShipmentSerializer
-from .models import Shipment
+from .serializers import ShipmentSerializer, ShipmentStatusSerializer
+from .models import Shipment, ShipmentStatus
 from .filter import ShipmentFilter
 
 
@@ -19,3 +19,11 @@ class ShipmentListApi(viewsets.ModelViewSet):
     serializer_class = ShipmentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ShipmentFilter
+
+
+class ShipmentStatusApi(viewsets.ReadOnlyModelViewSet):
+    queryset = ShipmentStatus.objects.all()
+    serializer_class = ShipmentStatusSerializer
+
+
+

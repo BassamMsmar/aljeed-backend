@@ -3,13 +3,14 @@ from rest_framework.routers import DefaultRouter
 from rest_framework import routers
 
 from .views import ShipmentList, ShipmentsDetail,  ShipmentCreateView, waybill, change_stutus
-from .api import ShipmentListApi
+from .api import ShipmentListApi, ShipmentStatusApi
 from .send_sms import send_sms
 from shipments import api
 
 
 router = routers.DefaultRouter()
-router.register(r'list', ShipmentListApi, basename='shipment_list_api')
+router.register('list', ShipmentListApi)
+router.register('shipment_status', ShipmentStatusApi) 
 
 
 urlpatterns = [

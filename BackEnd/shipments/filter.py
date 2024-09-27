@@ -5,7 +5,11 @@ from .models import Shipment
 
 class ShipmentFilter(filters.FilterSet):
     status = filters.CharFilter(field_name='status')
-    user = filters.CharFilter(field_name='user')
+    user = filters.CharFilter(field_name='user', method='filter_user')
+
+    def filter_user(self, queryset, name, value):
+        user_ids = value.split(',')
+        return queryset.filter(user__id__in=user_ids)
 
 
     class Meta:
