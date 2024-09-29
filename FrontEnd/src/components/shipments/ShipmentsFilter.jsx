@@ -1,49 +1,27 @@
 import { useEffect, useState } from "react";
-import { fetchUsers, fetchCustomers } from "../../stores/api"; // Adjust the correct path
+import { fetchUsers, fetchCustomers, fetchStatus } from "../../stores/api"; // Adjust the correct path
 import shipmentsStore from "../../stores/useStore";
 
 const ShipmentsFilter = () => {
-  const [users, setUsers, customers, setCustomers] = shipmentsStore((state) => [
+  const [
+    users,
+    setUsers,
+    customers,
+    setCustomers,
+    shipmentStatus,
+    setShipmentStatus,
+    filters,
+    setFilters,
+  ] = shipmentsStore((state) => [
     state.users,
     state.setUsers,
     state.customers,
     state.setCustomers,
+    state.shipmentStatus,
+    state.setShipmentStatus,
+    state.filters,
+    state.setFilters,
   ]);
-
-  const shipmentStatuses = [
-    { value: "Shipped", label: "شُحنت" },
-    { value: "Delivered", label: "تم التسليم" },
-    { value: "Late", label: "متأخرة" },
-    { value: "Feedback", label: "تحتاج إلى مراجعة" },
-  ];
-
-  const [selectedStatuses, setSelectedStatuses] = useState({
-    Shipped: false,
-    Delivered: false,
-    Late: false,
-    Feedback: false,
-  });
-
-  // دالة لتحديث حالة مربعات الاختيار بناءً على التغيير
-  const handleStatusChange = (e) => {
-    const { value, checked } = e.target; // القيمة وحالة الاختيار
-
-    // تحديث حالة الاختيارات
-    setSelectedStatuses((prevStatuses) => ({
-      ...prevStatuses,
-      [value]: checked, // تغيير حالة العنصر الذي تم تغييره فقط
-    }));
-  };
-
-  // const [selectedUsers, setSelectedUsers] = useState([]);
-  // const handleSelectedUsers = (e) => {
-  //   const user = e.target.value;
-
-  //   setSelectedUsers((prevStatuses) => ({
-  //     ...prevStatuses,
-  //     user, // تغيير حالة العنصر الذي تم تغييره فقط
-  //   }));
-  // };
 
   useEffect(() => {
     fetchUsers().then(setUsers); // Fetch users and update the store
@@ -53,60 +31,54 @@ const ShipmentsFilter = () => {
     fetchCustomers().then(setCustomers); // Fetch customers and update the store
   }, [setCustomers]);
 
+  useEffect(() => {
+    fetchStatus().then(setShipmentStatus); // Fetch customers and update the store
+  }, [setShipmentStatus]);
+
+  const handleUserChange = (e) => {
+    const { value, checked } = e.target;
+    const newUser = checked
+      ? [...filters.selectedUsers, parseInt(value)]
+      : filters.selectedUsers.filter((user) => user !== parseInt(value));
+
+    setFilters({ ...filters, selectedUsers: newUser });
+  };
+  // const handlecustomersChange
+  // const handleshipmentStatus
+
   return (
     <div className="user-id-status-container">
       <h3>المستخدمين</h3>
 
-      {/* {users.map((user) => (
-        <div
-          key={user.id}
-          className="btn-group mb-2 mx-1"
-          role="group"
-          aria-label="Basic checkbox toggle button group"
-          style={{ width: "100px" }}
-        >
-          <input
-            type="checkbox"
-            className="btn-check"
-            value={user.value}
-            id={`btncheck${user.id}`}
-            autoComplete="off"
-          />
-          <label
-            className="btn btn-outline-primary btn-sm"
-            htmlFor={`status${user.id}`}
-            style={{ width: "100px", textAlign: "center" }}
-          >
-            {user.first_name}
-          </label>
-        </div>
-      ))} */}
-
       <div>
         {users.map((user) => (
-          <div key={user.id}>
-            <div
-              className="btn-group mb-2 mx-1"
-              role="group"
-              aria-label="Basic checkbox toggle button group"
-              style={{ width: "100px" }}
+          <div
+            key={user.id}
+            className="btn-group mb-2 mx-1"
+            role="group"
+            aria-label="Basic checkbox toggle button group"
+            style={{ width: "100px" }} // Set a fixed width for equal size
+          >
+            <input
+              type="checkbox"
+              className="btn-check"
+              id={user.id}
+              autoComplete="off"
+              value={user.id}
+              onChange={handleUserChange}
+            />
+            <label
+              className="btn btn-outline-primary btn-sm"
+              htmlFor={user.id}
+              style={{ width: "100px", textAlign: "center" }}
             >
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id={`flexCheckDefault${user.id}`}
-              />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                {user.first_name}
-              </label>
-            </div>
+              {user.first_name} - {user.id}
+            </label>
           </div>
         ))}
       </div>
 
       <h3>العملاء</h3>
-
       <div>
         {customers.map((customer) => (
           <div
@@ -135,36 +107,41 @@ const ShipmentsFilter = () => {
 
       <h3>حالة الشحنة</h3>
       <div>
-        {shipmentStatuses.map((status) => (
+        {shipmentStatus.map((status) => (
           <div
-            key={status.value}
+            key={status.id}
             className="btn-group mb-2 mx-1"
             role="group"
             aria-label="Basic checkbox toggle button group"
-            style={{ width: "100px" }}
+            style={{ width: "100px" }} // Set a fixed width for equal size
           >
             <input
               type="checkbox"
               className="btn-check"
-              value={status.value}
-              id={`status${status.value}`}
+              id={status.id}
               autoComplete="off"
-              onChange={handleStatusChange}
-              checked={selectedStatuses[status.value]}
             />
             <label
-              className="btn btn-outline-primary btn-sm"
-              htmlFor={`status${status.value}`}
+              // className="btn btn-outline-primary btn-sm "
+              className={`btn ${
+                status.name_en === "Shipped"
+                  ? "btn-outline-warning"
+                  : status.name_en === "Delivered"
+                  ? "btn-outline-success"
+                  : status.name_en === "Late"
+                  ? "btn-outline-danger"
+                  : "btn-outline-secondary"
+              }`}
+              htmlFor={status.id}
               style={{ width: "100px", textAlign: "center" }}
             >
-              {status.label}
+              {status.name_ar}
             </label>
           </div>
         ))}
       </div>
 
       <h3>التاريخ</h3>
-      <h3>حالة الشحنة</h3>
     </div>
   );
 };

@@ -3,14 +3,14 @@ import { fetchShipments } from "../../stores/api"; // Adjust the correct path
 import shipmentsStore from "../../stores/useStore"; // Adjust the correct path
 
 const ShipmentsList = () => {
-  const { shipments, setShipments } = shipmentsStore();
+  const { shipments, setShipments, filters } = shipmentsStore();
   const [loading, setLoading] = useState(true); // حالة تحميل البيانات
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true); // تعيين حالة الجلب إلى true
-        const data = await fetchShipments();
+        const data = await fetchShipments(filters);
         setShipments(data); // تعيين البيانات في الـ store
       } catch (error) {
         console.error("Error fetching shipments:", error);
@@ -20,7 +20,9 @@ const ShipmentsList = () => {
     };
 
     fetchData();
-  }, [setShipments]);
+  }, [filters, setShipments]);
+
+
 
   const ShipmentsTable = ({ shipments }) => (
     <div className="container user-id-status-container mt-2">
@@ -35,6 +37,7 @@ const ShipmentsList = () => {
             <th>التحميل</th>
             <th>الوصول</th>
             <th>الاجرة</th>
+            <th>المخرج</th>
             <th>حالة الشحنة</th>
           </tr>
         </thead>
@@ -66,19 +69,20 @@ const ShipmentsList = () => {
                   .replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$3/$1/$2")}
               </td>
               <td>{shipment.fare}</td>
+              <td>{shipment.user.first_name}</td>
               <td>
                 <button
                   className={`btn ${
-                    shipment.status === "Shipped"
+                    shipment.status.name_en === "Shipped"
                       ? "btn-warning"
-                      : shipment.status === "Delivered"
+                      : shipment.status.name_en === "Delivered"
                       ? "btn-success"
-                      : shipment.status === "Late"
+                      : shipment.status.name_en === "Late"
                       ? "btn-danger"
                       : "btn-secondary"
                   }`}
                 >
-                  {shipment.status}
+                  {shipment.status.name_ar}
                 </button>
               </td>
             </tr>

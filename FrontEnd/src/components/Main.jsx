@@ -5,10 +5,10 @@ const Main = () => {
   return (
     <main className="main">
       <div className="row">
-        <div className="col-4 ">
+        <div className="col-3 ">
           <ShipmentsFilter />
         </div>
-        <div className="col-8">
+        <div className="col-9">
           <ShipmentsTable />
         </div>
       </div>

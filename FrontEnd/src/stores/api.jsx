@@ -2,9 +2,17 @@ import axios from "axios";
 
 const API_URL = "http://127.0.0.1:8000";
 
-export const fetchShipments = async () => {
+export const fetchShipments = async (filters) => {
   try {
-    const response = await axios.get(`${API_URL}/shipment/api/list`);
+    const user = filters.selectedUsers.join(',')
+    console.log(user)
+    
+    const params = {
+      user:user
+    }
+
+    const response = await axios.get(`${API_URL}/shipment/api/list/`, {params});
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error("Error fetching shipments:", error);
@@ -15,7 +23,7 @@ export const fetchShipments = async () => {
 export const fetchUsers = async () => {
   try {
     const response = await axios.get(`${API_URL}/user/api/list/`);
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -23,11 +31,10 @@ export const fetchUsers = async () => {
   }
 };
 
-
-// export const fetchStatus = async () => {
-//   const response = await axios.get(`${API_URL}/list`);
-//   return response.data;
-// };
+export const fetchStatus = async () => {
+  const response = await axios.get(`${API_URL}/shipment/api/shipment_status/`);
+  return response.data;
+};
 
 export const fetchCustomers = async () => {
   const response = await axios.get(`${API_URL}/customer/api/branch/`);

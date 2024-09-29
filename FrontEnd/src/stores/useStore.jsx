@@ -6,21 +6,18 @@ const shipmentsStore = create((set) => ({
   shipments: [],
   users: [],
   customers: [],
+  shipmentStatus: [],
   filters:{
-    selectedStatuses: {
-      Shipped: true,
-      Delivered: true,
-      Late: true,
-      Feedback: true
-    },
     selectedUsers: [],
+    selectedStatuses:  [],
     selectedCustomers: [],
   },
 
   setShipments: (shipments) => set({ shipments }),
   setUsers: (users) => set({ users }),
   setCustomers: (customers) => set({ customers }),
-  setFilters: (filters) => set({ filters }),
+  setShipmentStatus: (shipmentStatus) => set({ shipmentStatus }),
+  setFilters: (filters) => set(state => ({filters : {...state.filters , ...filters}}))
 }));
 
 export default shipmentsStore;
