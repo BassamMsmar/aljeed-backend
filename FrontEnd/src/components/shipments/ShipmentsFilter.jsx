@@ -30,7 +30,6 @@ const ShipmentsFilter = () => {
   useEffect(() => {
     fetchCustomers().then(setCustomers); // Fetch customers and update the store
   }, [setCustomers]);
-
   useEffect(() => {
     fetchStatus().then(setShipmentStatus); // Fetch customers and update the store
   }, [setShipmentStatus]);
@@ -41,35 +40,55 @@ const ShipmentsFilter = () => {
       ? [...filters.selectedUsers, parseInt(value)]
       : filters.selectedUsers.filter((user) => user !== parseInt(value));
 
-    setFilters({ ...filters, selectedUsers: newUser });
+    setFilters({ selectedUsers: newUser });
   };
-  // const handlecustomersChange
-  // const handleshipmentStatus
+
+  const handleCustomersChange = (e) => {
+    const { value, checked } = e.target;
+    const newCustomers = checked
+      ? [...filters.selectedCustomers, parseInt(value)]
+      : filters.selectedCustomers.filter(
+          (customer) => customer !== parseInt(value)
+        );
+
+    setFilters({ ...filters, selectedCustomers: newCustomers });
+  };
+
+  const handleShipmentStatusChange = (e) => {
+    const { value, checked } = e.target;
+    console.log(e.target.value);
+    console.log(e.target.checked);
+
+    const newStatus = checked
+      ? [...filters.selectedStatuses, parseInt(value)]
+      : filters.selectedStatuses.filter((status) => status !== parseInt(value));
+
+    setFilters({ ...filters, selectedStatuses: newStatus });
+  };
 
   return (
     <div className="user-id-status-container">
       <h3>المستخدمين</h3>
-
       <div>
         {users.map((user) => (
           <div
-            key={user.id}
+            key={`user-${user.id}`}
             className="btn-group mb-2 mx-1"
             role="group"
             aria-label="Basic checkbox toggle button group"
-            style={{ width: "100px" }} // Set a fixed width for equal size
+            style={{ width: "100px" }}
           >
             <input
               type="checkbox"
               className="btn-check"
-              id={user.id}
-              autoComplete="off"
+              id={`user-${user.id}`}
               value={user.id}
+              autoComplete="off"
               onChange={handleUserChange}
             />
             <label
               className="btn btn-outline-primary btn-sm"
-              htmlFor={user.id}
+              htmlFor={`user-${user.id}`}
               style={{ width: "100px", textAlign: "center" }}
             >
               {user.first_name} - {user.id}
@@ -77,26 +96,28 @@ const ShipmentsFilter = () => {
           </div>
         ))}
       </div>
-
+      <hr />
       <h3>العملاء</h3>
       <div>
         {customers.map((customer) => (
           <div
-            key={customer.id}
+            key={`customer-${customer.id}`}
             className="btn-group mb-2 mx-1"
             role="group"
             aria-label="Basic checkbox toggle button group"
-            style={{ width: "100px" }} // Set a fixed width for equal size
+            style={{ width: "100px" }}
           >
             <input
               type="checkbox"
               className="btn-check"
-              id={`btncheck${customer.id}`}
+              id={`customer-${customer.id}`}
+              value={customer.id}
               autoComplete="off"
+              onChange={handleCustomersChange}
             />
             <label
               className="btn btn-outline-primary btn-sm"
-              htmlFor={`btncheck${customer.id}`}
+              htmlFor={`customer-${customer.id}`}
               style={{ width: "100px", textAlign: "center" }}
             >
               {customer.customers.name} {" - "} {customer.name}
@@ -104,25 +125,26 @@ const ShipmentsFilter = () => {
           </div>
         ))}
       </div>
-
+      <hr />
       <h3>حالة الشحنة</h3>
       <div>
         {shipmentStatus.map((status) => (
           <div
-            key={status.id}
+            key={`status-${status.id}`}
             className="btn-group mb-2 mx-1"
             role="group"
             aria-label="Basic checkbox toggle button group"
-            style={{ width: "100px" }} // Set a fixed width for equal size
+            style={{ width: "100px" }}
           >
             <input
               type="checkbox"
               className="btn-check"
-              id={status.id}
+              id={`status-${status.id}`}
+              value={status.id}
               autoComplete="off"
+              onChange={handleShipmentStatusChange}
             />
             <label
-              // className="btn btn-outline-primary btn-sm "
               className={`btn ${
                 status.name_en === "Shipped"
                   ? "btn-outline-warning"
@@ -132,7 +154,7 @@ const ShipmentsFilter = () => {
                   ? "btn-outline-danger"
                   : "btn-outline-secondary"
               }`}
-              htmlFor={status.id}
+              htmlFor={`status-${status.id}`}
               style={{ width: "100px", textAlign: "center" }}
             >
               {status.name_ar}
@@ -140,8 +162,6 @@ const ShipmentsFilter = () => {
           </div>
         ))}
       </div>
-
-      <h3>التاريخ</h3>
     </div>
   );
 };

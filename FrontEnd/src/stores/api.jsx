@@ -5,14 +5,19 @@ const API_URL = "http://127.0.0.1:8000";
 export const fetchShipments = async (filters) => {
   try {
     const user = filters.selectedUsers.join(',')
-    console.log(user)
+    const customer = filters.selectedCustomers.join(',')
+    const status = filters.selectedStatuses.join(',')
+    
     
     const params = {
-      user:user
+      user:user,
+      customer:customer,
+      status:status,
     }
+    console.log(params)
 
     const response = await axios.get(`${API_URL}/shipment/api/list/`, {params});
-    console.log(response.data)
+    // console.log(response.data)
     return response.data;
   } catch (error) {
     console.error("Error fetching shipments:", error);
