@@ -4,14 +4,21 @@ import shipmentsStore from "../../stores/useStore"; // Adjust the correct path
 
 const ShipmentsList = () => {
   const { shipments, setShipments, filters } = shipmentsStore();
+
+  const [page, setPage] = useState(1);
+  const [next, setNext] = useState(null);
+  const [previous, setPrevious] = useState(null);
+
   const [loading, setLoading] = useState(true); // حالة تحميل البيانات
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true); // تعيين حالة الجلب إلى true
-        const data = await fetchShipments(filters);
-        setShipments(data); // تعيين البيانات في الـ store
+        const data = await fetchShipments(filters, page);
+        setShipments(data.results); // تعيين البيانات في الـ store
+        setNext(data.next);
+        setPrevious(data.previous);
       } catch (error) {
         console.error("Error fetching shipments:", error);
       } finally {
@@ -20,9 +27,15 @@ const ShipmentsList = () => {
     };
 
     fetchData();
-  }, [filters, setShipments]);
+  }, [filters, setShipments, page]);
 
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
 
+  const handlePreviousPage = () => {
+    setPage(page - 1);
+  };
 
   const ShipmentsTable = ({ shipments }) => (
     <div className="container user-id-status-container mt-2">
@@ -94,11 +107,38 @@ const ShipmentsList = () => {
 
   return (
     <div>
-      {loading ? (
-        <p>يتم جلب البيانات، يرجى الانتظار...</p> // عرض رسالة انتظار أثناء الجلب
-      ) : (
-        <ShipmentsTable shipments={shipments} /> // عرض الجدول بعد جلب البيانات
-      )}
+      <div>
+        {loading ? (
+          <p>يتم جلب البيانات، يرجى الانتظار...</p> // عرض رسالة انتظار أثناء الجلب
+        ) : (
+          <ShipmentsTable shipments={shipments} /> // عرض الجدول بعد جلب البيانات
+        )}
+      </div>
+      <div className="d-flex justify-content-center">
+        <ul className="pagination">
+          <li className={`page-item ${!previous ? "disabled" : ""}`}>
+            <button
+              className="page-link"
+              onClick={handlePreviousPage}
+              disabled={!previous}
+            >
+              Previous
+            </button>
+          </li>
+          <li className="page-item">
+            <span className="page-link">{page}</span>
+          </li>
+          <li className={`page-item ${!next ? "disabled" : ""}`}>
+            <button
+              className="page-link"
+              onClick={handleNextPage}
+              disabled={!next}
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

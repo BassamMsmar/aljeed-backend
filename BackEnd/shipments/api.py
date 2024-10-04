@@ -9,6 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import ShipmentSerializer, ShipmentStatusSerializer
 from .models import Shipment, ShipmentStatus
 from .filter import ShipmentFilter
+from .paginations import ShipmentsPagination
 
 
 
@@ -19,6 +20,7 @@ class ShipmentListApi(viewsets.ModelViewSet):
     serializer_class = ShipmentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ShipmentFilter
+    pagination_class = ShipmentsPagination
 
 
 class ShipmentStatusApi(viewsets.ReadOnlyModelViewSet):
