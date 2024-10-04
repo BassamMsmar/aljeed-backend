@@ -13,10 +13,7 @@ export const fetchShipments = async (filters, page) => {
       user:user,
       customer:customer,
       status:status,
-<<<<<<< HEAD
       page:page
-=======
->>>>>>> 7772eeaae13a60bc80728cd205b2808ae59783d1
     }
     console.log(params)
 
